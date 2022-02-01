@@ -15,6 +15,13 @@ python3 -m pip install -r requirements.txt  # This will install all the modules
 Every time you run the program make sure you are using the virtual environment and
 that the modules are up to date by just using the following commands:
 
+**Windows Terminal**
+```
+venv\Scripts\activate                       # This will activate virtual environment
+python3 -m pip install -r requirements.txt  # This will install all the modules
+```
+
+**Bash**
 ```
 . venv/bin/activate                         # This will activate virtual environment
 python3 -m pip install -r requirements.txt  # This will install all the modules
