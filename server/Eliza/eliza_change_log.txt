@@ -1,0 +1,14 @@
+2/1/2022
+9:02 AM
+Charles Garman
+
+Added decomposition rule for the phrase, "I am." under keyword: "i".
+Includes three reassembly rules, 
+
+reasmb: I see . Tell me what is on your mind right now .
+reasmb: What lead to you feeling the way you do ?
+reasmb: Right . Go on .
+
+Edited a reassembly rule for decomposition rule "$ * my *" for keyword "my" so that it says,
+"Lets discuss further why your (2) concerns you ." instead of,
+"Lets discuss further why your (2) ."
