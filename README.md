@@ -5,6 +5,8 @@ Modern Software Development Project for team Mind Space
 To set up the server, you have to go to the server folder from the terminal and 
 then use the following commands:
 
+**Before using any of these commands to work on the server, make sure your current directory is Mind-Space/server**
+
 **These commands should be run in sequence during the first time you load the project.**
 ```
 python3 -m venv venv                        # This line creates the virtual environment
