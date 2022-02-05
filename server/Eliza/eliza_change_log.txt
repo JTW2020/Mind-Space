@@ -12,3 +12,18 @@ reasmb: Right . Go on .
 Edited a reassembly rule for decomposition rule "$ * my *" for keyword "my" so that it says,
 "Lets discuss further why your (2) concerns you ." instead of,
 "Lets discuss further why your (2) ."
+
+2/5/2022
+2:55 PM
+Charles Garman
+
+Gave Eliza the ability to switch contexts. When a reassembly rule begins with the phrase "switchto"
+the word after that will be the name of the file to switch to, without the .txt extension. Any remaining
+words will be the output displayed to the user after the switch concludes. To test this functionality,
+doctor.txt was altered, as a new keyword, "depressed", was added with a priority of 50.
+The decomposition rule matches any input that has the word in it, and its only reassembly rule has it
+switch to depressed.txt and output the message, "We will now talk about your depression ."
+depressed.txt was also created as a near exact copy to doctor.txt,
+except the reassembly rule for the depressed keyword simply tells the user,
+"I already know that you are depressed ." and does not trigger a context switch.
+These additions can be tested by repeatedly typing, "I am depressed." into the terminal.
