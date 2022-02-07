@@ -1,0 +1,15 @@
+depressed.txt:
+Line 49: Delete or reword this this can sound aggresive towards the user
+
+Line 95: Delete or reword this can sound aggresive towards the user
+
+All language ones: we should not say "I told you before" we should simply state "I do not understand (language)
+
+doctor.txt:
+Line 187: Maybe instead of saying How have I helped you we should say "Have I helped you, if so how?"
+
+Names, maybe instead of saying the machine doesnt care about names, we should acknowledge and say something like "Thank you for telling me your name, 
+however I will not be using it to refer to you."
+
+We should outright eliminate or modify some "conversation killer" reponsees such as "You are being quite negative" as a response like this is hard for the user to respond to
+with something that is not something like "ok" or "i guess I am" or "no I am not" which likely could derail the conversation or get the user potentially mad at Eliza
