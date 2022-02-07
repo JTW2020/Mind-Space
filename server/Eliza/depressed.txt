@@ -363,5 +363,5 @@ key: like 10
     reasmb: goto alike
 key: depressed 50
   decomp: * depressed *
-    reasmb: switchto depressed We will now talk about your depression .
+    reasmb: I already know that you are depressed .
    

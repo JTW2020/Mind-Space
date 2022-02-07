@@ -1,6 +1,7 @@
 import logging
 import random
 import re
+import os.path as path
 from collections import namedtuple
 
 # Fix Python2/Python3 incompatibility
@@ -134,6 +135,21 @@ class Eliza:
                 elif tag == 'reasmb':
                     parts = content.split(' ')
                     decomp.reasmbs.append(parts)
+
+    
+    #This method simply clears the Eliza script information and loads in another script, therefore completing a context switch.
+
+    def context_switch(self, context):
+        self.initials = []
+        self.finals = []
+        self.quits = []
+        self.pres = {}
+        self.posts = {}
+        self.synons = {}
+        self.keys = {}
+        self.memory = []
+
+        self.load(context)      
                     
     #This method recursively attemps to match parts of a decomposition rule to input words.
 
@@ -249,6 +265,7 @@ class Eliza:
                 #Add insert to the output.
                         
                 output.extend(insert)
+
                 
             #If the word is not a number between opening and closing parentheses, simply add it to the output.
                 
@@ -309,6 +326,24 @@ class Eliza:
                     raise ValueError("Invalid goto key {}".format(goto_key))
                 log.debug('Goto key: %s', goto_key)
                 return self._match_key(words, self.keys[goto_key])
+
+            #If the reassembly rule says to switch contexts, the word after switch will be the file name without the extension.
+            #Any following words will serve as the output, so they are saved and returned after the context switch is attempted.
+            #If the file specified does not exist, raise a value error.
+
+            elif reasmb[0] == 'switchto':
+
+                output = reasmb[2:]
+
+                context = "{}.txt".format(reasmb[1])
+
+                if path.exists(context):
+                    self.context_switch(context)
+                else:
+                    raise ValueError("Unknown context file: {}".format(context))
+
+                return output
+
             
             #Get the ouput by using the previously selected reassembly rule on the results obtained earlier.
             
