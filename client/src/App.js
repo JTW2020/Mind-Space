@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import rocketIcon from './space-travel.png';
 import './App.css';
 import './index.css'
 import {
@@ -8,16 +9,18 @@ import {
   Link
 } from 'react-router-dom';
 
+import Navbar from './pages/components/Navbar';
 import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App bg-black h-screen">
+        <Navbar />
+        <Switch>
+          <Route path="/"><HomePage /></Route>
+        </Switch>
       </div>
-      <Switch>
-        <Route path="/"><HomePage /></Route>
-      </Switch>
     </Router>
   );
 }
