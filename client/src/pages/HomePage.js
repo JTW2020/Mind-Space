@@ -14,7 +14,7 @@ function HomePage() {
             <p>Welcome to Mind-Space. A modern take on Eliza.</p>
           </body>
 
-          <input />
+          <input className="text-black w-full mt-5" />
         </div>
       </div>
     </div>
