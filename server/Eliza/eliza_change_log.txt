@@ -27,3 +27,15 @@ depressed.txt was also created as a near exact copy to doctor.txt,
 except the reassembly rule for the depressed keyword simply tells the user,
 "I already know that you are depressed ." and does not trigger a context switch.
 These additions can be tested by repeatedly typing, "I am depressed." into the terminal.
+
+2/9/2022
+10:04 AM
+Charles Garman
+
+Added a line near the top of the Eliza program that will cause debug information to be output to
+the console unless it is commented out.
+
+12:32 PM
+
+Altered the Eliza program so that it will identify question marks in the user input and remove them
+if parts of that input are used in the output, avoiding things like duplicate question marks.

@@ -260,9 +260,9 @@ class Eliza:
                     raise ValueError("Invalid result index {}".format(index))
                 insert = results[index - 1]
                 
-                #If a comma, period, or semicolon is in insert, then only content that precedes any of these punctuations remains.
+                #If a comma, period, question mark, or semicolon is in insert, then only content that precedes any of these punctuations remains.
                 
-                for punct in [',', '.', ';']:
+                for punct in [',', '.', ';', '?']:
                     if punct in insert:
                         insert = insert[:insert.index(punct)]
                         
@@ -378,11 +378,13 @@ class Eliza:
         
         #The input text is cleaned up by replacing matching patterns with standard text.
         #Any number of spaces, followed by at least one period, followed by any number of spaces, is replaced with a space, a period, and one more space.
-        #The same transformation is applied except with commas and then semicolons.
+        #The same transformation is applied except with commas, question marks, and then semicolons.
 
         text = re.sub(r'\s*\.+\s*', ' . ', text)
         text = re.sub(r'\s*,+\s*', ' , ', text)
         text = re.sub(r'\s*;+\s*', ' ; ', text)
+        text = re.sub(r'\s*\?+\s*', ' ? ', text)
+
         log.debug('After punctuation cleanup: %s', text)
         
         #The words in the input are separated via spaces into entries in a list.
