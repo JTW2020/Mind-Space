@@ -39,3 +39,11 @@ the console unless it is commented out.
 
 Altered the Eliza program so that it will identify question marks in the user input and remove them
 if parts of that input are used in the output, avoiding things like duplicate question marks.
+
+2/10/2022
+5:24 PM
+Charles Garman
+
+Added inbetween.txt as an intitial version and set Eliza to load it on startup. This context will
+will be used when Eliza is trying to figure out what the overall ailment of the user is. It currently
+refers to two contexts that don't exist yet, but they are just placeholders that can be changed later.
