@@ -47,3 +47,12 @@ Charles Garman
 Added inbetween.txt as an intitial version and set Eliza to load it on startup. This context will
 will be used when Eliza is trying to figure out what the overall ailment of the user is. It currently
 refers to two contexts that don't exist yet, but they are just placeholders that can be changed later.
+
+2/12/2022
+4:07 PM
+Charles Garman
+
+Made a multitude of modifications to depressed.txt in order to make the responses more appropriate.
+With this, the current state of depressed.txt should make a good baseline for the other three contexts,
+give or take a few changes. From there manual testing should be done to modify and built on each context
+to make is as robust as possible.
