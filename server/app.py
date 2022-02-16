@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import jsonify  # Potentially used for later purposes
 
 app = Flask(__name__)
@@ -12,7 +12,14 @@ def hello_world():
     }
 
 
-
 @app.route("/api/test")
 def api():
     return '<p>This is the test api endpoint</p>'
+
+
+@app.route("/api/msgEliza", methods=['POST'])
+def msgToEliza():
+    print()
+    return {
+        "message": "fluff"
+    }

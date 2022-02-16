@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function Chatbox() {
   const [message, setMessage] = useState("");
@@ -9,9 +10,21 @@ function Chatbox() {
     setMessage(e.target.value);
   }
 
-  function handleSubmitMsg(e) {
+  /*
+    This is the handler method that sends 
+    the user's message to the backend
+  */
+  async function handleSubmitMsg(e) {
     e.preventDefault();
     console.log(message);
+    try {
+      const res = await axios.post('/api/msgEliza', {
+        userMessage: message
+      });
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
