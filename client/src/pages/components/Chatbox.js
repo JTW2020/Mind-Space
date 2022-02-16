@@ -16,12 +16,17 @@ function Chatbox() {
   */
   async function handleSubmitMsg(e) {
     e.preventDefault();
-    console.log(message);
     try {
       const res = await axios.post('http://localhost:5000/api/msgEliza', {
         userMessage: message
       });
-      console.log(res);
+      console.log(res.data);
+      setMessageList([
+        ...messageList,
+        { user: "client", message: message },
+        { user: "Eliza", message: res.data.message }
+      ]);
+      console.log(messageList);
     } catch (err) {
       console.error(err);
     }
@@ -58,9 +63,8 @@ function Chatbox() {
             </button>
           </div>
         </form>
-
       </div>
-    </div>
+    </div >
   )
 }
 
