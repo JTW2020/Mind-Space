@@ -4,14 +4,15 @@ from flask import jsonify  # Potentially used for later purposes
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/hello")
 def hello_world():
     return {
-        "user": "Eliza AI",
-        "purpose": "help people"
+        "sender": "Eliza",
+        "message": "Hello there user!"
     }
+
 
 
 @app.route("/api/test")
 def api():
-    pass
+    return '<p>This is the test api endpoint</p>'
