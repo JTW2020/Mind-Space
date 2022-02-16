@@ -18,7 +18,7 @@ function Chatbox() {
     e.preventDefault();
     console.log(message);
     try {
-      const res = await axios.post('/api/msgEliza', {
+      const res = await axios.post('http://localhost:5000/api/msgEliza', {
         userMessage: message
       });
       console.log(res);

@@ -1,7 +1,9 @@
 from flask import Flask, request
 from flask import jsonify  # Potentially used for later purposes
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/hello")
@@ -19,7 +21,6 @@ def api():
 
 @app.route("/api/msgEliza", methods=['POST'])
 def msgToEliza():
-    print()
     return {
         "message": "fluff"
     }
