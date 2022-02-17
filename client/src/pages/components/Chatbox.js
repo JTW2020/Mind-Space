@@ -33,38 +33,44 @@ function Chatbox() {
   }
 
   return (
-    <div className="chatbox">
-      <div className="flex flex-col items-center justify-center absolute inset-0">
-        <div className="">
-          <div className="text-center">
-            <h1 className="
-            text-6xl 
-            font-bold">
-              Mind-Space
-            </h1>
-            <p className="mt-2">Welcome to Mind-Space. A modern take on Eliza.</p>
-          </div>
-        </div>
-        <div className="container py-2 px-4 mt-10 w-8/12 text-black bg-zinc-100 h-4/12 rounded rounded-md">
-          <a>Eliza: Is something troubling you?</a>
-          <br />
-          <a>You: I am depressed.</a>
-          <br />
-          <a>Eliza: What do you think is causing this?</a>
-        </div>
-        <form className="flex mt-6 items-center justify-center align-middle">
-          <div className="mr-4">
-            <label className="pr-3">You:</label>
-            <input className="text-black w-full" onChange={handleMsgInputChange} />
-          </div>
-          <div>
-            <button className="bg-purple-500 mt-4 rounded rounded-sm py-1 px-4" onClick={handleSubmitMsg}>
-              Send to Eliza
-            </button>
-          </div>
-        </form>
+    <div className="chatbox grid grid-cols-1 w-3/6">
+      <div className="py-2 px-4 mt-5 text-black h-60 bg-zinc-100 rounded-md overflow-auto">
+        <a>Eliza: How are you?</a>
+        <br />
+        <a>You: I am depressed.</a>
+        {/**
+         * This is just testing the overflox attribute of the chatbox
+         * Thankfully, it works
+         */}
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
+        <br />
+        <a>Eliza: What do you think is causing this?</a>
       </div>
-    </div >
+      <form className="flex mt-6 items-center justify-center align-middle">
+        <div className="w-full">
+          <label className="">You:</label>
+          <input className="text-black rounded-sm w-full p-2" onChange={handleMsgInputChange} />
+        </div>
+      </form>
+      <button className="bg-purple-500 mt-4 rounded-sm py-1 px-4" onClick={handleSubmitMsg}>
+        Send to Eliza
+      </button>
+    </div>
   )
 }
 
