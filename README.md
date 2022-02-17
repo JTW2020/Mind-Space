@@ -45,6 +45,23 @@ flask run
 * Running on http://127.0.0.1:5000
 ```
 
+# Starting the Client-Side
+**Make sure that your current directory in your console is 'client'**
+
+**Windows Terminal**
+```
+npm install   # This will ensure that you will have all the modules needed to run the client-side
+npm start     # This will start the client-side
+```
+
+**Bash**
+```
+npm install   # This will ensure that you will have all the modules needed to run the client-side
+npm start     # This will start the client-side
+```
+
+After these commands, the client-side should be accessible in your web-browser at: 'localhost:3000'
+
 # Potential Future use of Docker
 With Docker, we can automate the setup of the environment for the application which
 will enable us to spend more time programming and less time setting up.
