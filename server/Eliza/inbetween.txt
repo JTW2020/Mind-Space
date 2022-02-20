@@ -118,7 +118,7 @@ key: xnone -1
 
 key: depressed
   decomp: *
-    reasmb: switchto depressed I understand. Please, tell me about how you've been feeling down.
+    reasmb: switchto depressed I see. Please, tell me about how you've been feeling down.
 key: sad
   decomp: *
     reasmb: goto depressed

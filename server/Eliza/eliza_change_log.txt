@@ -78,3 +78,10 @@ Made a slight enhancement that deletes any duplicate keywords collected from use
 Eliza now considers periods, commas, question marks, colons, semicolons, and exclamation marks to be punctuation. What this means is that, when seen in user input, they will be separated from words and consecutive punctuation will
 be eliminated. For example, "I am happy!!!!" will be seen as, "I am happy !". For the moment this also means that Eliza will only insert the user input that precedes all punctuation into its output when using
 the dynamic insertion facility provided by the numbers in parenthesis, although this can be altered later if need be.
+
+5:04 PM
+Charles Garman
+
+Altered the Eliza program so that, while checking to see if a decomposition rule matches, if there are no words remaining and the parts of the rule left are just *'s and/or ^'s, then the rule matches.
+Determining this has been turned into its own method for clarity.
+Miscellaneous edits/additions to depressed.txt and inbetween.txt

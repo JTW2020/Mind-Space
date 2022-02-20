@@ -34,7 +34,7 @@ post: you I
 post: my your
 post: i'm you are
 synon: belief feel think believe wish
-synon: family mother mom father dad sister brother wife children child
+synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
 synon: sad unhappy depressed sick
 synon: happy elated glad joyful enjoying laughing excited
@@ -55,6 +55,10 @@ key: apologise
   decomp: *
     reasmb: goto sorry
 key: remember 5
+  decomp: * i remember ^
+    reasmb: What significance does remembering hold to you ?
+    reasmb: Do you want to remember ? Why or why not ?
+    reasmb: How has this train of thought affected your life ? 
   decomp: * i remember *
     reasmb: How has (2) affected you recently ?
     reasmb: Does thinking of (2) bring anything else to mind ?
@@ -69,6 +73,11 @@ key: remember 5
     reasmb: goto what
     reasmb: Can you refresh my memory ?
 key: if 3
+  decomp: * if i was *
+    reasmb: Would you say that you were (2) ?
+    reasmb: Have you been (2) recently ? Why or why not ?
+    reasmb: What would it mean to you if you were (2) ?
+    reasmb: throwkey
   decomp: * if *
     reasmb: Do you think it's likely that (2) ?
     reasmb: How do you feel about the prospect of (2) ?
@@ -216,24 +225,24 @@ key: i 2
     reasmb: What would you (3) mean for your situation ?
   decomp: * i * @belief * you *
     reasmb: goto you
-  decomp: i am ?
+  decomp: * i am ?
     reasmb: Do you think you are ? Why or why not ?
     reasmb: Have you ever wondered if you are before ? Why or why not ?
     reasmb: Do you believe that others think so ? Please explain why you believe they are right or wrong.
-  decomp: i am ^
-    reasmb: I see. Tell me what is on your mind right now.
+  decomp: * i am ^
+    reasmb: I see. Can you tell me about the thoughts that are troubling you ?
     reasmb: What lead to you feeling the way you do ?
-    reasmb: Right. Go on.
+    reasmb: Please continue.
   decomp: * i am *
     reasmb: How has you being (2) affected your life ?
     reasmb: How long have you been (2) ?
     reasmb: Please, continue.
     reasmb: Do you enjoy being (2) ?
   decomp: * i cannot *
-    reasmb: Why do you think that you can't (3) ?
+    reasmb: Why do you think that you can't (2) ?
     reasmb: What experiences lead you to think that ?
-    reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (3) ?
-    reasmb: How has not being able to (3) affected the way you live ?
+    reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (2) ?
+    reasmb: How has not being able to (2) affected the way you live ?
   decomp: * i do not *
     reasmb: Why not ?
     reasmb: Why don't you (2) ?
@@ -325,12 +334,16 @@ key: my 2
     reasmb: The way your (2) ? Can you make an analogy to that ?
     reasmb: How related are the other facets of how you feel to this ?
     reasmb: What way has your (2) been throughout your life, if you can remember ? How has that affected you ?
+  decomp: * my * is *
+    reasmb: Has your (2) always been that way ?
+    reasmb: Do others think that about your (2) ? Are they correct ? Why or why not ?
+    reasmb: Is there anything else you can think of that affects you in a similar way ?
   decomp: * my *
     reasmb: Your (2) ? How does that affect you ?
     reasmb: How has your (2) made you feel in the past ?
     reasmb: Does that make you think of anything else that's in your life ?
     reasmb: How important is this to you ? Why ?
-key: can
+key: can 3
   decomp: * can you *
     reasmb: Do you believe that I can (2) ? Why or why not ?
     reasmb: goto what
@@ -447,6 +460,15 @@ key : better 3
     reasmb: It can certainly feel like things will never change. Please, do your best to tell me about how things have changed for you before.
     reasmb: That is what you feel now, and with this mindset you may be right. But your mind is changing all the time, isn't it ?
     reasmb: What do you think would need to happen in order for you to feel better ?
+key: not
+  decomp: * not really ^
+    reasmb: Why not ?
+    reasmb: Has it always been that way ?
+    reasmb: I see. Please, go on.
+  decomp: * not really *
+    reasmb: What would being (2) mean in this case ?
+    reasmb: Has being (2) been a concern before ? Why or why not ?
+    reasmb: Why do you think that is ?
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.

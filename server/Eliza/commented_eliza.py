@@ -177,7 +177,17 @@ class Eliza:
         self.keys = {}
         self.memory = []
 
-        self.load(context)      
+        self.load(context)
+
+    #This method returns a boolean that tells if the parts of a decomposition rule it is given will accept there being no words remaining.
+    #In order for this to be the case, all parts must either be an asterisk or a caret.      
+
+    def rule_accepts_no_words(self, parts):
+        for part in parts:
+            if part != '*' and part != '^':
+                return False
+        
+        return True
                     
     #This method recursively attemps to match parts of a decomposition rule to input words.
 
@@ -188,9 +198,9 @@ class Eliza:
         if not parts and not words:
             return True
         
-        #Otherwise, if there are no parts remaining, or if there are no words remaining and there is not only one remnant part which is an asterisk or a caret, the match has failed. Return false.
+        #Otherwise, if there are no parts remaining, or if there are no words remaining and the remaining parts of the rule don't accept that, the match has failed. Return false.
         
-        if not parts or (not words and (parts != ['*'] and parts != ['^'])):
+        if not parts or (not words and not self.rule_accepts_no_words(parts)):
             return False
         
         '''
