@@ -1,11 +1,26 @@
-from flask import Flask
+from flask import Flask, request
+from flask import jsonify  # Potentially used for later purposes
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+
+@app.route("/hello")
+def hello_world():
+    return {
+        "sender": "Eliza",
+        "message": "Hello there user!"
+    }
 
 
 @app.route("/api/test")
-def hello_world():
+def api():
+    return '<p>This is the test api endpoint</p>'
+
+
+@app.route("/api/msgEliza", methods=['POST'])
+def msgToEliza():
     return {
-        "user": "Eliza AI",
-        "purpose": "help people"
+        "message": "fluff"
     }
