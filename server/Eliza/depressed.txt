@@ -1,11 +1,14 @@
 initial: Hi there. What has you feeling down ?
-final: Goodbye.  Thank you for talking to me.
+final: Goodbye. Thank you for talking to me.
 quit: bye
 quit: goodbye
 quit: quit
-pre: dont don't
-pre: cant can't
-pre: wont won't
+pre: dont do not
+pre: don't do not
+pre: cant cannot
+pre: can't cannot
+pre: wont will not
+pre: won't will not
 pre: recollect remember
 pre: dreamt dreamed
 pre: dreams dream
@@ -19,6 +22,8 @@ pre: were was
 pre: you're you are
 pre: i'm i am
 pre: same alike
+pre: ain't am not
+pre: aint am not
 post: am are
 post: your my
 post: me you
@@ -32,13 +37,12 @@ synon: belief feel think believe wish
 synon: family mother mom father dad sister brother wife children child
 synon: desire want need
 synon: sad unhappy depressed sick
-synon: happy elated glad better
-synon: cannot can't
+synon: happy elated glad joyful enjoying laughing excited
 synon: everyone everybody nobody noone
 synon: be am is are was
 key: xnone
   decomp: *
-    reasmb: I'm not sure I understand you fully. Can you phrase it another way?
+    reasmb: I'm not sure I understand you fully. Can you phrase it another way ?
     reasmb: Please go on.
     reasmb: What does that suggest to you ?
     reasmb: How has that been affecting you ?
@@ -170,7 +174,7 @@ key: was 2
     reasmb: What do you think ?
     reasmb: If I was (2), how would that help or hinder my ability to help you ?
     reasmb: How would you feel if I had been (2) ? Why or why not ?
-key: i
+key: i 2
   decomp: * i @desire *
     reasmb: What would it mean to you if you got (3) ?
     reasmb: Why do you want (3) ? Be as specific as you want.
@@ -178,11 +182,27 @@ key: i
     reasmb: What if you never got (3) ? How would that affect you ?
     reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
+  decomp: * i am not @sad *
+    reasmb: What would you say you are, then ?
+    reasmb: How long do you expect to be this way ?
+    reasmb: Is there anything in particular that you think about when it comes to why ?
+  decomp: * i am never @sad *
+    reasmb: Are you certain ? Why or why not ?
+    reasmb: If you never are, then what would you say you are right now ?
+    reasmb: Has this always been the case ? Why or why not ?
   decomp: * i am * @sad *
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
     reasmb: How long have you been (3) ? What does this suggest to you?
     reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
+  decomp: * i am not @happy *
+    reasmb: I am sorry to hear that. How would you describe how you feel, then ?
+    reasmb: Can you think of what would cause this to change ?
+    reasmb: How set in stone does this feel to you ? Why ?
+  decomp: * i am never @happy *
+    reasmb: Are you certain that you're never (2) ? Why or why not ?
+    reasmb: Would you like to elaborate on why this is the case ?
+    reasmb: Would you like to elaborate on what could possibly change this ?
   decomp: * i am * @happy *
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
@@ -196,21 +216,25 @@ key: i
     reasmb: What would you (3) mean for your situation ?
   decomp: * i * @belief * you *
     reasmb: goto you
-  decomp: i am .
+  decomp: i am ?
+    reasmb: Do you think you are ? Why or why not ?
+    reasmb: Have you ever wondered if you are before ? Why or why not ?
+    reasmb: Do you believe that others think so ? Please explain why you believe they are right or wrong.
+  decomp: i am ^
     reasmb: I see. Tell me what is on your mind right now.
     reasmb: What lead to you feeling the way you do ?
     reasmb: Right. Go on.
   decomp: * i am *
     reasmb: How has you being (2) affected your life ?
     reasmb: How long have you been (2) ?
-    reasmb: Do you believe it is normal to be (2) ?
+    reasmb: Please, continue.
     reasmb: Do you enjoy being (2) ?
-  decomp: * i @cannot *
+  decomp: * i cannot *
     reasmb: Why do you think that you can't (3) ?
     reasmb: What experiences lead you to think that ?
     reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (3) ?
     reasmb: How has not being able to (3) affected the way you live ?
-  decomp: * i don't *
+  decomp: * i do not *
     reasmb: Why not ?
     reasmb: Why don't you (2) ?
     reasmb: Do you wish to be able to (2) ?
@@ -226,10 +250,10 @@ key: i
     reasmb: Do you think you should (2) me ?
     reasmb: Is there anyone else that you (2) ? Why or why not ?
   decomp: *
-    reasmb: You say (1) ? Why is that ?
+    reasmb: Please, tell me more.
     reasmb: Can you elaborate on that ?
-    reasmb: Has something happened that makes you say (1) ?
-    reasmb: Please tell me more.
+    reasmb: Has something else ever happened that made you think about this ?
+    reasmb: I see. What do you think your course of action is from here ?
 key: you
   decomp: * you remind me of *
     reasmb: goto alike
@@ -256,7 +280,7 @@ key: yes
     reasmb: Got it. Please continue.
     reasmb: What do you think of that, in the grand scheme of things ?
     reasmb: I see. You can elaborate on that, or discuss something else if you'd like.
-    reasmb: I understand. How does that tie in with your overall situation ?
+    reasmb: How does that tie in with your overall situation ?
 key: no
   decomp: *
     reasmb: I see. Please go on.
@@ -264,19 +288,46 @@ key: no
     reasmb: Is this an absolute ? Why or why not ?
     reasmb: What if that was not the case ? What would that mean for you ?
 key: my 2
-  decomp: $ * my *
-    reasmb: I think now might be a good time to discuss why your (2) concerns you.
-    reasmb: Earlier you mentioned your (2) .
-    reasmb: Has your (2) been affecting you lately ? How so ?
-    reasmb: Does this relate to the fact that your (2) ?
+  decomp: * my my my *
+    reasmb: What makes you say, "my my my" ?
+  decomp: * my , my , my *
+    reasmb: What makes you say, "my, my, my" ?
+  decomp: * my my *
+    reasmb: What makes you say, "my my" ?
+  decomp: * my , my *
+    reasmb: What makes you say, "my, my" ? 
+  decomp: * oh ^ my ^
+    reasmb: What makes you say, "oh my" ?
+  decomp: * my ^
+    reasmb: throwkey
+  decomp: $ * where my *
+    reasmb: Earlier you mentioned where your (2) . Has this changed lately ? Why or why not ?
+    reasmb: Where would you say you are right now, in terms of what you think about ?
+    reasmb: Where do you see yourself going if you stick with the mindset you have now ? Why ?
+  decomp: $ * way my *
+    reasmb: Earlier you mentioned the way your (2) . How does that make you feel in this moment ?
+    reasmb: Has the way your (2) affected you lately ? Why or why not ?
+    reasmb: Is the way your (2) relevant to you anymore ? Why or why not ?
+  decomp: # * my *
+    reasmb: Earlier you mentioned your (2) . How do you feel about that topic right now ?
+    reasmb: Would you like to talk about your (2) right now ? Or is there something else you'd rather talk about ?
+    reasmb: Are there specific times when your (2) comes to mind ? Why ?
   decomp: * my * @family *
     reasmb: Please tell me more about your family.
     reasmb: Is there anyone else that (4) ?
     reasmb: Your (3) ? How do they affect you ?
     reasmb: What else comes to mind when you think of your (3) ?
+  decomp: * where my *
+    reasmb: Where your (2) ? How would you describe that in detail ?
+    reasmb: Can you think of anything that is related to this but not quite the same ?
+    reasmb: How often do you typically think about this? Why ?
+  decomp: * way my *
+    reasmb: The way your (2) ? Can you make an analogy to that ?
+    reasmb: How related are the other facets of how you feel to this ?
+    reasmb: What way has your (2) been throughout your life, if you can remember ? How has that affected you ?
   decomp: * my *
     reasmb: Your (2) ? How does that affect you ?
-    reasmb: What makes you mention your (2) right now ? 
+    reasmb: How has your (2) made you feel in the past ?
     reasmb: Does that make you think of anything else that's in your life ?
     reasmb: How important is this to you ? Why ?
 key: can
@@ -285,11 +336,27 @@ key: can
     reasmb: goto what
     reasmb: If I am unable to, would it impede my ability to help you ? Why or why not ?
     reasmb: How do you feel about the notion of being able to (2) yourself ?
+  decomp: * can i ^
+    reasmb: What do you think would allow you to do that ?
+    reasmb: Please, tell me more about what would make you unable to.
+    reasmb: Are you unsure ? Why or why not ?
   decomp: * can i *
     reasmb: What would being able to (2) mean for you ?
     reasmb: Do you have to be able to (2) ? Why or why not ?
     reasmb: Do you think you should be able to (2) ?
     reasmb: goto what
+  decomp: * i can ?
+    reasmb: What do you think would make doing so more likely ?
+    reasmb: What does the possibility mean to you ?
+    reasmb: Does anyone else believe you can ? Is that reflective of your ability ?
+  decomp: * i can ^
+    reasmb: What does that mean to you ? Why ?
+    reasmb: How will that affect how you handle things going forward ?
+    reasmb: Is there anything you are thinking about that could change that ?
+  decomp: * i can *
+    reasmb: What does being able to (2) mean for the different aspects of your life ?
+    reasmb: What else does being able to (2) make you think about ?
+    reasmb: What is your overall opinion of that ?
 key: what
   decomp: *
     reasmb: Why do you ask ?
@@ -308,13 +375,13 @@ key: because
     reasmb: Does that reason seem to explain anything else ?
     reasmb: What other reasons might there be ?
 key: why
-  decomp: * why don't you *
+  decomp: * why do not you *
     reasmb: Are you certain that I don't (2) ? Why or why not ?
     reasmb: Do you think that it is possible for me to (2) ? Why or why not ?
     reasmb: What do you think of those that (2) ?
     reasmb: Is there anyone that you would like to (2) ?
     reasmb: goto what
-  decomp: * why can't i *
+  decomp: * why cannot i *
     reasmb: Do you think you should be able to (2) ? Why or why not ?
     reasmb: How has being unable to (2) affected your life ?
     reasmb: Do you know what could help you (2) ?
@@ -361,6 +428,25 @@ key: alike 10
 key: like 10
   decomp: * @be * like *
     reasmb: goto alike
+key : died 3
+  decomp: $ * died *
+    reasmb: Would you want to speak about (1) that passed away right now ? If not, tell me what you would like to discuss instead.
+    reasmb: Have you thinking about the idea of death recently ? If so or if not, please explain your feelings.
+    reasmb: Have there been any recent developments in the way you feel ? Or is it the same as the last time you told me ?
+  decomp: * died *
+    reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
+    reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
+    reasmb: Would you like to tell me about (2) ? If not, why ?
+    reasmb: Oh dear, was it sudden ?
+key : better 3
+  decomp: * I feel better *
+    reasmb: That's great! What do you think is fundamentally different now that let you feel this way ?
+    reasmb: Wonderful! Do you think you can use what you've learned to pick yourself up if something happens again ?
+    reasmb: I'm so glad that you feel better, but do you have any other concerns ?
+  decomp: * never feel better *
+    reasmb: It can certainly feel like things will never change. Please, do your best to tell me about how things have changed for you before.
+    reasmb: That is what you feel now, and with this mindset you may be right. But your mind is changing all the time, isn't it ?
+    reasmb: What do you think would need to happen in order for you to feel better ?
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.

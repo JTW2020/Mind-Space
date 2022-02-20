@@ -80,6 +80,11 @@ pre: irritated irritable
 pre: infuriating infuriated
 pre: infuriatingly infuriated
 
+pre: never not ever
+pre: enjoy enjoying
+pre: laugh laughing
+pre: excite excited
+
 pre: can't cannot
 pre: cant cannot
 pre: don't do not
@@ -101,6 +106,8 @@ post: i you
 post: you I
 post: my your
 post: i'm you are
+
+synon: happy elated joyful enjoying laughing excited glad
 
 key: xnone -1
   decomp: *
@@ -219,6 +226,30 @@ key: irritable
 key: infuriated
   decomp: *
     reasmb: goto angry
+
+key: happy 0
+  decomp: * not @happy *
+     reasmb: You're not ? What would you say you are, then ?
+  decomp: * not ever @happy *
+     reasmb: What are you instead ?
+key: elated 0 
+  decomp: *
+     reasmb: goto happy
+key: joyful 0 
+  decomp: *
+     reasmb: goto happy
+key: enjoying 0 
+  decomp: *
+     reasmb: goto happy
+key: laughing 0 
+  decomp: *
+     reasmb: goto happy
+key: excited 0 
+  decomp: *
+     reasmb: goto happy
+key: glad 0 
+  decomp: *
+     reasmb: goto happy
 
 key: cannot 0
   decomp: * cannot *

@@ -56,3 +56,25 @@ Made a multitude of modifications to depressed.txt in order to make the response
 With this, the current state of depressed.txt should make a good baseline for the other three contexts,
 give or take a few changes. From there manual testing should be done to modify and built on each context
 to make is as robust as possible.
+
+2/20/2022
+2:47 PM
+Charles Garman
+
+Has begun altering depressed.txt to differentiate it from the more baseline version that was in the previous commit.
+Decomposition rules can now be set so that their response is saved to memory if and only if no output has already been saved
+to memory using the rule's keyword for the current user input. This is set by using # instead of $
+Comments can be added to text files by writing a line with "comment:" at the beginning followed by whatever it is one wants to comment.
+These lines will appropriately be ignored by the program.
+A caret, ^, character can now be used inside decomposition rule patterns. It will match the existence of punctuation, which means a comma, semicolon, colon,
+period, exclamation mark, and question mark. It will be ignored if the word at its position is not a punctuation mark, or if there are no words left in the user input.
+"* my ^" would match "My", "My!", "my,", "Is this my?", etc.
+Remember that decomposition rules are attempted top to bottom, so you can have a rule specifically for "* my ?" which will match "You found my?"
+as well as the more general "* my ^" rule, but be sure that the more specific one is above the general one, or else the general one will always be matched first.
+There is now a new reserved word to be used in assembly rules, throwkey. If a reassembly rule contains this as its first word, all subsequent words will not matter.
+This word will make the program stop trying to use the keyword the reassembly rule resides in to generate output, and it will move on. Any responses saved to memory with this keyword beforehand may still be
+output, however, if there are no other keys available that produce output.
+Made a slight enhancement that deletes any duplicate keywords collected from user input in order to reduce wasteful/repetitive processing.
+Eliza now considers periods, commas, question marks, colons, semicolons, and exclamation marks to be punctuation. What this means is that, when seen in user input, they will be separated from words and consecutive punctuation will
+be eliminated. For example, "I am happy!!!!" will be seen as, "I am happy !". For the moment this also means that Eliza will only insert the user input that precedes all punctuation into its output when using
+the dynamic insertion facility provided by the numbers in parenthesis, although this can be altered later if need be.
