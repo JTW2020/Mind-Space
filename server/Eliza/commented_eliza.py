@@ -8,7 +8,11 @@ from collections import namedtuple
 try: input = raw_input
 except NameError: pass
 
-#this creates a logger with which to log messages
+#this line sets the logger to output debug information to the console, it should be commented out when debugging is not being done
+
+#logging.basicConfig(level=logging.NOTSET)
+
+#this creates the logger with which to log messages
 
 log = logging.getLogger(__name__)
 
@@ -256,9 +260,9 @@ class Eliza:
                     raise ValueError("Invalid result index {}".format(index))
                 insert = results[index - 1]
                 
-                #If a comma, period, or semicolon is in insert, then only content that precedes any of these punctuations remains.
+                #If a comma, period, question mark, or semicolon is in insert, then only content that precedes any of these punctuations remains.
                 
-                for punct in [',', '.', ';']:
+                for punct in [',', '.', ';', '?']:
                     if punct in insert:
                         insert = insert[:insert.index(punct)]
                         
@@ -299,8 +303,7 @@ class Eliza:
             
             if results is None:
                 
-                #Viewing the messages that are produced with this debug method would be useful.
-                #However, I have not found how to do this yet.
+                #This method produces some output to be viewed for the purpose of debugging
                 
                 log.debug('Decomp did not match: %s', decomp.parts)
                 continue
@@ -375,11 +378,13 @@ class Eliza:
         
         #The input text is cleaned up by replacing matching patterns with standard text.
         #Any number of spaces, followed by at least one period, followed by any number of spaces, is replaced with a space, a period, and one more space.
-        #The same transformation is applied except with commas and then semicolons.
+        #The same transformation is applied except with commas, question marks, and then semicolons.
 
         text = re.sub(r'\s*\.+\s*', ' . ', text)
         text = re.sub(r'\s*,+\s*', ' , ', text)
         text = re.sub(r'\s*;+\s*', ' ; ', text)
+        text = re.sub(r'\s*\?+\s*', ' ? ', text)
+
         log.debug('After punctuation cleanup: %s', text)
         
         #The words in the input are separated via spaces into entries in a list.
@@ -461,7 +466,7 @@ and then runs the program.
 
 def main():
     eliza = Eliza()
-    eliza.load('doctor.txt')
+    eliza.load('inbetween.txt')
     eliza.run()
     
 '''
