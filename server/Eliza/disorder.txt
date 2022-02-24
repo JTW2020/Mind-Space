@@ -39,9 +39,9 @@ synon: desire want need
 synon: sad unhappy depressed sick empty
 synon: happy elated glad joyful enjoying laughing excited
 synon: hungry starving fasting
-synon: overeat binge full
-synom: fat big overweight BMI ugly
-synom: skinny thin perfect waifish 
+synon: overeat binge full bingeing 
+synom: fat big overweight BMI ugly heavy
+synom: skinny thin perfect waifish slender
 synon: everyone everybody nobody noone
 synon: be am is are was
 key: xnone
@@ -58,6 +58,10 @@ key: sorry
 key: apologise
   decomp: *
     reasmb: goto sorry
+key: self esteem
+    decomp: *
+        reasmb: Do you believe you have high self esteem ?
+        reasmb: What do you think could positively affect your self esteem ?
 key: remember 5
   decomp: * i remember ^
     reasmb: What significance does remembering hold to you ?
@@ -207,7 +211,7 @@ key: i 2
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
     reasmb: How long have you been (3) ? What does this suggest to you?
-    reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
+    reasmb: Can you explain what made you (3) ? If not, talking about it is still helpful.
   decomp: * i am not @happy *
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?

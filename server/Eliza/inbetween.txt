@@ -251,6 +251,26 @@ key: glad 0
   decomp: *
      reasmb: goto happy
 
+     key: disorder
+  decomp: *
+    reasmb: switchto disorder I see. Please, tell me about why you've been feeling this way.
+key: hungry
+  decomp: *
+    reasmb: goto disorder
+key: fasting
+  decomp: *
+    reasmb: goto disorder
+key: binge
+  decomp: *
+    reasmb: goto disorder
+key: fat 4
+  decomp: *
+    reasmb: goto disorder
+key: weight
+  decomp: *
+    reasmb: goto disorder
+
+
 key: cannot 0
   decomp: * cannot *
     reasmb: Why can't you (3) ?
