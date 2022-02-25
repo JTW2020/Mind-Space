@@ -414,9 +414,17 @@ key: why
     reasmb: goto what
   decomp: *
     reasmb: goto what
+key: care
+  decomp: * cares *
+   reasmb: Why do you feel (2) ?
+   reasmb: Has something happened to you to make you feel this way ?
+key: friend
+  decomp: Is (2) very important to you ? Why or why not ?
+  decomp: Why do you believe this has happened ? How has it affected you ?
+  decomp: Does (2) help you grow as a person ?
 key: everyone 2
   decomp: * @everyone *
-    reasmb: Realy, (2) ?
+    reasmb: Really, (2) ?
     reasmb: Are you sure that it's (2) ?
     reasmb: Would you want this to change ? How so ?
     reasmb: How has that made you feel over time ?
@@ -484,6 +492,6 @@ key: not
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.
-key: anxious
+key: anxious 50
   decomp: * anxious *
-    reasmb: I already know that you are anxious.
+    reasmb: I know that you are anxious. It is going to be okay.
