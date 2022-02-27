@@ -99,13 +99,19 @@ class ElizaTest(unittest.TestCase):
                          el.respond('Well, my boyfriend made me come here.'))
         self.assertEqual(
 <<<<<<< HEAD
+<<<<<<< HEAD
             'We will now talk about your depression .', #changed
 =======
+=======
+>>>>>>> ContextSwitching
 <<<<<<< Updated upstream
             'I am sorry to hear that you are depressed .',
 =======
             'We will now talk about your depression .', #changed to test depression context switch.
 >>>>>>> Stashed changes
+<<<<<<< HEAD
+>>>>>>> ContextSwitching
+=======
 >>>>>>> ContextSwitching
             el.respond('He says I\'m depressed much of the time.'))
         self.assertEqual(
