@@ -24,6 +24,11 @@ pre: i'm i am
 pre: same alike
 pre: ain't am not
 pre: aint am not
+pre: yup yep
+pre: mm-hm mhm
+pre: mmhm mhm
+pre: mmhmm mhm
+pre: mhmm mhm
 post: am are
 post: your my
 post: me you
@@ -238,11 +243,35 @@ key: i 2
     reasmb: How long have you been (2) ?
     reasmb: Please, continue.
     reasmb: Do you enjoy being (2) ?
+  decomp: * because *
+    reasmb: Can you expand on how that has affected you ?
+    reasmb: Has that affected you in any other ways ?
+    reasmb: Are there any other causes ?
+  decomp: * i cannot * since *
+    reasmb: Do you always feel that you can't (2) ? Why or why not ?
+    reasmb: What would being able to (2) mean to you ?
+    reasmb: Is that the only reason why you can't (2) ? Why or why not ?
+  decomp: * since * i cannot *
+    reasmb: Do you want to be able to do that ? Why or why not ?
+    reasmb: Has this affected anyone around you ? Why or why not ?
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?
+  decomp: * due to *
+    reasmb: Can you expand on the cause/effect relationship here ?
+    reasmb: Are there any other causes ?
+    reasmb: How much would you say you have been thinking about that, and why do you think that is the case ?
   decomp: * i cannot *
-    reasmb: Why do you think that you can't (2) ?
+    reasmb: Can you expand on why you think that you can't (2) ?
     reasmb: What experiences lead you to think that ?
     reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (2) ?
     reasmb: How has not being able to (2) affected the way you live ?
+  decomp: * i do not * since *
+    reasmb: How often would you say that you don't (2) ?
+    reasmb: What would it mean to you if you did (2) despite that ?
+    reasmb: Is that the only reason why you don't (2) ? Why or why not ?
+  decomp: * since * i do not *
+    reasmb: Do you want to do that ? Why or why not ?
+    reasmb: Has this affected anyone around you ? Why or why not ?
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?
   decomp: * i do not *
     reasmb: Why not ?
     reasmb: Why don't you (2) ?
@@ -290,12 +319,36 @@ key: yes
     reasmb: What do you think of that, in the grand scheme of things ?
     reasmb: I see. You can elaborate on that, or discuss something else if you'd like.
     reasmb: How does that tie in with your overall situation ?
+key: yeah
+  decomp: *
+    reasmb: goto yes
+key: yep
+  decomp: *
+    reasmb: goto yes
+key: mhm
+  decomp: *
+    reasmb: goto yes
+key: indeed
+  decomp: *
+    reasmb: goto yes
 key: no
   decomp: *
     reasmb: I see. Please go on.
     reasmb: What does that mean for you ?
     reasmb: Is this an absolute ? Why or why not ?
     reasmb: What if that was not the case ? What would that mean for you ?
+key: nope
+  decomp: *
+    reasmb: goto no
+key: nah
+  decomp: *
+    reasmb: goto no
+key: negative
+  decomp: *
+    reasmb: goto no
+key: never
+  decomp: *
+    reasmb: goto no
 key: my 2
   decomp: * my my my *
     reasmb: What makes you say, "my my my" ?
@@ -370,6 +423,17 @@ key: can 3
     reasmb: What does being able to (2) mean for the different aspects of your life ?
     reasmb: What else does being able to (2) make you think about ?
     reasmb: What is your overall opinion of that ?
+  decomp: * it can *
+    reasmb: Can you expand on what you mean by that ?
+    reasmb: Is it often that way ? Why or why not ?
+    reasmb: What can you think of that prevents or could prevent it from being that way ?
+
+  comment: We may want to introduce a more advanced facility for determining when the user wants to change topics, or inform them to say the below when they would like to.
+  
+  decomp: * can * we * talk * about * something * else *
+    reasmb: Of course, what would you like to discuss ?
+    reasmb: Yes, what's on your mind ?
+    reasmb: Absolutely, what would you like for us to talk about ?
 key: what
   decomp: *
     reasmb: Why do you ask ?
