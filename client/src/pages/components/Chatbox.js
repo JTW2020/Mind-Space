@@ -21,11 +21,13 @@ function Chatbox() {
         userMessage: message
       });
       console.log(res.data);
-      setMessageList([
-        ...messageList,
-        { user: "client", message: message },
-        { user: "Eliza", message: res.data.message }
-      ]);
+      setTimeout(function () {
+        setMessageList([
+          ...messageList,
+          { user: "client", message: message },
+          { user: "Eliza", message: res.data.message }
+        ]);
+      }, 3000)
       console.log(messageList);
     } catch (err) {
       console.error(err);

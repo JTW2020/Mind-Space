@@ -8,6 +8,7 @@ CORS(app)
 
 # Instantiating Eliza here
 eliza = Eliza()
+eliza.load('./Eliza/inbetween.txt')
 
 
 @app.route("/")
@@ -32,10 +33,15 @@ def api():
 def msgToEliza():
     error = None
     if request.method == 'POST':
+
+        # This method gets the json data from the request object
+        # To access the stored values, access the list with the corresponding key
+
         input_message = request.get_json()
-        print(input_message)
+        user_msg = input_message['userMessage']
+        print(user_msg)
     return {
-        "message": "fluff"
+        "message": eliza.respond(user_msg)
     }
 
 
