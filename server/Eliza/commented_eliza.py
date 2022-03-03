@@ -389,6 +389,8 @@ class Eliza:
         text = re.sub(r'\s*\.+\s*', ' . ', text)
         text = re.sub(r'\s*,+\s*', ' , ', text)
         text = re.sub(r'\s*;+\s*', ' ; ', text)
+        text = re.sub(r'\s*\?+\s*', ' ? ', text)
+
         log.debug('After punctuation cleanup: %s', text)
 
         # The words in the input are separated via spaces into entries in a list.
@@ -477,7 +479,7 @@ and then runs the program.
 
 def main():
     eliza = Eliza()
-    eliza.load('doctor.txt')
+    eliza.load('inbetween.txt')
     eliza.run()
 
 
