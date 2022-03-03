@@ -534,7 +534,7 @@ and then runs the program.
 
 def main():
     eliza = Eliza()
-    eliza.load('inbetween.txt')
+    eliza.load('doctor.txt')
     eliza.run()
     
 '''
