@@ -17,7 +17,7 @@ function Chatbox() {
   async function handleSubmitMsg(e) {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/msgEliza', {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/msgEliza`, {
         userMessage: message
       });
       console.log(res.data);

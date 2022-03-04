@@ -3,7 +3,8 @@ from flask import jsonify  # Potentially used for later purposes
 from flask import Flask, request, render_template
 from Eliza.commented_eliza import Eliza
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="client/build/static",
+            template_folder="client/build")
 CORS(app)
 
 # Instantiating Eliza here
@@ -13,7 +14,7 @@ eliza.load('./Eliza/inbetween.txt')
 
 @app.route("/")
 def index():
-    return render_template("../client/build/index.html")
+    return render_template("index.html")
 
 
 @app.route("/hello")
