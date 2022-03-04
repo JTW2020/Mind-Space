@@ -25,7 +25,7 @@ def test_AnxiousContext():
     'I am anxious'
     assert el.respond("I know that you are anxious. It is going to be okay.") == "I know that you are anxious. It is going to be okay."
 
-def test_ContextSwitchDisorder():
+def test_ContextSwitchDisorder(): #tests uf eliza successfully switched contexts from inbetween.txt to disorder.txt
     el = commented_eliza.Eliza()
     el.load('inbetween.txt')
     "I am hungry."
