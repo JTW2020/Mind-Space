@@ -21,11 +21,13 @@ function Chatbox() {
         userMessage: message
       });
       console.log(res.data);
-      setMessageList([
-        ...messageList,
-        { user: "client", message: message },
-        { user: "Eliza", message: res.data.message }
-      ]);
+      setTimeout(function () {
+        setMessageList([
+          ...messageList,
+          { user: "client", message: message },
+          { user: "Eliza", message: res.data.message }
+        ]);
+      }, 3000)
       console.log(messageList);
     } catch (err) {
       console.error(err);
@@ -42,24 +44,6 @@ function Chatbox() {
          * This is just testing the overflox attribute of the chatbox
          * Thankfully, it works
          */}
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
-        <br />
-        <a>Eliza: What do you think is causing this?</a>
       </div>
       <form className="flex mt-6 items-center justify-center align-middle">
         <div className="w-full">

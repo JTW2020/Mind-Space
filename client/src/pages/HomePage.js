@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Chatbox from "../pages/components/Chatbox";
+import Chatbox from "./components/chatbox_components/Chatbox";
 
 function HomePage() {
   return (
