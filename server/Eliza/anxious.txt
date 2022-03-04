@@ -419,9 +419,10 @@ key: care
    reasmb: Why do you feel (2) ?
    reasmb: Has something happened to you to make you feel this way ?
 key: friend
-  decomp: Is (2) very important to you ? Why or why not ?
-  decomp: Why do you believe this has happened ? How has it affected you ?
-  decomp: Does (2) help you grow as a person ?
+  decomp: * friend *
+   reasmb: Is (2) very important to you ? Why or why not ?
+   reasmb: Why do you believe this has happened ? How has it affected you ?
+   reasmb: Does (2) help you grow as a person ?
 key: everyone 2
   decomp: * @everyone *
     reasmb: Really, (2) ?
@@ -489,9 +490,19 @@ key: not
     reasmb: What would being (2) mean in this case ?
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
+key: harm
+  decomp: *
+    reasmb: What has made you want to (2) ?
+    reasmb: There are other way you could relieve this feeling. What may be some other ways ? 
+  decomp: * harm others *
+    reasmb: Why do you think (2) would help you? 
+key: alone
+  decomp: *
+    reasmb: What has made you feel alone ? 
+    reasmb: What are some things you enjoy doing ?
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.
 key: anxious 50
   decomp: * anxious *
-    reasmb: I know that you are anxious. It is going to be okay.
+    reasmb: I know that you are anxious. Is anything contributing to why you feel (2)?
