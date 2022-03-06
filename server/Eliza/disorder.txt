@@ -58,8 +58,8 @@ key: sorry
 key: apologise
   decomp: *
     reasmb: goto sorry
-key: self esteem
-    decomp: *
+key: esteem
+    decomp: * self *
         reasmb: Do you believe you have high self esteem ?
         reasmb: What do you think could positively affect your self esteem ?
 key: remember 5
