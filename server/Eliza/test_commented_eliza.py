@@ -47,4 +47,4 @@ def test_AngerContext(): #confirms if eliza recognizes it is using the anger con
 def test_ElizaExit(): #tests if eliza exits correctly via string matching.
     el = commented_eliza.Eliza()
     el.load('inbetween.txt')
-    assert el.respond("goodbye") == "Goodbye.  Thank you for talking to me."
+    assert el.respond("goodbye") == None
