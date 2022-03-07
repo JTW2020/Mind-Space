@@ -173,7 +173,7 @@ key: was 2
     reasmb: Perhaps I was (2) .
     reasmb: What if I had been (2) ?
 key: i
-  decomp: *i am* @anger *
+  decomp: * i am * @anger *
     reasmb: What has angered you ?
     reasmb: Is this a recurring source of your anger ?
     reasmb: Why are you angry ?
