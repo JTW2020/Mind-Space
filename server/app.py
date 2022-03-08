@@ -40,7 +40,7 @@ def msgToEliza():
 
         input_message = request.get_json()
         user_msg = input_message['userMessage']
-        print(user_msg)
+        print("This is the message being sent: " + user_msg)
     return {
         "message": eliza.respond(user_msg)
     }
