@@ -80,6 +80,11 @@ pre: irritated irritable
 pre: infuriating infuriated
 pre: infuriatingly infuriated
 
+pre: never not ever
+pre: enjoy enjoying
+pre: laugh laughing
+pre: excite excited
+
 pre: can't cannot
 pre: cant cannot
 pre: don't do not
@@ -102,6 +107,8 @@ post: you I
 post: my your
 post: i'm you are
 
+synon: happy elated joyful enjoying laughing excited glad
+
 key: xnone -1
   decomp: *
     reasmb: I'm not sure I understand you fully.
@@ -111,7 +118,7 @@ key: xnone -1
 
 key: depressed
   decomp: *
-    reasmb: switchto depressed I understand. Please, tell me about how you've been feeling down.
+    reasmb: switchto depressed I see. Please, tell me about how you've been feeling down.
 key: sad
   decomp: *
     reasmb: goto depressed
@@ -219,6 +226,50 @@ key: irritable
 key: infuriated
   decomp: *
     reasmb: goto angry
+
+key: happy 0
+  decomp: * not @happy *
+     reasmb: You're not ? What would you say you are, then ?
+  decomp: * not ever @happy *
+     reasmb: What are you instead ?
+key: elated 0 
+  decomp: *
+     reasmb: goto happy
+key: joyful 0 
+  decomp: *
+     reasmb: goto happy
+key: enjoying 0 
+  decomp: *
+     reasmb: goto happy
+key: laughing 0 
+  decomp: *
+     reasmb: goto happy
+key: excited 0 
+  decomp: *
+     reasmb: goto happy
+key: glad 0 
+  decomp: *
+     reasmb: goto happy
+
+     key: disorder
+  decomp: *
+    reasmb: switchto disorder I see. Please, tell me about why you've been feeling this way.
+key: hungry
+  decomp: *
+    reasmb: goto disorder
+key: fasting
+  decomp: *
+    reasmb: goto disorder
+key: binge
+  decomp: *
+    reasmb: goto disorder
+key: fat 4
+  decomp: *
+    reasmb: goto disorder
+key: weight
+  decomp: *
+    reasmb: goto disorder
+
 
 key: cannot 0
   decomp: * cannot *

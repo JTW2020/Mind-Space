@@ -13,7 +13,7 @@ except NameError:
 # this creates a logger with which to log messages
 # this line sets the logger to output debug information to the console, it should be commented out when debugging is not being done
 
-# logging.basicConfig(level=logging.NOTSET)
+logging.basicConfig(level=logging.NOTSET)
 
 # this creates the logger with which to log messages
 
@@ -33,20 +33,32 @@ class Key:
         self.weight = weight
         self.decomps = decomps
 
+    # If two keys have the same word, they are considered equivalent.
+
+    def __eq__(self, other):
+        return self.word == other.word
+
+    # They are hashed based on their word for this reason as well.
+
+    def __hash__(self):
+        return hash(('word', self.word))
+
 
 '''
 This is the Decomp class.
 It contains a list, called parts, of strings that make up the individual parts of a decomposition rule
 The boolean value, save, is true if this decomposition should be saved to memory instead of immediately output.
+The boolean value, saveOne, is true if this decomposition's output should be saved to memory if and only if no decomposition rules that precede it within the same keyword created a response that was saved to memory while processing the current user input.
 The list, reasmbs, contains all of the reassembly rules associated with the given decomposition rule
 These rules are cycled through when the same decomposition rule is used multiple times, and the next_reasmb_index value fascilitates this
 '''
 
 
 class Decomp:
-    def __init__(self, parts, save, reasmbs):
+    def __init__(self, parts, save, saveOne, reasmbs):
         self.parts = parts
         self.save = save
+        self.saveOne = saveOne
         self.reasmbs = reasmbs
         self.next_reasmb_index = 0
 
@@ -92,9 +104,14 @@ class Eliza:
 
                 tag, content = [part.strip() for part in line.split(':')]
 
+                # If the tag is comment, it should be ignored by the program. Skip to the next line.
+
+                if tag == 'comment':
+                    continue
+
                 # If the information is of type intitial, final, or quit it is simply added to the appropriate list.
 
-                if tag == 'initial':
+                elif tag == 'initial':
                     self.initials.append(content)
                 elif tag == 'final':
                     self.finals.append(content)
@@ -126,16 +143,23 @@ class Eliza:
                     key = Key(word, weight, [])
                     self.keys[word] = key
 
-                # If the information is of type decomp then the content is split into parts. If the first part is a dollar sign then this decomp will have save set to true, and the remaining parts will be considered.
+                # If the information is of type decomp then the content is split into parts.
+                # If the first part is a dollar sign then this decomp will have save set to true, and the remaining parts will be considered.
+                # If the first part is a pound sign then this decomp will have save and saveOne set to true, and the remaining parts will be considered.
                 # The decomp is then instantiated and then added to the list of decomps belonging to the previously added key.
 
                 elif tag == 'decomp':
                     parts = content.split(' ')
                     save = False
+                    saveOne = False
                     if parts[0] == '$':
                         save = True
                         parts = parts[1:]
-                    decomp = Decomp(parts, save, [])
+                    elif parts[0] == '#':
+                        save = True
+                        saveOne = True
+                        parts = parts[1:]
+                    decomp = Decomp(parts, save, saveOne, [])
                     key.decomps.append(decomp)
 
                 # If the information is of type resmb then the content is split into parts which are then appended to the previously added decomp's reasmbs list.
@@ -158,6 +182,16 @@ class Eliza:
 
         self.load(context)
 
+    # This method returns a boolean that tells if the parts of a decomposition rule it is given will accept there being no words remaining.
+    # In order for this to be the case, all parts must either be an asterisk or a caret.
+
+    def rule_accepts_no_words(self, parts):
+        for part in parts:
+            if part != '*' and part != '^':
+                return False
+
+        return True
+
     # This method recursively attemps to match parts of a decomposition rule to input words.
 
     def _match_decomp_r(self, parts, words, results):
@@ -167,9 +201,9 @@ class Eliza:
         if not parts and not words:
             return True
 
-        # Otherwise, if there are no parts remaining, or if there are no words remaining and there is not only one remnant part which is an asterisk, the match has failed. Return false.
+        # Otherwise, if there are no parts remaining, or if there are no words remaining and the remaining parts of the rule don't accept that, the match has failed. Return false.
 
-        if not parts or (not words and parts != ['*']):
+        if not parts or (not words and not self.rule_accepts_no_words(parts)):
             return False
 
         '''
@@ -202,6 +236,15 @@ class Eliza:
                 return False
             results.append([words[0]])
             return self._match_decomp_r(parts[1:], words[1:], results)
+
+        # If a part is a caret (^) then it will match the existence of any punctuation Eliza recognizes, or it will simply be ignored if the word the program is on is not punctuation.
+        # If there are no words remaining but there is a caret, the character will also be ignored.
+
+        elif parts[0] == '^':
+            if len(words) > 0 and words[0] in ('.', '!', '?', ',', ':', ';'):
+                return self._match_decomp_r(parts[1:], words[1:], results)
+            else:
+                return self._match_decomp_r(parts[1:], words, results)
 
         # If the rule part and the corresponding word are not the same (ignoring case) then the match fails. Return false.
 
@@ -262,9 +305,9 @@ class Eliza:
                     raise ValueError("Invalid result index {}".format(index))
                 insert = results[index - 1]
 
-                # If a comma, period, question mark, or semicolon is in insert, then only content that precedes any of these punctuations remains.
+                # If a comma, period, question mark, semicolon, colon, or exclamation mark is in insert, then only content that precedes any of these punctuations remains.
 
-                for punct in [',', '.', ';', '?']:
+                for punct in [',', '.', ';', '?', ':', '!']:
                     if punct in insert:
                         insert = insert[:insert.index(punct)]
 
@@ -297,6 +340,11 @@ class Eliza:
     # This method will attempt to match input words to one of the provided key's decomposition rules.
 
     def _match_key(self, words, key):
+
+        # The boolean value saved will be used to keep track of any output from this key has been saved to memory yet.
+
+        saved = False
+
         for decomp in key.decomps:
             results = self._match_decomp(decomp.parts, words)
 
@@ -352,20 +400,29 @@ class Eliza:
 
                 return output
 
+            # If the reassembly rule says to throw this key, meaning give up attempting to use it, the loop will stop and nothing will be returned.
+            # This will make the program try any remaining keys.
+
+            elif reasmb[0] == 'throwkey':
+                break
+
             # Get the ouput by using the previously selected reassembly rule on the results obtained earlier.
 
             output = self._reassemble(reasmb, results)
 
-            # If the decomposition rule says to save the output, add it to Eliza's memory list, then continue attempting to match the input words to the remaining decomposition rules.
+            # If the decomposition rule says to save the output, and either its saveOne value is false or nothing has been saved to memory yet, add it to Eliza's memory list, then continue attempting to match the input words to the remaining decomposition rules.
+            # Ensure that the saved boolean is set to True if a save to memory has taken place.
 
-            if decomp.save:
+            if decomp.save and (not decomp.saveOne or not saved):
                 self.memory.append(output)
                 log.debug('Saved to memory: %s', output)
+                saved = True
                 continue
 
-            # Otherwise, return the ouput.
+            # Otherwise, return the ouput, as long as the decomposition rule was not one that attempted to save its output but was denied due to its saveOne value.
 
-            return output
+            elif not decomp.saveOne:
+                return output
 
         # If no decomposition rules match the input words, return nothing.
 
@@ -384,12 +441,15 @@ class Eliza:
 
         # The input text is cleaned up by replacing matching patterns with standard text.
         # Any number of spaces, followed by at least one period, followed by any number of spaces, is replaced with a space, a period, and one more space.
-        # The same transformation is applied except with commas, question marks, and then semicolons.
+        # The same transformation is applied except with commas, question marks, semicolons, exclamation marks, colons, and then semicolons.
 
         text = re.sub(r'\s*\.+\s*', ' . ', text)
         text = re.sub(r'\s*,+\s*', ' , ', text)
         text = re.sub(r'\s*;+\s*', ' ; ', text)
         text = re.sub(r'\s*\?+\s*', ' ? ', text)
+        text = re.sub(r'\s*\!+\s*', ' ? ', text)
+        text = re.sub(r'\s*\:+\s*', ' : ', text)
+        text = re.sub(r'\s*\;+\s*', ' ; ', text)
 
         log.debug('After punctuation cleanup: %s', text)
 
@@ -403,9 +463,16 @@ class Eliza:
         words = self._sub(words, self.pres)
         log.debug('After pre-substitution: %s', words)
 
-        # The keys corresponding to all of the detected keywords are gathered then sorted in descending order by weight.
+        # The keys corresponding to all of the detected keywords are gathered.
 
         keys = [self.keys[w.lower()] for w in words if w.lower() in self.keys]
+
+        # Duplicates are eliminated in order to reduce time and memory waste.
+
+        keys = set(keys)
+
+        # The keys are then sorted in descending order by weight
+
         keys = sorted(keys, key=lambda k: -k.weight)
         log.debug('Sorted keys: %s', [(k.word, k.weight) for k in keys])
 
