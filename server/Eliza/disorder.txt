@@ -58,10 +58,16 @@ key: sorry
 key: apologise
   decomp: *
     reasmb: goto sorry
-key: esteem
-    decomp: * self *
+key: self
+    decomp: * esteem *
         reasmb: Do you believe you have high self esteem ?
         reasmb: What do you think could positively affect your self esteem ?
+    decomp: * hatred *
+        reasmb: Why do you feel that you should hate yourself ?
+        reasmb: You shouldn't hate yourself.
+    decomp: * deprecate *
+        reasmb: Do self deprecating jokes make you feel better ?
+        reasmb: Has anyone made you feel this way directly ?
 key: remember 5
   decomp: * i remember ^
     reasmb: What significance does remembering hold to you ?
