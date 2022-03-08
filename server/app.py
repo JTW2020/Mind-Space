@@ -46,6 +46,15 @@ def msgToEliza():
     }
 
 
+@app.route("/api/initialMsgEliza", methods=['GET'])
+def fromEliza():
+    error = None
+    if request.method == 'GET':
+        return {
+            "message": eliza.initial()
+        }
+
+
 @app.route("/api/testEliza")
 def test_eliza():
     eliza = Eliza()
