@@ -20,9 +20,7 @@ pre: machine computer
 pre: computers computer
 pre: were was
 pre: you're you are
-pre: i'm i am
 pre: same alike
-pre: ain't am not
 pre: aint am not
 post: am are
 post: your my
@@ -32,7 +30,6 @@ post: yourself myself
 post: i you
 post: you I
 post: my your
-post: i'm you are
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
@@ -141,7 +138,7 @@ key: xforeign
     reasmb: I speak only English.
 key: hello
   decomp: *
-    reasmb: Hello there. What has you feeling down ?
+    reasmb: Hello there. How are you feeling ?
     reasmb: Hi. How have you been feeling lately ?
 key: computer 50
   decomp: *
@@ -434,7 +431,6 @@ key: alike 10
     reasmb: What does that similarity suggest to you ?
     reasmb: What other connections do you see ?
     reasmb: What made you make this connection ?
-    reasmb: What are the semantics of this comparison you're making ?
     reasmb: Are they different in some ways too ? Why or why not ?
     reasmb: How do you think this affects you ?
 key: like 10
@@ -464,7 +460,4 @@ key: not
     reasmb: What would being (2) mean in this case ?
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
-key: depressed 50
-  decomp: * depressed *
-    reasmb: I already know that you are depressed.
    
