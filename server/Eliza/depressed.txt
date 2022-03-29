@@ -468,7 +468,7 @@ key: why
     reasmb: goto what
 key: everyone 2
   decomp: * @everyone *
-    reasmb: Realy, (2) ?
+    reasmb: Really, (2) ?
     reasmb: Are you sure that it's (2) ?
     reasmb: Would you want this to change ? How so ?
     reasmb: How has that made you feel over time ?

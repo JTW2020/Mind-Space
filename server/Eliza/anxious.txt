@@ -24,6 +24,9 @@ pre: i'm i am
 pre: same alike
 pre: ain't am not
 pre: aint am not
+pre: suicidal suicide
+pre: arguing argue
+pre: harming harm
 post: am are
 post: your my
 post: me you
@@ -38,7 +41,8 @@ synon: family mother mom father dad sister sisters brother brothers wife childre
 synon: desire want need
 synon: sad unhappy depressed sick
 synon: happy elated glad joyful enjoying laughing excited
-synon: anxious worried concerned uneasy
+synon: anxious worried concerned uneasy distressed nervous
+synon: panic fidgety jittery shaky
 synon: everyone everybody nobody noone
 synon: be am is are was
 key: xnone
@@ -492,14 +496,30 @@ key: not
     reasmb: Why do you think that is ?
 key: harm
   decomp: *
-    reasmb: What has made you want to (2) ?
-    reasmb: There are other way you could relieve this feeling. What may be some other ways ? 
+    reasmb: What has made (2) ?
+    reasmb: There are other way this feeling can be released. What may be some other ways ? 
+    reasmb: Do you believe the safety of you or others is in danger ?
   decomp: * harm others *
-    reasmb: Why do you think (2) would help you? 
+    reasmb: Why do you think (2) would help ?
+    reasmb: Do you believe others are in danger ?
+    reasmb: Do you think there is a way you could prevent (2) ?
+key: panic
+  decomp: *
+    reasmb: What do you think contributed to (2) ?
+    reasmb: What ways do you think you could prevent (2) ?
+    reasmb: Does (2) make it hard for you to focus ?
 key: alone
   decomp: *
     reasmb: What has made you feel alone ? 
     reasmb: What are some things you enjoy doing ?
+key: argue
+  decomp: *
+    reasmb: How do you think this affects your overall day ?
+    reasmb: What ways do you think you could reduce (2) ?
+key: suicide
+  decomp: *
+    reasmb: Do you feel suicidal ?
+    reasmb: I am sorry to hear this. Where do you think (2) comes from ?
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.
