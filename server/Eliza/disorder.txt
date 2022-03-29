@@ -33,12 +33,12 @@ post: my your
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
-synon: sad unhappy depressed sick empty
+synon: sad unhappy depressed empty
 synon: happy elated glad joyful enjoying laughing excited
 synon: hungry starving fasting
-synon: overeat binge full bingeing 
-synom: fat big overweight BMI ugly heavy
-synom: skinny thin perfect waifish slender
+synon: overeat binge full bingeing binging 
+synon: fat big overweight BMI ugly heavy
+synon: skinny thin perfect waifish slender
 synon: everyone everybody nobody noone
 synon: be am is are was
 key: xnone
@@ -53,6 +53,9 @@ key: sorry
     reasmb: No worries, it's up to you what you want to talk about.
     reasmb: It's alright, you don't have to be apologetic. I'm happy to help as much as I can.
 key: apologise
+  decomp: *
+    reasmb: goto sorry
+key: apologize
   decomp: *
     reasmb: goto sorry
 key: self
@@ -216,9 +219,15 @@ key: i 2
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
  decomp: * i am * @fat *
-    reasmb: Why do you feel (2) ?
-    reasmb: Is (2) a bad thing to be ?
-    reasmb: If you were not (2), would that solve your problems?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
+decomp: * i am very * @fat *
+    reasmb: Do you think that being that way makes you a bad person ?
+    reasmb: Does this make you feel pretty ?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
