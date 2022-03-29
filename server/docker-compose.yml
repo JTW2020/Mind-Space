@@ -1,6 +1,14 @@
 version: "3.9"
 services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mindspaceapp
+
   app:
     build: .
-    container_name: wthunder/mindspaceapp
+    image: wthunder/mindspaceapp
     ports: "5000:5000"
