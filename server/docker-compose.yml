@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: wthunder/mindspaceapp
+    ports: "5000:5000"
