@@ -25,8 +25,11 @@ pre: same alike
 pre: ain't am not
 pre: aint am not
 pre: suicidal suicide
-pre: arguing argue
-pre: harming harm
+pre: harming harms harm 
+pre: cares care
+pre: we friends friend
+pre: panicking panics panic
+pre: argues aruging fight argue
 post: am are
 post: your my
 post: me you
@@ -221,18 +224,22 @@ key: i 2
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
-    reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
+    reasmb: Can you explain why you are (3) ? If not, does that matter to you ? 
+  decomp: * i am not @anxious *
+    reasmb: How would you say you feel then ?
+    reamsb: How long do you expect to feel this way ?
+    reasmb: Is there anything in particular that you think about when it comes to why ?
+    reasmb: How would you describe how you feel right now ?
+  decomp: * i am never @anxious *
+    reasmb: If you never feel this way, how would you say you feel ?
+    reasmb: Have you always never felt this way ? Why or why not ?
+    reasmb: What do you think helps you not feel this way ?
   decomp: * i am * @anxious *
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ?
     reasmb: How long have you been (3) ? What does this suggest to you ?
     reasmb: Can you explain what made you (3) ? If not, can you describe what may be going on around you to make you feel this way ?
     reasmb: Are you doing anything that makes you feel happy or relieves your worries ? If so, what ?
-  decomp: * i am not @anxious *
-    reasmb: How would you say you feel then ?
-    reamsb: How long do you expect to feel this way ?
-    reasmb: Is there anything in particular that you think about when it comes to why ?
-    reasmb: How would you describe how you feel right now ?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
@@ -419,9 +426,10 @@ key: why
   decomp: *
     reasmb: goto what
 key: care
-  decomp: * cares *
+  decomp: * nobody cares *
    reasmb: Why do you feel (2) ?
    reasmb: Has something happened to you to make you feel this way ?
+   decomp: * 
 key: friend
   decomp: * friend *
    reasmb: Is (2) very important to you ? Why or why not ?
@@ -495,34 +503,38 @@ key: not
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
 key: harm
-  decomp: *
-    reasmb: What has made (2) ?
-    reasmb: There are other way this feeling can be released. What may be some other ways ? 
-    reasmb: Do you believe the safety of you or others is in danger ?
   decomp: * harm others *
     reasmb: Why do you think (2) would help ?
-    reasmb: Do you believe others are in danger ?
+    reasmb: Do you believe others are in danger ? Why or why not ?
     reasmb: Do you think there is a way you could prevent (2) ?
-key: panic
   decomp: *
-    reasmb: What do you think contributed to (2) ?
+    reasmb: Has something happened that made you think this ?
+    reasmb: There are other ways this feeling can be released. What may be some other ways ? 
+    reasmb: Do you believe the safety of you or others is in danger ?
+key: panic
+  decomp: * I panic *
+    reasmb: What do you think contributed to this feeling ?
     reasmb: What ways do you think you could prevent (2) ?
-    reasmb: Does (2) make it hard for you to focus ?
+    reasmb: Does this feeling make it hard for you to focus ?
+  decomp: *
+    reasmb: What has made you think about this ?
+    reasmb: What do you think you could do in this situation that would help you ?
 key: alone
   decomp: *
     reasmb: What has made you feel alone ? 
     reasmb: What are some things you enjoy doing ?
 key: argue
-  decomp: *
-    reasmb: How do you think this affects your overall day ?
+  decomp: * argue *
+    reasmb: How do you think this affects your the way you feel overall ?
     reasmb: What ways do you think you could reduce (2) ?
 key: suicide
-  decomp: *
+  decomp: * suicide *
     reasmb: Do you feel suicidal ?
-    reasmb: I am sorry to hear this. Where do you think (2) comes from ?
+    reasmb: I am sorry to hear this. Where do you think this feeling comes from ?
+    reasmb: What do you think contributes to this ?
 key: depressed 50
   decomp: * depressed *
     reasmb: I already know that you are depressed.
 key: anxious 50
   decomp: * anxious *
-    reasmb: I know that you are anxious. Is anything contributing to why you feel (2)?
+    reasmb: I already know that you are anxious. Can you explain more of what makes you feel this way ?
