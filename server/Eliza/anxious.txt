@@ -24,6 +24,7 @@ pre: i'm i am
 pre: same alike
 pre: ain't am not
 pre: aint am not
+pre: yup yep
 pre: suicidal suicide
 pre: harming harms harm 
 pre: cares care
@@ -42,7 +43,7 @@ post: i'm you are
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
-synon: sad unhappy depressed sick
+synon: sad unhappy depressed sick downn hopeless
 synon: happy elated glad joyful enjoying laughing excited
 synon: anxious worried concerned uneasy distressed nervous
 synon: panic fidgety jittery shaky
@@ -132,7 +133,7 @@ key: espanol
     reasmb: Forgive me, I don't understand Spanish.
 key: xforeign
   decomp: *
-    reasmb: I speak only English.
+    reasmb: I am sorry, I only understand English.
 key: hello
   decomp: *
     reasmb: Hello there. What has you feeling uneasy ?
@@ -199,6 +200,7 @@ key: i 2
     reasmb: What if you never got (3) ? How would that affect you ?
     reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
+    reasmb: Is anything stopping you from obtaining (3) ?
   decomp: * i am not @sad *
     reasmb: What would you say you are, then ?
     reasmb: How long do you expect to be this way ?
@@ -216,6 +218,7 @@ key: i 2
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
+    reasmb: Is there anything you usually do that makes you feel more upbeat ?
   decomp: * i am never @happy *
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
@@ -231,7 +234,7 @@ key: i 2
     reasmb: Is there anything in particular that you think about when it comes to why ?
     reasmb: How would you describe how you feel right now ?
   decomp: * i am never @anxious *
-    reasmb: If you never feel this way, how would you say you feel ?
+    reasmb: If you never feel uneasy, how would you say you feel ?
     reasmb: Have you always never felt this way ? Why or why not ?
     reasmb: What do you think helps you not feel this way ?
   decomp: * i am * @anxious *
@@ -243,14 +246,14 @@ key: i 2
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
-    reasmb: Do you really think so ?
-    reasmb: You believe so, but is anything making you uncertain ?
+    reasmb: Do you really believe this is possible ?
+    reasmb: You believe so, but is anything making you feel uncertain ?
     reasmb: What would you (3) mean for your situation ?
   decomp: * i * @belief * you *
     reasmb: goto you
   decomp: * i am ?
     reasmb: Do you think you are ? Why or why not ?
-    reasmb: Have you ever wondered if you are before ? Why or why not ?
+    reasmb: Have you ever wondered if you were this before ? Why or why not ?
     reasmb: Do you believe that others think so ? Please explain why you believe they are right or wrong.
   decomp: * i am ^
     reasmb: I see. Can you tell me about the thoughts that are troubling you ?
@@ -261,11 +264,56 @@ key: i 2
     reasmb: How long have you been (2) ?
     reasmb: Please, continue.
     reasmb: Do you enjoy being (2) ?
+  decomp: * because *	
+    reasmb: Can you expand on how that has affected you ?	
+    reasmb: Has that affected you in any other ways ?	
+    reasmb: Are there any other causes ?	
+  decomp: * i cannot * since *	
+    reasmb: Do you always feel that you can not (2) ? Why or why not ?	
+    reasmb: What would being able to (2) mean to you ?	
+    reasmb: Is that the only reason why you can not (2) ? 
+  decomp: * since * i cannot *	
+    reasmb: Do you want to be able to do that ? Why or why not ?	
+    reasmb: Has this affected anyone around you ? Why or why not ?	
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?	
+  decomp: * i cannot * because *	
+    reasmb: Is there anyway you may be able to (2) ?
+    reasmb: What would being able to (2) mean to you ?	
+    reasmb: Is that the only reason why you are unable to (2) ?
+    reasmb: How has (3) affected your life ?
+   decomp: * because * i cannot *	
+    reasmb: Do you want to be able to do that ? What would this mean to you ?	
+    reasmb: Has this affected anyone around you ? Why or why not ?	
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?	
+    reasmb: How does being unable to do (3) affected you and your life ?
+  decomp: * due to *	
+    reasmb: Can you expand on the cause and effect relationship here ?	
+    reasmb: Are there any other causes ?	
+    reasmb: How much would you say you have been thinking about that, and why do you think that is the case ?
+    reasmb: How does this affect your situation ?
   decomp: * i cannot *
     reasmb: Why do you think that you can't (2) ?
     reasmb: What experiences lead you to think that ?
     reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (2) ?
     reasmb: How has not being able to (2) affected the way you live ?
+  decomp: * i do not * since *	
+    reasmb: How often would you say that you don't (2) ?	
+    reasmb: What would it mean to you if you did (2) despite that ?	
+    reasmb: Is that the only reason why you don't (2) ? Why or why not ?	
+  decomp: * since * i do not *	
+    reasmb: Do you want to do that ? Why or why not ?	
+    reasmb: Has this affected anyone around you ? Why or why not ?	
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?
+  decomp: * i do not * because *	
+    reasmb: How often would you say that you don't (2) ?	
+    reasmb: What would it mean to you if you did (2) despite that ?	
+    reasmb: Is that the only reason why you don't (2) ? Why or why not ?
+    reasmb: How has (3) affected your life ?
+  decomp: * because * i do not *	
+    reasmb: Do you want to do that ? What would this mean to you ?	
+    reasmb: Has this affected anyone around you ? Why or why not ?	
+    reasmb: What do you think could help you get to where you want to be ? If you're unsure, why do you think that is ?
+    reasmb: How has being unable to do (3) affected you and you life ?
   decomp: * i do not *
     reasmb: Why not ?
     reasmb: Why don't you (2) ?
@@ -274,8 +322,8 @@ key: i 2
   decomp: * do i feel *
     reasmb: Tell me more about such feelings.
     reasmb: Do you often feel (2) ? How has that affected you ?
-    reasmb: Does anyone want you to feel (2) ? Why ?
-    reasmb: Of what does feeling (2) remind you of ?
+    reasmb: Does anyone make you feel (2) ? Why ?
+    reasmb: What does feeling (2) remind you of ?
   decomp: * i * you *
     reasmb: Do you really? How has that affected my ability to help you ?
     reasmb: Do you wish to (2) me ?
@@ -313,12 +361,30 @@ key: yes
     reasmb: What do you think of that, in the grand scheme of things ?
     reasmb: I see. You can elaborate on that, or discuss something else if you'd like.
     reasmb: How does that tie in with your overall situation ?
+key: yeah	
+  decomp: *	
+    reasmb: goto yes	
+key: yep	
+  decomp: *	
+    reasmb: goto yes
 key: no
   decomp: *
     reasmb: I see. Please go on.
     reasmb: What does that mean for you ?
     reasmb: Is this an absolute ? Why or why not ?
     reasmb: What if that was not the case ? What would that mean for you ?
+	key: nope	
+  decomp: *	
+    reasmb: goto no	
+key: nah	
+  decomp: *	
+    reasmb: goto no	
+key: negative	
+  decomp: *	
+    reasmb: goto no	
+key: never	
+  decomp: *	
+    reasmb: goto no
 key: my 2
   decomp: * my my my *
     reasmb: What makes you say, "my my my" ?
@@ -349,6 +415,7 @@ key: my 2
     reasmb: Is there anyone else that (4) ?
     reasmb: Your (3) ? How do they affect you ?
     reasmb: What else comes to mind when you think of your (3) ?
+    reasmb: What was it like growing up in your family ?
   decomp: * where my *
     reasmb: Where your (2) ? How would you describe that in detail ?
     reasmb: Can you think of anything that is related to this but not quite the same ?
@@ -435,6 +502,7 @@ key: friend
    reasmb: Is (2) very important to you ? Why or why not ?
    reasmb: Why do you believe this has happened ? How has it affected you ?
    reasmb: Does (2) help you grow as a person ?
+   reasmb: What do people do that make you feel this way and what do you wish they would change or continue ?
 key: everyone 2
   decomp: * @everyone *
     reasmb: Really, (2) ?
@@ -512,10 +580,13 @@ key: harm
     reasmb: There are other ways this feeling can be released. What may be some other ways ? 
     reasmb: Do you believe the safety of you or others is in danger ?
 key: panic
-  decomp: * I panic *
+  decomp: * i panic *
     reasmb: What do you think contributed to this feeling ?
-    reasmb: What ways do you think you could prevent (2) ?
+    reasmb: What ways do you think you could prevent (2) from making this happen ?
     reasmb: Does this feeling make it hard for you to focus ?
+    reasmb: What happens to you physically when this happens ? Do you feel sick ?
+    reasmb: When and where does this usually happen ?
+    reasmb: Is there anything that relieves your panicked feeling ?
   decomp: *
     reasmb: What has made you think about this ?
     reasmb: What do you think you could do in this situation that would help you ?
@@ -528,8 +599,10 @@ key: argue
     reasmb: How do you think this affects your the way you feel overall ?
     reasmb: What ways do you think you could reduce (2) ?
 key: suicide
+  decomp: * i am * @suicide *
+    reasmb: What do you think contributes the most to this feeling ?
+    reasmb: I know you are making an impact on the world. What differences do you think you make every day ?
   decomp: * suicide *
-    reasmb: Do you feel suicidal ?
     reasmb: I am sorry to hear this. Where do you think this feeling comes from ?
     reasmb: What do you think contributes to this ?
 key: depressed 50
