@@ -7,6 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: mindspaceapp
+      MYSQL_DATABASE: mindspacedb
 
   app:
     build: .
