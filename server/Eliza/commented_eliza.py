@@ -546,11 +546,7 @@ and then runs the program.
 
 def main():
     eliza = Eliza()
-<<<<<<< Updated upstream
     eliza.load('inbetween.txt')
-=======
-    eliza.load('anger.txt')
->>>>>>> Stashed changes
     eliza.run()
 
 
