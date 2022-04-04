@@ -12,3 +12,7 @@ services:
     build: .
     image: wthunder/mindspaceapp
     ports: "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
