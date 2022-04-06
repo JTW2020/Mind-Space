@@ -1,31 +1,37 @@
+import json
 import sys
+import os
 import pytest
 from flask_cors import CORS
 from flask import Flask, request, render_template
 
+sys.path.append(os.path.abspath(os.path.join('..', 'server')))
 
-import json
+from app import app
 
 def test_index_route():
-    app = Flask(__name__)
+    # app = Flask(__name__)
     client = app.test_client()
     url = '/'
     response = app.test_client().get(url)
+    print(response.status_code)
     assert response.status_code == 200
 
+
 def eliza_testEliza_route():
-    app = Flask(__name__)
+    # app = Flask(__name__)
     client = app.test_client()
     url = '/api/testEliza'
 
     response = client.get(url)
     assert response.status_code == 200
-    #assert response.get_data() == 'Eliza has been imported and is accessible'
+    # assert response.get_data() == 'Eliza has been imported and is accessible'
+
 
 def test_hello_route():
-    app = Flask(__name__) #instantiate flask object
+    # app = Flask(__name__)  # instantiate flask object
     client = app.test_client()
     url = '/hello'
     response = client.get(url)
+    print(response.status_code)
     assert response.status_code == 200
-

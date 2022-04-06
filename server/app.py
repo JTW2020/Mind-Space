@@ -14,7 +14,8 @@ eliza.load('./Eliza/inbetween.txt')
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    request.status = 200
+    return render_template("index.html"), 200
 
 
 @app.route("/hello")
@@ -22,7 +23,7 @@ def hello_world():
     return {
         "sender": "Eliza",
         "message": "Hello there user!"
-    }
+    }, 200
 
 
 @app.route("/api/test")
