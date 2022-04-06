@@ -1,4 +1,4 @@
-import commented_eliza
+from server.Eliza import commented_eliza
 import pytest
 #test 1
 def test_ContextSwitchDepressed(): #tests if eliza successfully switched contexts from inbetween.txt to depressed.txt
