@@ -2,16 +2,16 @@ version: "3.9"
 services:
 
   db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mariadb:10.7.3-focal
+    container_name: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: mindspaceapp
-      MYSQL_DATABASE: mindspacedb
+      MARIADB_ROOT_PASSWORD: mindspaceapp
 
   app:
     build: .
     image: wthunder/mindspaceapp
+    container_name: eliza_app
     ports:
       - "5000:5000"
     volumes:
