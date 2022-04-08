@@ -5,9 +5,9 @@ import Navbar from './Navbar';
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="flex bg-black">
+      <div className="bg-black h-screen">
         <Navbar />
-        <main>{children}</main>
+        <main className="">{children}</main>
       </div>
     </>
   )

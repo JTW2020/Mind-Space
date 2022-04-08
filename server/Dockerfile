@@ -2,9 +2,9 @@ FROM python:3.8-alpine
 
 WORKDIR /app
 
-RUN apk --update add bash nano vim build-base
-COPY ./requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN apk add gcc
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . .
 

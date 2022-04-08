@@ -2,11 +2,13 @@ version: "3.9"
 services:
 
   db:
-    image: mariadb:10.7.3-focal
-    container_name: mariadb
+    image: postgres:14.2-alpine
+    container_name: psql
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: mindspaceapp
+      POSTGRES_USER: mindspaceuser
+      POSTGRES_DB: mindspacedb
+      POSTGRES_PASSWORD: mindspaceapp
 
   app:
     build: .

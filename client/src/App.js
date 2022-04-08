@@ -10,20 +10,20 @@ import HomePage from './pages/HomePage';
 import SignupPage from './pages/user_authentication/SignupPage';
 import LoginPage from './pages/user_authentication/LoginPage';
 
-import Layout from './pages/components/Navbar';
+import Layout from './pages/components/layout';
 
 function App() {
   return (
-    <Layout>
-      <div className="App bg-black h-screen">
-        <Router>
+    <Router>
+      <Layout>
+        <div className="App">
           <Switch>
-            <Route path="/signup"><SignupPage /></Route>
+            <Route path="/signup" component={SignupPage} />
             <Route path="/"><HomePage /></Route>
           </Switch>
-        </Router>
-      </div>
-    </Layout>
+        </div>
+      </Layout>
+    </Router>
   );
 }
 

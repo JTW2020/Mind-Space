@@ -2,6 +2,11 @@ from flask_cors import CORS
 from flask import jsonify  # Potentially used for later purposes
 from flask import Flask, request, render_template
 from Eliza.commented_eliza import Eliza
+from db.index import engine
+
+engine.connect()
+
+print('code runs before init_db')
 
 app = Flask(__name__)
 CORS(app)
