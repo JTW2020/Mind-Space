@@ -58,10 +58,15 @@ key: apologise
 key: apologize
   decomp: *
     reasmb: goto sorry
-key: self
-    decomp: * esteem *
-        reasmb: Do you believe you have high self esteem ?
-        reasmb: What do you think could positively affect your self esteem ?
+
+ comment: Check self decomp
+key: self 2
+    decomp: * high esteem *
+        reasmb: That's great
+        reasmb: What have you done recently to feel better about yourself ?
+    decomp: * low esteem *
+        reasmb: Why do you feel you have low self esteem ?
+        reasmb: Have you looked into ways to improve you self esteem ?
     decomp: * hatred *
         reasmb: Why do you feel that you should hate yourself ?
         reasmb: You shouldn't hate yourself.
@@ -191,11 +196,10 @@ key: was 2
     reasmb: Were you really ? How has that affected you ?
     reasmb: Why do you tell me you were (2) now ?
     reasmb: What made that change ? Is that meaningful to you ?
-  decomp: * was you *
+  decomp: * were you *
     reasmb: Would you like to believe I was (2) ? Why or why not ?
     reasmb: What suggests that I was (2) ?
     reasmb: What do you think ?
-    reasmb: If I was (2), how would that hinder my ability to help you ?
     reasmb: How would you feel if I had been (2) ? Why or why not ?
 key: i 2
   decomp: * i @desire *
@@ -228,6 +232,9 @@ decomp: * i am very * @fat *
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
     reasmb: If you were not (3), would that solve your problems?
+decomp: * i am not *@fat *
+    reasmb: Do you think that being that way makes you feel better ?
+    reasmb: Is this good or bad to you ?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
