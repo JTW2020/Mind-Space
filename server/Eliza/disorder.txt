@@ -37,7 +37,7 @@ synon: sad unhappy depressed empty
 synon: happy elated glad joyful enjoying laughing excited
 synon: hungry starving fasting
 synon: overeat binge full bingeing binging 
-synon: fat big overweight BMI ugly heavy
+synon: fat big overweight ugly heavy
 synon: skinny thin perfect waifish slender
 synon: everyone everybody nobody noone
 synon: be am is are was
