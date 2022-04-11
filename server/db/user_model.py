@@ -1,10 +1,15 @@
-from sqlalchemy import Table, Column, Integer, String
-from sqlalchemy.orm import mapper
-from db.index import metadata, db_session
+from sqlalchemy import Column, Integer, String
+from flask_login import UserMixin
+from db.index import Base
 
 
-class User(object):
-    query = db_session.query_property()
+class User(UserMixin, Base):
+
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    username = Column(String(50), unique=True)
+    password = Column(String(80), unique=False)
+    name = Column(String(18), unique=False)
 
     def __init__(self, username=None, password=None):
         self.username = username
@@ -12,13 +17,3 @@ class User(object):
 
     def __repr__(self):
         return f'<User {self.username!r}>'
-
-
-users = Table('users', metadata,
-              Column('id', Integer, primary_key=True),
-              Column('username', String(50), unique=True),
-              Column('password', String(50), unique=False),
-              Column('name', String(32), unique=False)
-              )
-
-mapper(User, users)

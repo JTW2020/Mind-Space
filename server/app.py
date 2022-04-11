@@ -1,21 +1,39 @@
 from flask_cors import CORS
 from flask import jsonify  # Potentially used for later purposes
-from flask import Flask, request, render_template
+from flask import Flask, request, Response, render_template
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, login_user
+
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
-
-# importing models
 from db.user_model import User
 
-print('code runs before init_db')
+app = Flask(__name__)
+app.secret_key = 'partycat'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+bcrypt = Bcrypt(app)
+
+# importing models
+
+app.logger.info('code runs before init_db')
 init_db()
 
-app = Flask(__name__)
 CORS(app)
 
 # Instantiating Eliza here
 eliza = Eliza()
 eliza.load('./Eliza/inbetween.txt')
+
+''' 
+Kind of like the login helper method 
+'''
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route("/")
@@ -62,18 +80,41 @@ def test_eliza():
 def create_user():
     error = None
     if request.method == 'POST':
-        print("/api/userSignup is being called")
         msg = request.get_json()
-        username = msg['username']
-        password = msg['password']
-        user = User(username=username, password=password)
 
+        username = msg['username']
+
+        ''' 
+        Password is hashed in the following line
+        '''
+        hashed_pwd = bcrypt.generate_password_hash(
+            msg['password']).decode('utf-8')
+
+        '''
+        User object is created and stored in the following lines
+        '''
+        user = User(username, hashed_pwd)
         db_session.add(user)
         db_session.commit()
 
-        app.logger.debug('\npassword: ' + password)
-
     return 'OK'
+
+
+@app.route("/api/userLogin", methods=['POST'])
+def auth_user():
+    error = None
+    if request.method == 'POST':
+        msg = request.get_json()
+        username = msg['username']
+        password = msg['password']
+
+        user = User.query.filter_by(username=username).first()
+
+        if not user or not bcrypt.check_password_hash(user.password, password):
+            return Response(status=401)
+
+        login_user(user, remember=True)
+        return 'OK'
 
 
 @app.teardown_appcontext
