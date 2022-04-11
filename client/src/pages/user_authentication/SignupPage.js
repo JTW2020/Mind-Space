@@ -7,13 +7,17 @@ function SignupPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       try {
-
+        console.log('username: ' + username + '\npassword: ' + password)
+        const res = await axios.post('/api/userSignup',
+          { username: username, password: password }
+        )
+        console.log(res.status)
       } catch (err) {
-
+        console.error(err);
       }
     }
   }

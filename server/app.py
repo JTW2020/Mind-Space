@@ -2,11 +2,13 @@ from flask_cors import CORS
 from flask import jsonify  # Potentially used for later purposes
 from flask import Flask, request, render_template
 from Eliza.commented_eliza import Eliza
-from db.index import engine
+from db.index import db_session, init_db
 
-engine.connect()
+# importing models
+from db.user_model import User
 
 print('code runs before init_db')
+init_db()
 
 app = Flask(__name__)
 CORS(app)
@@ -54,3 +56,26 @@ def msgToEliza():
 def test_eliza():
     eliza = Eliza()
     return eliza.test_output()
+
+
+@app.route("/api/userSignup", methods=['POST'])
+def create_user():
+    error = None
+    if request.method == 'POST':
+        print("/api/userSignup is being called")
+        msg = request.get_json()
+        username = msg['username']
+        password = msg['password']
+        user = User(username=username, password=password)
+
+        db_session.add(user)
+        db_session.commit()
+
+        app.logger.debug('\npassword: ' + password)
+
+    return 'OK'
+
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
