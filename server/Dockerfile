@@ -1,10 +1,10 @@
-FROM python:3.8-alpine
+FROM python:3.8-alpine3.14
 
 WORKDIR /app
 
-RUN apk update && apk add libffi-dev musl-dev gcc python3-dev openssl-dev
+RUN apk update && apk add libffi-dev musl-dev gcc g++ make python3-dev openssl-dev
 COPY requirements.txt ./
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
 
