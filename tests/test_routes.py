@@ -25,7 +25,7 @@ def eliza_testEliza_route():
 
     response = client.get(url)
     assert response.status_code == 200
-    # assert response.get_data() == 'Eliza has been imported and is accessible'
+    assert response.get_data() == 'Eliza has been imported and is accessible'
 
 
 def test_hello_route():
@@ -35,3 +35,12 @@ def test_hello_route():
     response = client.get(url)
     print(response.status_code)
     assert response.status_code == 200
+
+# def test_message_eliza():
+#     client = app.test_client()
+#     url = '/api/msgEliza'
+#     response = client.post(url,{
+#         "message": "hello Eliza!"
+#     })
+#     print(response.status_code)
+#     assert response.status_code == 200
