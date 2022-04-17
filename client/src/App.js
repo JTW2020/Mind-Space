@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 import './index.css'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
+import SignupPage from './pages/user_authentication/SignupPage';
+import LoginPage from './pages/user_authentication/LoginPage';
+
+import Layout from './pages/components/layout';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-      </div>
-      <Switch>
-        <Route path="/"><HomePage /></Route>
-      </Switch>
+      <Layout>
+        <div className="App">
+          <Switch>
+            <Route path="/signup" component={SignupPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/"><HomePage /></Route>
+          </Switch>
+        </div>
+      </Layout>
     </Router>
   );
 }

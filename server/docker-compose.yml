@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+
+  db:
+    image: postgres:14.2-alpine
+    container_name: psql
+    restart: always
+    environment:
+      POSTGRES_USER: mindspaceuser
+      POSTGRES_DB: mindspacedb
+      POSTGRES_PASSWORD: mindspaceapp
+
+  app:
+    build: .
+    image: wthunder/mindspaceapp
+    container_name: eliza_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db

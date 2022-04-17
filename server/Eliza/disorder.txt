@@ -1,5 +1,5 @@
 initial: Hi there. How are you feeling today ?
-final: Goodbye. Thank you for sharing with me.
+final: Thank you for sharing with me. Have a beautiful day. Goodbye.
 quit: bye
 quit: goodbye
 quit: quit
@@ -20,9 +20,7 @@ pre: machine computer
 pre: computers computer
 pre: were was
 pre: you're you are
-pre: i'm i am
 pre: same alike
-pre: ain't am not
 pre: aint am not
 post: am are
 post: your my
@@ -32,16 +30,15 @@ post: yourself myself
 post: i you
 post: you I
 post: my your
-post: i'm you are
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
-synon: sad unhappy depressed sick empty
+synon: sad unhappy depressed empty
 synon: happy elated glad joyful enjoying laughing excited
 synon: hungry starving fasting
-synon: overeat binge full bingeing 
-synom: fat big overweight BMI ugly heavy
-synom: skinny thin perfect waifish slender
+synon: overeat binge full bingeing binging 
+synon: fat big overweight ugly heavy
+synon: skinny thin perfect waifish slender
 synon: everyone everybody nobody noone
 synon: be am is are was
 key: xnone
@@ -50,7 +47,7 @@ key: xnone
     reasmb: Please go on.
     reasmb: What does that suggest to you ?
     reasmb: How has that been affecting you ?
-key: sorry
+key: sorry 4
   decomp: *
     reasmb: No need for apologies, I'm here to help you.
     reasmb: No worries, it's up to you what you want to talk about.
@@ -58,10 +55,28 @@ key: sorry
 key: apologise
   decomp: *
     reasmb: goto sorry
-key: esteem
-    decomp: * self *
-        reasmb: Do you believe you have high self esteem ?
-        reasmb: What do you think could positively affect your self esteem ?
+key: apologize
+  decomp: *
+    reasmb: goto sorry
+
+ comment: Check self decomp
+key: self 2
+    decomp: * high esteem *
+        react: -4di
+        reasmb: That's great
+        reasmb: What have you done recently to feel better about yourself ?
+    decomp: * low esteem *
+        react: +6di
+        reasmb: Why do you feel you have low self esteem ?
+        reasmb: Have you looked into ways to improve you self esteem ?
+    decomp: * hatred *
+        react: +8di
+        reasmb: Why do you feel that you should hate yourself ?
+        reasmb: You shouldn't hate yourself.
+    decomp: * deprecate *
+        react: +4di
+        reasmb: Do self deprecating jokes make you feel better ?
+        reasmb: Has anyone made you feel this way directly ?
 key: remember 5
   decomp: * i remember ^
     reasmb: What significance does remembering hold to you ?
@@ -103,7 +118,7 @@ key: dream 3
     reasmb: How has that dream affected you ?
     reasmb: Do any people appear in your dreams ? Why do you think they do or don't ?
     reasmb: Do you believe that dreams have are reflective of what you're thinking ?
-key: perhaps
+key: perhaps 3
   decomp: *
     reasmb: What prevents you from being certain about this ?
     reasmb: Yes, perhaps. Has thinking about the possibilities troubled you ?
@@ -135,7 +150,7 @@ key: xforeign
     reasmb: I speak only English.
 key: hello
   decomp: *
-    reasmb: Hello there. What has you feeling down ?
+    reasmb: Hello there. How are you feeling ?
     reasmb: Hi. How have you been feeling lately ?
 key: computer 50
   decomp: *
@@ -185,11 +200,10 @@ key: was 2
     reasmb: Were you really ? How has that affected you ?
     reasmb: Why do you tell me you were (2) now ?
     reasmb: What made that change ? Is that meaningful to you ?
-  decomp: * was you *
+  decomp: * were you *
     reasmb: Would you like to believe I was (2) ? Why or why not ?
     reasmb: What suggests that I was (2) ?
     reasmb: What do you think ?
-    reasmb: If I was (2), how would that hinder my ability to help you ?
     reasmb: How would you feel if I had been (2) ? Why or why not ?
 key: i 2
   decomp: * i @desire *
@@ -200,10 +214,12 @@ key: i 2
     reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
   decomp: * i am not @happy *
+    react: +2di
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
   decomp: * i am never @happy *
+    react: +4di
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
@@ -213,9 +229,29 @@ key: i 2
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
  decomp: * i am * @fat *
-    reasmb: Why do you feel (2) ?
-    reasmb: Is (2) a bad thing to be ?
-    reasmb: If you were not (2), would that solve your problems?
+    react: +5di
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
+decomp: * i am very * @fat *
+    react: +7di
+    reasmb: Do you think that being that way makes you a bad person ?
+    reasmb: Does this make you feel pretty ?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
+ decomp: * i am very * @fat ^
+    react: +4di
+    reasmb: Do you think that being that way makes you a bad person ?
+    reasmb: Does this make you feel pretty ?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems
+decomp: * i am not * @fat ?
+    react: -3de
+    reasmb: Do you think that being that way makes you feel better ?
+    reasmb: Is this good or bad to you ?
+    reasmb: Did someone call you that or was it a personal belief that came as you grew older ?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
@@ -428,7 +464,6 @@ key: alike 10
     reasmb: What does that similarity suggest to you ?
     reasmb: What other connections do you see ?
     reasmb: What made you make this connection ?
-    reasmb: What are the semantics of this comparison you're making ?
     reasmb: Are they different in some ways too ? Why or why not ?
     reasmb: How do you think this affects you ?
 key: like 10
@@ -458,7 +493,4 @@ key: not
     reasmb: What would being (2) mean in this case ?
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
-key: depressed 50
-  decomp: * depressed *
-    reasmb: I already know that you are depressed.
    
