@@ -4,3 +4,5 @@ tests/__pycache__/test_routes.cpython-310-pytest-7.0.1.pyc
 *.pyc
 *.pyc
 *.pyc
+server/Eliza/__pycache__/test_commented_eliza.cpython-310-pytest-7.0.1.pyc
+server/Eliza/__pycache__/commented_eliza.cpython-310.pyc
