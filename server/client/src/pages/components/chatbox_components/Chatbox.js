@@ -6,6 +6,19 @@ import TextBubble from './textbubbles';
 function Chatbox() {
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  let count = 0;
+
+  useEffect(async () => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_HOST}/api/initialMsgEliza`);
+      setMessageList([
+        ...messageList,
+        { user: "Eliza", message: res.data.message }
+      ])
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
 
   function handleMsgInputChange(e) {
     e.preventDefault();
@@ -19,7 +32,7 @@ function Chatbox() {
   async function handleSubmitMsg(e) {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/msgEliza', {
+      const res = await axios.post(`${process.env.REACT_APP_HOST}/api/msgEliza`, {
         userMessage: message
       });
       setMessageList([
@@ -34,8 +47,8 @@ function Chatbox() {
   }
 
   return (
-    <div className="chatbox grid grid-cols-1 w-3/6">
-      <div className="p-2 mt-5 text-black h-60 bg-zinc-100 rounded-md overflow-auto">
+    <div className="chatbox grid grid-cols-1 w-5/12">
+      <div className="p-2 mt-5 text-black h-72 w-auto bg-zinc-100 rounded-md overflow-auto">
         <a className="text-sm italic">Type something to talk to Eliza.</a>
         <br />
         <div>

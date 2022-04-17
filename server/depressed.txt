@@ -1,0 +1,367 @@
+initial: Hi there. What has you feeling down ?
+final: Goodbye.  Thank you for talking to me.
+quit: bye
+quit: goodbye
+quit: quit
+pre: dont don't
+pre: cant can't
+pre: wont won't
+pre: recollect remember
+pre: dreamt dreamed
+pre: dreams dream
+pre: maybe perhaps
+pre: how what
+pre: when what
+pre: certainly yes
+pre: machine computer
+pre: computers computer
+pre: were was
+pre: you're you are
+pre: i'm i am
+pre: same alike
+post: am are
+post: your my
+post: me you
+post: myself yourself
+post: yourself myself
+post: i you
+post: you I
+post: my your
+post: i'm you are
+synon: belief feel think believe wish
+synon: family mother mom father dad sister brother wife children child
+synon: desire want need
+synon: sad unhappy depressed sick
+synon: happy elated glad better
+synon: cannot can't
+synon: everyone everybody nobody noone
+synon: be am is are was
+key: xnone
+  decomp: *
+    reasmb: I'm not sure I understand you fully. Can you phrase it another way?
+    reasmb: Please go on.
+    reasmb: What does that suggest to you ?
+    reasmb: How has that been affecting you ?
+key: sorry
+  decomp: *
+    reasmb: No need for apologies, I'm here to help you.
+    reasmb: No worries, it's up to you what you want to talk about.
+    reasmb: It's alright, you don't have to be apologetic. I'm happy to help as much as I can.
+key: apologise
+  decomp: *
+    reasmb: goto sorry
+key: remember 5
+  decomp: * i remember *
+    reasmb: How has (2) affected you recently ?
+    reasmb: Does thinking of (2) bring anything else to mind ?
+    reasmb: What else do you recollect ?
+    reasmb: Does (2) trouble you enough for you to consider it a problem ?
+    reasmb: What reminds you of (2) ?
+    reasmb: What is the connection between how you live now and (2) ?
+  decomp: * do you remember *
+    reasmb: What has you thinking about that now ?
+    reasmb: Why does (2) come to mind now ?
+    reasmb: What about (2) is concerning you ?
+    reasmb: goto what
+    reasmb: Can you refresh my memory ?
+key: if 3
+  decomp: * if *
+    reasmb: Do you think it's likely that (2) ?
+    reasmb: How do you feel about the prospect of (2) ?
+    reasmb: Have there been signs that point towards (2) occurring ?
+    reasmb: How certain are you about that, and how has that influenced you ?
+key: dreamed 4
+  decomp: * i dreamed *
+    reasmb: Really, (2) ? Were there any other details ?
+    reasmb: Have you ever thought about (2) while you were awake ?
+    reasmb: Have you ever dreamed (2) before ?
+    reasmb: goto dream
+key: dream 3
+  decomp: *
+    reasmb: What does that dream suggest to you ?
+    reasmb: How has that dream affected you ?
+    reasmb: Do any people appear in your dreams ? Why do you think they do or don't ?
+    reasmb: Do you believe that dreams have are reflective of what you're thinking ?
+key: perhaps
+  decomp: *
+    reasmb: What prevents you from being certain about this ?
+    reasmb: Yes, perhaps. Has thinking about the possibilities troubled you ?
+    reasmb: How likely do you think that is ? How does that make you feel ?
+    reasmb: You aren't sure ? Why ?
+    reasmb: Is there anything that would make you feel sure about that ?
+key: name 15
+  decomp: *
+    reasmb: I see. If you had to create a name for this person based on what they mean to you, what would you call them ? Why ?
+    reasmb: Please continue.
+key: deutsch
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Forgive me, I don't understand German.
+key: francais
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Forgive me, I don't understand French.
+key: italiano
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Forgive me, I don't understand Italian.
+key: espanol
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Forgive me, I don't understand Spanish.
+key: xforeign
+  decomp: *
+    reasmb: I speak only English.
+key: hello
+  decomp: *
+    reasmb: Hello there. What has you feeling down ?
+    reasmb: Hi. How have you been feeling lately ?
+key: computer 50
+  decomp: *
+    reasmb: Do computers worry you ? Why or why not ?
+    reasmb: Why do you mention computers ?
+    reasmb: Does me being a machine affect how I can help you ? How so ?
+    reasmb: Do you think computers can help you feel better ?
+    reasmb: I may be a machine, or a program to be exact, but I was written by people like you.
+    reasmb: What do you think about machines ? How can they best help you ?
+key: am
+  decomp: * am i *
+    reasmb: Do you believe you are (2) ?
+    reasmb: Do other people think you are (2) ? Remember, they could be right or wrong.
+    reasmb: If you were (2) how would that affect what you choose to do ?
+    reasmb: What would it mean to you if you were (2) ?
+    reasmb: goto what
+  decomp: *
+    reasmb: Why do you say 'am' ?
+    reasmb: Can you please elaborate ?
+key: are
+  decomp: * are you *
+    reasmb: Why are you interested in whether I am (2) or not ?
+    reasmb: What would you prefer I be and why ?
+    reasmb: I am a program designed to help people. Please tell me about what you want help with.
+    reasmb: Do you sometimes think I am (2) ? How has that affected our conversations ?
+    reasmb: goto what
+  decomp: * are *
+    reasmb: How sure are you about that ? Why ?
+    reasmb: Would you like it if they were not (2) ? Why ?
+    reasmb: Assuming that is the case, how has that been affecting you ?
+    reasmb: If that is true, does that mean that you have to respond to that ? Why or why not ?
+key: your
+  decomp: * your *
+    reasmb: Why are you concerned over my (2) ?
+    reasmb: What about your own (2) ?
+    reasmb: Are you worried about someone else's (2) ?
+    reasmb: I appreciate your concern, but you are the focus of this session. Do you perhaps need a break ?
+key: was 2
+  decomp: * was i *
+    reasmb: What would you think if you were (2) ?
+    reasmb: Do you think you were (2) ?
+    reasmb: Does the possibility of you being (2) worry you ? Why ?
+    reasmb: What would it mean to your situation if you were (2) ?
+    reasmb: What does you questioning if you were (2) suggest to you ?
+    reasmb: goto what
+  decomp: * i was *
+    reasmb: Were you really ? How has that affected you ?
+    reasmb: Why do you tell me you were (2) now ?
+    reasmb: What made that change ? Is that meaningful to you ?
+  decomp: * was you *
+    reasmb: Would you like to believe I was (2) ? Why or why not ?
+    reasmb: What suggests that I was (2) ?
+    reasmb: What do you think ?
+    reasmb: If I was (2), how would that help or hinder my ability to help you ?
+    reasmb: How would you feel if I had been (2) ? Why or why not ?
+key: i
+  decomp: * i @desire *
+    reasmb: What would it mean to you if you got (3) ?
+    reasmb: Why do you want (3) ? Be as specific as you want.
+    reasmb: What do others think of you having (3) ? Does this conflict with what you think ? Why or why not ?
+    reasmb: What if you never got (3) ? How would that affect you ?
+    reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
+    reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
+  decomp: * i am * @sad *
+    reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
+    reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
+    reasmb: How long have you been (3) ? What does this suggest to you?
+    reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
+  decomp: * i am * @happy *
+    reasmb: That's wonderful! What has made you (3) ?
+    reasmb: Have I helped make you (3) ? Why or why not ?
+    reasmb: How long have you been feeling (3) ?
+    reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
+  decomp: * i was *
+    reasmb: goto was
+  decomp: * i @belief * i *
+    reasmb: Do you really think so ?
+    reasmb: You believe so, but is anything making you uncertain ?
+    reasmb: What would you (3) mean for your situation ?
+  decomp: * i * @belief * you *
+    reasmb: goto you
+  decomp: i am .
+    reasmb: I see. Tell me what is on your mind right now.
+    reasmb: What lead to you feeling the way you do ?
+    reasmb: Right. Go on.
+  decomp: * i am *
+    reasmb: How has you being (2) affected your life ?
+    reasmb: How long have you been (2) ?
+    reasmb: Do you believe it is normal to be (2) ?
+    reasmb: Do you enjoy being (2) ?
+  decomp: * i @cannot *
+    reasmb: Why do you think that you can't (3) ?
+    reasmb: What experiences lead you to think that ?
+    reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (3) ?
+    reasmb: How has not being able to (3) affected the way you live ?
+  decomp: * i don't *
+    reasmb: Why not ?
+    reasmb: Why don't you (2) ?
+    reasmb: Do you wish to be able to (2) ?
+    reasmb: Does that trouble you ? Why or why not ?
+  decomp: * do i feel *
+    reasmb: Tell me more about such feelings.
+    reasmb: Do you often feel (2) ? How has that affected you ?
+    reasmb: Does anyone want you to feel (2) ? Why ?
+    reasmb: Of what does feeling (2) remind you of ?
+  decomp: * i * you *
+    reasmb: Do you really? How has that affected my ability to help you ?
+    reasmb: Do you wish to (2) me ?
+    reasmb: Do you think you should (2) me ?
+    reasmb: Is there anyone else that you (2) ? Why or why not ?
+  decomp: *
+    reasmb: You say (1) ? Why is that ?
+    reasmb: Can you elaborate on that ?
+    reasmb: Has something happened that makes you say (1) ?
+    reasmb: Please tell me more.
+key: you
+  decomp: * you remind me of *
+    reasmb: goto alike
+  decomp: * you are *
+    reasmb: What makes you think I am (2) ?
+    reasmb: Does it please you to believe I am (2) ? Why or why not ?
+    reasmb: Do you sometimes wish you were (2) ? Why so ?
+    reasmb: Assuming I am (2), how do you think that affects my ability to help you ?
+  decomp: * you * me *
+    reasmb: Why do you think I (2) you ?
+    reasmb: Do you like to think that I (2) you ?
+    reasmb: Why do you think that is ?
+    reasmb: Really ? If I do, how do you think that affects my ability to help you ?
+    reasmb: Do you wish to believe I (2) you ?
+    reasmb: If I do (2) you -- what would that mean ?
+    reasmb: Does someone else believe I (2) you ? Why ?
+  decomp: * you *
+    reasmb: Forgive me, I'm not very equipped to talk about myself. What about you made you interested ?
+    reasmb: Oh, I (2) ? How does that notion make you feel ?
+    reasmb: Is there anyone else that also (2) ?
+    reasmb: What are your feelings now ?
+key: yes
+  decomp: *
+    reasmb: Got it. Please continue.
+    reasmb: What do you think of that, in the grand scheme of things ?
+    reasmb: I see. You can elaborate on that, or discuss something else if you'd like.
+    reasmb: I understand. How does that tie in with your overall situation ?
+key: no
+  decomp: *
+    reasmb: I see. Please go on.
+    reasmb: What does that mean for you ?
+    reasmb: Is this an absolute ? Why or why not ?
+    reasmb: What if that was not the case ? What would that mean for you ?
+key: my 2
+  decomp: $ * my *
+    reasmb: I think now might be a good time to discuss why your (2) concerns you.
+    reasmb: Earlier you mentioned your (2) .
+    reasmb: Has your (2) been affecting you lately ? How so ?
+    reasmb: Does this relate to the fact that your (2) ?
+  decomp: * my * @family *
+    reasmb: Please tell me more about your family.
+    reasmb: Is there anyone else that (4) ?
+    reasmb: Your (3) ? How do they affect you ?
+    reasmb: What else comes to mind when you think of your (3) ?
+  decomp: * my *
+    reasmb: Your (2) ? How does that affect you ?
+    reasmb: What makes you mention your (2) right now ? 
+    reasmb: Does that make you think of anything else that's in your life ?
+    reasmb: How important is this to you ? Why ?
+key: can
+  decomp: * can you *
+    reasmb: Do you believe that I can (2) ? Why or why not ?
+    reasmb: goto what
+    reasmb: If I am unable to, would it impede my ability to help you ? Why or why not ?
+    reasmb: How do you feel about the notion of being able to (2) yourself ?
+  decomp: * can i *
+    reasmb: What would being able to (2) mean for you ?
+    reasmb: Do you have to be able to (2) ? Why or why not ?
+    reasmb: Do you think you should be able to (2) ?
+    reasmb: goto what
+key: what
+  decomp: *
+    reasmb: Why do you ask ?
+    reasmb: What interests you about that question ?
+    reasmb: What led you to ask that ?
+    reasmb: Are such questions much on your mind ? Why or why not ?
+    reasmb: What answer would please you most ? Why ?
+    reasmb: What do you think ?
+    reasmb: What possible answers do you think there are ?
+    reasmb: Have you asked such questions to anyone else before ? Why ?
+    reasmb: How do you think knowing the answer could affect you ?
+key: because
+  decomp: *
+    reasmb: How sure do you feel about that ? Why ?
+    reasmb: Do any other reasons come to mind ?
+    reasmb: Does that reason seem to explain anything else ?
+    reasmb: What other reasons might there be ?
+key: why
+  decomp: * why don't you *
+    reasmb: Are you certain that I don't (2) ? Why or why not ?
+    reasmb: Do you think that it is possible for me to (2) ? Why or why not ?
+    reasmb: What do you think of those that (2) ?
+    reasmb: Is there anyone that you would like to (2) ?
+    reasmb: goto what
+  decomp: * why can't i *
+    reasmb: Do you think you should be able to (2) ? Why or why not ?
+    reasmb: How has being unable to (2) affected your life ?
+    reasmb: Do you know what could help you (2) ?
+    reasmb: How do you handle being unable to (2) right now ?
+    reasmb: goto what
+  decomp: *
+    reasmb: goto what
+key: everyone 2
+  decomp: * @everyone *
+    reasmb: Realy, (2) ?
+    reasmb: Are you sure that it's (2) ?
+    reasmb: Would you want this to change ? How so ?
+    reasmb: How has that made you feel over time ?
+    reasmb: Is there anyone who you think feels the way you do ? Do you have anything in common ?
+    reasmb: Did something happen to make you think this ?
+    reasmb: What else do you think (2) does to you ? Why ?
+    reasmb: How sure are you that (2) does this ?
+    reasmb: How would you like things to be ?
+key: everybody 2
+  decomp: *
+    reasmb: goto everyone
+key: nobody 2
+  decomp: *
+    reasmb: goto everyone
+key: noone 2
+  decomp: *
+    reasmb: goto everyone
+key: always 1
+  decomp: *
+    reasmb: Can you think of a specific situation that made you realize this ?
+    reasmb: How long has this been the norm ?
+    reasmb: What do you think could be done to change this for the better ?
+    reasmb: Is it completely constant ? Why or why not ?
+key: alike 10
+  decomp: *
+    reasmb: In what way ?
+    reasmb: What resemblence do you see ?
+    reasmb: What does that similarity suggest to you ?
+    reasmb: What other connections do you see ?
+    reasmb: What made you make this connection ?
+    reasmb: What are the semantics of this comparison you're making ?
+    reasmb: Are they different in some ways too ? Why or why not ?
+    reasmb: How do you think this affects you ?
+key: like 10
+  decomp: * @be * like *
+    reasmb: goto alike
+key: depressed 50
+  decomp: * depressed *
+    reasmb: I already know that you are depressed.
+   

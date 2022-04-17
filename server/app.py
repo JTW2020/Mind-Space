@@ -20,6 +20,8 @@ bcrypt = Bcrypt(app)
 app.logger.info('code runs before init_db')
 init_db()
 
+app = Flask(__name__, static_folder="client/build/static",
+            template_folder="client/build")
 CORS(app)
 
 # Instantiating Eliza here
@@ -38,7 +40,8 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template("../client/build/index.html")
+    request.status = 200
+    return render_template("index.html"), 200
 
 
 @app.route("/hello")
@@ -46,7 +49,7 @@ def hello_world():
     return {
         "sender": "Eliza",
         "message": "Hello there user!"
-    }
+    }, 200
 
 
 @app.route("/api/test")
@@ -64,10 +67,19 @@ def msgToEliza():
 
         input_message = request.get_json()
         user_msg = input_message['userMessage']
-        print(user_msg)
+        print("This is the message being sent: " + user_msg)
     return {
         "message": eliza.respond(user_msg)
     }
+
+
+@app.route("/api/initialMsgEliza", methods=['GET'])
+def fromEliza():
+    error = None
+    if request.method == 'GET':
+        return {
+            "message": eliza.initial()
+        }
 
 
 @app.route("/api/testEliza")
@@ -116,9 +128,11 @@ def auth_user():
         login_user(user, remember=True)
         return 'OK'
 
+
 @app.route("/api/testSessionInfo")
 def test_session_info():
     app.logger.info()
+
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
