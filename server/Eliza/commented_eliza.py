@@ -603,7 +603,7 @@ and then runs the program.
 
 def main():
     eliza = Eliza()
-    eliza.load('depressed.txt')
+    eliza.load('inbetween.txt')
     eliza.run()
 
 

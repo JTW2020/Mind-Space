@@ -1,5 +1,5 @@
 initial: Hi there. How are you feeling today ?
-final: Goodbye. Thank you for sharing with me.
+final: Thank you for sharing with me. Have a beautiful day. Goodbye.
 quit: bye
 quit: goodbye
 quit: quit
@@ -62,19 +62,19 @@ key: apologize
  comment: Check self decomp
 key: self 2
     decomp: * high esteem *
-        react: -4de
+        react: -4di
         reasmb: That's great
         reasmb: What have you done recently to feel better about yourself ?
     decomp: * low esteem *
-        react: +6de
+        react: +6di
         reasmb: Why do you feel you have low self esteem ?
         reasmb: Have you looked into ways to improve you self esteem ?
     decomp: * hatred *
-        react: +8de
+        react: +8di
         reasmb: Why do you feel that you should hate yourself ?
         reasmb: You shouldn't hate yourself.
     decomp: * deprecate *
-        react: +4de
+        react: +4di
         reasmb: Do self deprecating jokes make you feel better ?
         reasmb: Has anyone made you feel this way directly ?
 key: remember 5
@@ -214,11 +214,12 @@ key: i 2
     reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
   decomp: * i am not @happy *
-    react: +2de
+    react: +2di
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
   decomp: * i am never @happy *
+    react: +4di
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
@@ -228,28 +229,25 @@ key: i 2
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
  decomp: * i am * @fat *
+    react: +5di
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
     reasmb: If you were not (3), would that solve your problems?
 decomp: * i am very * @fat *
-    react: +4di
+    react: +7di
     reasmb: Do you think that being that way makes you a bad person ?
     reasmb: Does this make you feel pretty ?
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
     reasmb: If you were not (3), would that solve your problems?
-    decomp: * i am very * @fat ^
+ decomp: * i am very * @fat ^
     react: +4di
     reasmb: Do you think that being that way makes you a bad person ?
     reasmb: Does this make you feel pretty ?
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
-    reasmb: If you were not (3), would that solve your problems?
-decomp: * i am not * @fat *
-    react: -3de
-    reasmb: Do you think that being that way makes you feel better ?
-    reasmb: Is this good or bad to you ?
-    decomp: * i am not * @fat ?
+    reasmb: If you were not (3), would that solve your problems
+decomp: * i am not * @fat ?
     react: -3de
     reasmb: Do you think that being that way makes you feel better ?
     reasmb: Is this good or bad to you ?
