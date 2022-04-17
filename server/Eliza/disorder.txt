@@ -228,12 +228,12 @@ key: i 2
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
- decomp: * i am * @fat *
+  decomp: * i am * @fat *
     react: +5di
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
     reasmb: If you were not (3), would that solve your problems?
-decomp: * i am very * @fat *
+  decomp: * i am very * @fat *
     react: +7di
     reasmb: Do you think that being that way makes you a bad person ?
     reasmb: Does this make you feel pretty ?

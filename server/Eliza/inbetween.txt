@@ -118,6 +118,7 @@ key: xnone -1
 
 key: depressed
   decomp: *
+    react: +5de
     reasmb: switchto depressed I see. Please, tell me about how you've been feeling down.
 key: sad
   decomp: *
@@ -143,6 +144,7 @@ key: upset
 
 key: anxious
   decomp: *
+    react: +5anx
     reasmb: switchto anxious I see. Tell me about how you've been feeling on edge, please.
 key: stressed
   decomp: *
@@ -174,6 +176,7 @@ key: terrified
 
 key: angry
   decomp: *
+    react: +5ang
     reasmb: switchto anger Understood. Please tell me about how you've been having your temper challenged.
 key: irate
   decomp: *
@@ -251,8 +254,9 @@ key: glad 0
   decomp: *
      reasmb: goto happy
 
-     key: disorder
+key: disorder
   decomp: *
+    react: +5di
     reasmb: switchto disorder I see. Please, tell me about why you've been feeling this way.
 key: hungry
   decomp: *

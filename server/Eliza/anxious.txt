@@ -605,9 +605,3 @@ key: suicide
   decomp: * suicide *
     reasmb: I am sorry to hear this. Where do you think this feeling comes from ?
     reasmb: What do you think contributes to this ?
-key: depressed 50
-  decomp: * depressed *
-    reasmb: I already know that you are depressed.
-key: anxious 50
-  decomp: * anxious *
-    reasmb: I already know that you are anxious. Can you explain more of what makes you feel this way ?
