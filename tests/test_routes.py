@@ -36,11 +36,26 @@ def test_hello_route():
     print(response.status_code)
     assert response.status_code == 200
 
-# def test_message_eliza():
-#     client = app.test_client()
-#     url = '/api/msgEliza'
-#     response = client.post(url,{
-#         "message": "hello Eliza!"
-#     })
-#     print(response.status_code)
-#     assert response.status_code == 200
+def test_message_eliza():
+    client = app.test_client()
+    url ='/api/msgEliza'
+    json ={
+        "user": "you",
+        "message": "hello Eliza!"
+    }
+    response = client.post(url, json)
+    print(response.status_code)
+    assert response.status_code == 200
+
+def test_inintalMsgEliza():
+    client = app.test_client()
+    url = '/api/initialMsgEliza'
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.json == json.loads('{"message":"How do you do.  Please tell me your problem."}')
+
+def test_api_test_Eliza():
+    client = app.test_client()
+    url='/api/test'
+    response = client.get(url)
+    assert response.status_code == 200

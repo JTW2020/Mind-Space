@@ -50,11 +50,13 @@ def test_ElizaExit(): #tests if eliza exits correctly via string matching.
     el.load("inbetween.txt")
     assert el.respond("goodbye") == None
 
-# def test_DepressionConversation():
-#     el = commented_eliza.Eliza()
-#     el.load("inbetween.txt")
-#     assert el.respond("I am feeling depressed") == "I see. Please, tell me about how you've been feeling down."
-#     assert 
+def test_DepressionConversation():
+    el = commented_eliza.Eliza()
+    el.load("inbetween.txt")
+    assert el.respond("I am feeling depressed") == "I see. Please, tell me about how you've been feeling down."
+    assert el.respond("My dog died recently") == "I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?"
+    assert el.respond("I have felt this way since my dog died ") == "Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?"
+    assert el.respond("goodbye") == None
 def test_ElizaForeign():
     el = commented_eliza.Eliza()
     el.load("depressed.txt")
