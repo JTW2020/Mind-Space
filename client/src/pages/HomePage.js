@@ -10,9 +10,9 @@ function HomePage() {
           <h1 className="
             text-6xl 
             font-bold">
-            Mind-Space
+            Eliza
           </h1>
-          <p className="mt-2">Welcome to Mind-Space. A modern take on Eliza.</p>
+          <p className="mt-2">Mind-Space. A modern take on human emotional interaction.</p>
         </div>
         <Chatbox />
       </div>
