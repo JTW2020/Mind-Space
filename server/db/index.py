@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+import os.environ as env
+
+database_config = 'postgresql://' + \
+    env.get('POSTGRES_USER') + ":" + env.get('')
 
 engine = create_engine(
     "postgresql://mindspaceuser:mindspaceapp@db:5432/mindspacedb"
