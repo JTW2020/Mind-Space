@@ -34,10 +34,10 @@ function Navbar() {
         ))}
       </div>
       <div className="flex space-x-4">
-        <div className="hover:cursor-pointer">
+        <div className="hover:cursor-pointer w-fit">
             <Link className='bg-gray-600 py-2 px-10 text-center rounded-lg hover:bg-gray-800' to='/signup'>Signup</Link>
         </div>
-        <div className="hover:cursor-pointer">
+        <div className="hover:cursor-pointer w-fit">
             <Link className="bg-purple-600 py-2 px-10 text-center rounded-lg hover:bg-purple-700" to="/login">Login</Link>
         </div>
       </div>
