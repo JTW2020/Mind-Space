@@ -24,6 +24,20 @@ def test_hello_endpoint():
     s = session.get('http://localhost:5000' + endpoint)
     assert s.status_code == 200
 
+def test_testEliza_endpoint():
+    session.trust_env = False
+    endpoint = '/api/testEliza'
+    s = session.get('http://localhost:5000' + endpoint)
+    assert s.status_code == 200
+
+
+def test_initialMsgEliza_endpoint():
+    session.trust_env = False
+    endpoint = '/api/initialMsgEliza'
+    s = session.get('http://localhost:5000' + endpoint)
+    assert s.status_code == 200
+#
+
 
 # def eliza_testEliza_route():
 #    # app = Flask(__name__)
