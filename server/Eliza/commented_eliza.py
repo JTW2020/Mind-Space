@@ -51,6 +51,7 @@ The boolean value, save, is true if this decomposition should be saved to memory
 The boolean value, saveOne, is true if this decomposition's output should be saved to memory if and only if no decomposition rules that precede it within the same keyword created a response that was saved to memory while processing the current user input.
 The list, reasmbs, contains all of the reassembly rules associated with the given decomposition rule
 These rules are cycled through when the same decomposition rule is used multiple times, and the next_reasmb_index value fascilitates this
+This list called react will store the actions that should be taken on the database when this decomposition rule is matched
 '''
 
 
@@ -61,6 +62,7 @@ class Decomp:
         self.saveOne = saveOne
         self.reasmbs = reasmbs
         self.next_reasmb_index = 0
+        self.react = []
 
 
 '''
@@ -162,11 +164,16 @@ class Eliza:
                     decomp = Decomp(parts, save, saveOne, [])
                     key.decomps.append(decomp)
 
-                # If the information is of type resmb then the content is split into parts which are then appended to the previously added decomp's reasmbs list.
+                # If the information is of type reasmb then the content is split into parts which are then appended to the previously added decomp's reasmbs list.
 
                 elif tag == 'reasmb':
                     parts = content.split(' ')
                     decomp.reasmbs.append(parts)
+
+                # If the information is of type react then add its content to this decomposition rule's react list.
+
+                elif tag == 'react':
+                    decomp.react.append(content)
 
     # This method simply clears the Eliza script information and loads in another script, therefore completing a context switch.
 
@@ -360,7 +367,9 @@ class Eliza:
                 log.debug('Decomp did not match: %s', decomp.parts)
                 continue
 
-            # If a decomposition rule matches, then perform the post-substitutions on the results.
+            # If a decomposition rule matches change the database to account for that, then perform the post-substitutions on the results.
+
+            self.changeDatabase(decomp.react)
 
             log.debug('Decomp matched: %s', decomp.parts)
             log.debug('Decomp results: %s', results)
@@ -513,6 +522,54 @@ class Eliza:
 
     def final(self):
         return random.choice(self.finals)
+
+    # This method will execute a series of database operations when a decomposition rule is matched.
+
+    def changeDatabase(self, react):
+        # The below for loop is used to execute each command that is in react, doing nothing if react is empty.
+        for command in react:
+            # The parity, which should be + or - will be at the beginning of the string, and is recorded.
+            parity = command[0]
+            # This line of code eliminated the first character from the string.
+            # It is used several times to continuously eliminate the first character in the string as needed.
+            command = command[1:]
+            # After the parity is a number that should specify the amount that the user value should change.
+            # It will need to be at least one digit, and that first digit is recorded.
+            amount = command[0]
+            # If what was retrieved was not a digit, raise an error.
+            if not amount.isdigit():
+                raise ValueError(
+                    "A number was not supplied appropriately to react list: " + ' '.join(react))
+            command = command[1:]
+            # This loop will add any remaining digits to the amount string while eliminating them one-by-one from the command string.
+            # Once this loop is complete the remaining string should just represent the attribute to change.
+            while command[0].isdigit():
+                amount += command[0]
+                command = command[1:]
+            # The attribute is recorded depending on the abbreviation, and an error is raised if no supported abbreviation is found.
+            attribute = ''
+            if command == 'de':
+                attribute = 'depression'
+            elif command == 'di':
+                attribute = 'disorder'
+            elif command == 'ang':
+                attribute = 'anger'
+            elif command == 'anx':
+                attribute = 'anxiety'
+            else:
+                raise ValueError("The attribute " +
+                                 command + " is not supported")
+
+            # Depending on the parity, the amount will be added to or subtracted from the attribute.
+            # If the parity is not + or -, raise an error.
+            # Right now print statements are used for testing, but they will eventually be replaced will commands to the database.
+
+            if parity == '+':
+                print('Adding ' + amount + ' to ' + attribute)
+            elif parity == '-':
+                print('Subtracting ' + amount + ' from ' + attribute)
+            else:
+                raise ValueError("Parity " + parity + " is not supported")
 
     '''
     This is the method for running Eliza after all of its attributes have been loaded from a text file.

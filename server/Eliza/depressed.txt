@@ -29,6 +29,7 @@ pre: mm-hm mhm
 pre: mmhm mhm
 pre: mmhmm mhm
 pre: mhmm mhm
+pre: apologize apologise
 post: am are
 post: your my
 post: me you
@@ -79,6 +80,7 @@ key: remember 5
     reasmb: Can you refresh my memory ?
 key: if 3
   decomp: * if i was *
+    react: +1anx
     reasmb: Would you say that you were (2) ?
     reasmb: Have you been (2) recently ? Why or why not ?
     reasmb: What would it mean to you if you were (2) ?
@@ -99,7 +101,7 @@ key: dream 3
     reasmb: What does that dream suggest to you ?
     reasmb: How has that dream affected you ?
     reasmb: Do any people appear in your dreams ? Why do you think they do or don't ?
-    reasmb: Do you believe that dreams have are reflective of what you're thinking ?
+    reasmb: Do you believe that dreams are reflective of what you're thinking ?
 key: perhaps
   decomp: *
     reasmb: What prevents you from being certain about this ?
@@ -129,13 +131,14 @@ key: espanol
     reasmb: Forgive me, I don't understand Spanish.
 key: xforeign
   decomp: *
-    reasmb: I speak only English.
+    reasmb: I am sorry, I only speak English.
 key: hello
   decomp: *
     reasmb: Hello there. What has you feeling down ?
     reasmb: Hi. How have you been feeling lately ?
 key: computer 50
   decomp: *
+    react: +1anx
     reasmb: Do computers worry you ? Why or why not ?
     reasmb: Why do you mention computers ?
     reasmb: Does me being a machine affect how I can help you ? How so ?
@@ -197,14 +200,17 @@ key: i 2
     reasmb: What would getting (3) mean to you ? Would it change the way you live if you knew you would be getting it in the near future ?
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
   decomp: * i am not @sad *
+    react: -1de
     reasmb: What would you say you are, then ?
     reasmb: How long do you expect to be this way ?
     reasmb: Is there anything in particular that you think about when it comes to why ?
   decomp: * i am never @sad *
+    react: -5de
     reasmb: Are you certain ? Why or why not ?
     reasmb: If you never are, then what would you say you are right now ?
     reasmb: Has this always been the case ? Why or why not ?
   decomp: * i am * @sad *
+    react: +1de
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
     reasmb: How long have you been (3) ? What does this suggest to you?
@@ -214,10 +220,12 @@ key: i 2
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
   decomp: * i am never @happy *
+    react: +1de
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
   decomp: * i am * @happy *
+    react: -5de
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
@@ -236,7 +244,7 @@ key: i 2
     reasmb: Do you believe that others think so ? Please explain why you believe they are right or wrong.
   decomp: * i am ^
     reasmb: I see. Can you tell me about the thoughts that are troubling you ?
-    reasmb: What lead to you feeling the way you do ?
+    reasmb: What led to you feeling the way you do ?
     reasmb: Please continue.
   decomp: * i am *
     reasmb: How has you being (2) affected your life ?
@@ -261,7 +269,7 @@ key: i 2
     reasmb: How much would you say you have been thinking about that, and why do you think that is the case ?
   decomp: * i cannot *
     reasmb: Can you expand on why you think that you can't (2) ?
-    reasmb: What experiences lead you to think that ?
+    reasmb: What experiences led you to think that ?
     reasmb: Even if it seems impossible, life really is surprising. What do you think would need to happen in order for you to be able to (2) ?
     reasmb: How has not being able to (2) affected the way you live ?
   decomp: * i do not * since *
@@ -495,7 +503,7 @@ key: always 1
 key: alike 10
   decomp: *
     reasmb: In what way ?
-    reasmb: What resemblence do you see ?
+    reasmb: What resemblance do you see ?
     reasmb: What does that similarity suggest to you ?
     reasmb: What other connections do you see ?
     reasmb: What made you make this connection ?
@@ -508,19 +516,22 @@ key: like 10
 key : died 3
   decomp: $ * died *
     reasmb: Would you want to speak about (1) that passed away right now ? If not, tell me what you would like to discuss instead.
-    reasmb: Have you thinking about the idea of death recently ? If so or if not, please explain your feelings.
+    reasmb: Have you been thinking about the idea of death recently ? If so or if not, please explain your feelings.
     reasmb: Have there been any recent developments in the way you feel ? Or is it the same as the last time you told me ?
   decomp: * died *
+    react: +5de
     reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
     reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
     reasmb: Would you like to tell me about (2) ? If not, why ?
     reasmb: Oh dear, was it sudden ?
 key : better 3
   decomp: * I feel better *
+    react: -5de
     reasmb: That's great! What do you think is fundamentally different now that let you feel this way ?
     reasmb: Wonderful! Do you think you can use what you've learned to pick yourself up if something happens again ?
     reasmb: I'm so glad that you feel better, but do you have any other concerns ?
   decomp: * never feel better *
+    react: +2de
     reasmb: It can certainly feel like things will never change. Please, do your best to tell me about how things have changed for you before.
     reasmb: That is what you feel now, and with this mindset you may be right. But your mind is changing all the time, isn't it ?
     reasmb: What do you think would need to happen in order for you to feel better ?

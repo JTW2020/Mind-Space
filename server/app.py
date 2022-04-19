@@ -116,6 +116,9 @@ def auth_user():
         login_user(user, remember=True)
         return 'OK'
 
+@app.route("/api/testSessionInfo")
+def test_session_info():
+    app.logger.info()
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):

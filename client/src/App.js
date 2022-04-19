@@ -15,15 +15,15 @@ import Layout from './pages/components/layout';
 function App() {
   return (
     <Router>
-      <Layout>
-        <div className="App">
+      <div className="h-screen bg-black">
+        <Layout>
           <Switch>
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/"><HomePage /></Route>
           </Switch>
-        </div>
-      </Layout>
+        </Layout>
+      </div>
     </Router>
   );
 }
