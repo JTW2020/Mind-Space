@@ -216,11 +216,13 @@ key: i 2
     reasmb: How long have you been (3) ? What does this suggest to you?
     reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
   decomp: * i am not @happy *
+    react: +2di
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
   decomp: * i am never @happy *
-    react: +1de
+    react: +4de
+    react: +4di
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
@@ -246,6 +248,30 @@ key: i 2
     reasmb: I see. Can you tell me about the thoughts that are troubling you ?
     reasmb: What led to you feeling the way you do ?
     reasmb: Please continue.
+  decomp: * i am * @fat *
+    react: +5di
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
+  decomp: * i am very * @fat *
+    react: +7di
+    reasmb: Do you think that being that way makes you a bad person ?
+    reasmb: Does this make you feel pretty ?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems?
+  decomp: * i am very * @fat ^
+    react: +4di
+    reasmb: Do you think that being that way makes you a bad person ?
+    reasmb: Does this make you feel pretty ?
+    reasmb: Why do you feel (3) ?
+    reasmb: Is (3) a bad thing to be ?
+    reasmb: If you were not (3), would that solve your problems
+  decomp: * i am not * @fat ?
+    react: -3de
+    reasmb: Do you think that being that way makes you feel better ?
+    reasmb: Is this good or bad to you ?
+    reasmb: Did someone call you that or was it a personal belief that came as you grew older ?
   decomp: * i am *
     reasmb: How has you being (2) affected your life ?
     reasmb: How long have you been (2) ?
@@ -544,7 +570,21 @@ key: not
     reasmb: What would being (2) mean in this case ?
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
-key: depressed 50
-  decomp: * depressed *
-    reasmb: I already know that you are depressed.
+key: self 2
+    decomp: * high esteem *
+        react: -4di
+        reasmb: That's great
+        reasmb: What have you done recently to feel better about yourself ?
+    decomp: * low esteem *
+        react: +6di
+        reasmb: Why do you feel you have low self esteem ?
+        reasmb: Have you looked into ways to improve you self esteem ?
+    decomp: * hatred *
+        react: +8di
+        reasmb: Why do you feel that you should hate yourself ?
+        reasmb: You shouldn't hate yourself.
+    decomp: * deprecate *
+        react: +4di
+        reasmb: Do self deprecating jokes make you feel better ?
+        reasmb: Has anyone made you feel this way directly ?
    

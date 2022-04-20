@@ -27,6 +27,7 @@ pre: aint am not
 pre: yup yep
 pre: suicidal suicide
 pre: harming harms harm 
+pre: death dying died
 pre: cares care
 pre: we friends friend
 pre: panicking panics panic
@@ -43,6 +44,7 @@ post: i'm you are
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
+synon: death kill myself
 synon: sad unhappy depressed sick downn hopeless
 synon: happy elated glad joyful enjoying laughing excited
 synon: anxious worried concerned uneasy distressed nervous
@@ -57,6 +59,7 @@ key: xnone
     reasmb: How has that been affecting you ?
 key: sorry
   decomp: *
+    react: +1anx
     reasmb: No need for apologies, I'm here to help you.
     reasmb: No worries, it's up to you what you want to talk about.
     reasmb: It's alright, you don't have to be apologetic. I'm happy to help as much as I can.
@@ -140,6 +143,7 @@ key: hello
     reasmb: Hi. How have you been feeling lately ?
 key: computer 50
   decomp: *
+    react: +1anx
     reasmb: Do computers worry you ? Why or why not ?
     reasmb: Why do you mention computers ?
     reasmb: Does me being a machine affect how I can help you ? How so ?
@@ -158,6 +162,7 @@ key: am
     reasmb: Can you please elaborate ?
 key: are
   decomp: * are you *
+    react: +1anx
     reasmb: Why are you interested in whether I am (2) or not ?
     reasmb: What would you prefer I be and why ?
     reasmb: I am a program designed to help people. Please tell me about what you want help with.
@@ -170,6 +175,7 @@ key: are
     reasmb: If that is true, does that mean that you have to respond to that ? Why or why not ?
 key: your
   decomp: * your *
+    react: +1anx
     reasmb: Why are you concerned over my (2) ?
     reasmb: What about your own (2) ?
     reasmb: Are you worried about someone else's (2) ?
@@ -193,6 +199,10 @@ key: was 2
     reasmb: If I was (2), how would that help or hinder my ability to help you ?
     reasmb: How would you feel if I had been (2) ? Why or why not ?
 key: i 2
+  decomp: * i @desire to @death *
+    react: +50de
+    react: +50di
+    reasmb: If you have a strong urge to end your own life, please call 800-273-8255 . We will get through this together. Can you elaborate more on what makes you feel this way ?
   decomp: * i @desire *
     reasmb: What would it mean to you if you got (3) ?
     reasmb: Why do you want (3) ? Be as specific as you want.
@@ -202,47 +212,68 @@ key: i 2
     reasmb: How certain are you that you need (3) in order to feel satisfied ? Why is that ?
     reasmb: Is anything stopping you from obtaining (3) ?
   decomp: * i am not @sad *
+    react: -1de
     reasmb: What would you say you are, then ?
     reasmb: How long do you expect to be this way ?
     reasmb: Is there anything in particular that you think about when it comes to why ?
   decomp: * i am never @sad *
+    react: -5de
     reasmb: Are you certain ? Why or why not ?
     reasmb: If you never are, then what would you say you are right now ?
     reasmb: Has this always been the case ? Why or why not ?
   decomp: * i am * @sad *
+    react: +1de
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
     reasmb: How long have you been (3) ? What does this suggest to you?
     reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
   decomp: * i am not @happy *
+    react: +2di
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
     reasmb: Is there anything you usually do that makes you feel more upbeat ?
   decomp: * i am never @happy *
+    react: +4de
+    react: +4di
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
   decomp: * i am * @happy *
+    react: -5de
+    react: -3di
+    react: -1anx
+    react: -3ang
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explain why you are (3) ? If not, does that matter to you ? 
   decomp: * i am not @anxious *
+    react: -1anx
     reasmb: How would you say you feel then ?
     reamsb: How long do you expect to feel this way ?
     reasmb: Is there anything in particular that you think about when it comes to why ?
     reasmb: How would you describe how you feel right now ?
   decomp: * i am never @anxious *
+    react: -5anx
     reasmb: If you never feel uneasy, how would you say you feel ?
     reasmb: Have you always never felt this way ? Why or why not ?
     reasmb: What do you think helps you not feel this way ?
   decomp: * i am * @anxious *
+    react: +1anx
     reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
     reasmb: How has being (3) affected the way you live ?
     reasmb: How long have you been (3) ? What does this suggest to you ?
     reasmb: Can you explain what made you (3) ? If not, can you describe what may be going on around you to make you feel this way ?
     reasmb: Are you doing anything that makes you feel happy or relieves your worries ? If so, what ?
+  decomp: * i * @panic *
+    react: +2anx
+    reasmb: What do you think contributed to this feeling ?
+    reasmb: What ways do you think you could prevent (2) from making this happen ?
+    reasmb: Does this feeling make it hard for you to focus ?
+    reasmb: What happens to you physically when this happens ? Do you feel sick ?
+    reasmb: When and where does this usually happen ?
+    reasmb: Is there anything that relieves your panicked feeling ?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
@@ -320,6 +351,7 @@ key: i 2
     reasmb: Do you wish to be able to (2) ?
     reasmb: Does that trouble you ? Why or why not ?
   decomp: * do i feel *
+    react: +1anx
     reasmb: Tell me more about such feelings.
     reasmb: Do you often feel (2) ? How has that affected you ?
     reasmb: Does anyone make you feel (2) ? Why ?
@@ -338,11 +370,13 @@ key: you
   decomp: * you remind me of *
     reasmb: goto alike
   decomp: * you are *
+    react: +1anx
     reasmb: What makes you think I am (2) ?
     reasmb: Does it please you to believe I am (2) ? Why or why not ?
     reasmb: Do you sometimes wish you were (2) ? Why so ?
     reasmb: Assuming I am (2), how do you think that affects my ability to help you ?
   decomp: * you * me *
+    react: +2anx
     reasmb: Why do you think I (2) you ?
     reasmb: Do you like to think that I (2) you ?
     reasmb: Why do you think that is ?
@@ -351,6 +385,7 @@ key: you
     reasmb: If I do (2) you -- what would that mean ?
     reasmb: Does someone else believe I (2) you ? Why ?
   decomp: * you *
+    react: +1anx
     reasmb: Forgive me, I'm not very equipped to talk about myself. What about you made you interested ?
     reasmb: Oh, I (2) ? How does that notion make you feel ?
     reasmb: Is there anyone else that also (2) ?
@@ -428,6 +463,11 @@ key: my 2
     reasmb: Has your (2) always been that way ?
     reasmb: Do others think that about your (2) ? Are they correct ? Why or why not ?
     reasmb: Is there anything else you can think of that affects you in a similar way ?
+  decomp: * my * @anxious *
+    reasmb: How do you think your (2) affect the people in your life ?
+    reasmb: How does your (2) affect yourself ?
+    reasmb: Would you say your (2) is a major problem in your life ?
+    reasmb: Do you think your (2) puts a strain on your relationships with some people ?
   decomp: * my *
     reasmb: Your (2) ? How does that affect you ?
     reasmb: How has your (2) made you feel in the past ?
@@ -460,6 +500,14 @@ key: can 3
     reasmb: What does being able to (2) mean for the different aspects of your life ?
     reasmb: What else does being able to (2) make you think about ?
     reasmb: What is your overall opinion of that ?
+  decomp: * it can *
+    reasmb: Can you expand on what you mean by that ?
+    reasmb: Is it often that way ? Why or why not ?
+    reasmb: What can you think of that prevents or could prevent it from being that way ?
+  decomp: * can * we * talk * about * something * else *
+    reasmb: Of course, what would you like to discuss ?
+    reasmb: Yes, what's on your mind ?
+    reasmb: Absolutely, what would you like for us to talk about ?
 key: what
   decomp: *
     reasmb: Why do you ask ?
@@ -496,7 +544,6 @@ key: care
   decomp: * nobody cares *
    reasmb: Why do you feel (2) ?
    reasmb: Has something happened to you to make you feel this way ?
-   decomp: * 
 key: friend
   decomp: * friend *
    reasmb: Is (2) very important to you ? Why or why not ?
@@ -505,6 +552,7 @@ key: friend
    reasmb: What do people do that make you feel this way and what do you wish they would change or continue ?
 key: everyone 2
   decomp: * @everyone *
+    react: +1anx
     reasmb: Really, (2) ?
     reasmb: Are you sure that it's (2) ?
     reasmb: Would you want this to change ? How so ?
@@ -544,20 +592,25 @@ key: like 10
     reasmb: goto alike
 key : died 3
   decomp: $ * died *
+    react: +5de
+    react: +1ang
     reasmb: Would you want to speak about (1) that passed away right now ? If not, tell me what you would like to discuss instead.
     reasmb: Have you thinking about the idea of death recently ? If so or if not, please explain your feelings.
     reasmb: Have there been any recent developments in the way you feel ? Or is it the same as the last time you told me ?
   decomp: * died *
+    react: +5de
     reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
     reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
     reasmb: Would you like to tell me about (2) ? If not, why ?
     reasmb: Oh dear, was it sudden ?
 key : better 3
   decomp: * I feel better *
+    react: -5de
     reasmb: That's great! What do you think is fundamentally different now that let you feel this way ?
     reasmb: Wonderful! Do you think you can use what you've learned to pick yourself up if something happens again ?
     reasmb: I'm so glad that you feel better, but do you have any other concerns ?
   decomp: * never feel better *
+    react: +2de
     reasmb: It can certainly feel like things will never change. Please, do your best to tell me about how things have changed for you before.
     reasmb: That is what you feel now, and with this mindset you may be right. But your mind is changing all the time, isn't it ?
     reasmb: What do you think would need to happen in order for you to feel better ?
@@ -572,30 +625,27 @@ key: not
     reasmb: Why do you think that is ?
 key: harm
   decomp: * harm others *
-    reasmb: Why do you think (2) would help ?
+    react: +1ang
+    reasmb: What may be another way that these feelings can be released ?
     reasmb: Do you believe others are in danger ? Why or why not ?
-    reasmb: Do you think there is a way you could prevent (2) ?
+    reasmb: Do you think there is a way you could prevent this ?
   decomp: *
     reasmb: Has something happened that made you think this ?
     reasmb: There are other ways this feeling can be released. What may be some other ways ? 
     reasmb: Do you believe the safety of you or others is in danger ?
 key: panic
-  decomp: * i panic *
-    reasmb: What do you think contributed to this feeling ?
-    reasmb: What ways do you think you could prevent (2) from making this happen ?
-    reasmb: Does this feeling make it hard for you to focus ?
-    reasmb: What happens to you physically when this happens ? Do you feel sick ?
-    reasmb: When and where does this usually happen ?
-    reasmb: Is there anything that relieves your panicked feeling ?
   decomp: *
+    react: +1anx
     reasmb: What has made you think about this ?
     reasmb: What do you think you could do in this situation that would help you ?
 key: alone
-  decomp: *
+  decomp: * i feel * @alone
+    react: +1anx
     reasmb: What has made you feel alone ? 
     reasmb: What are some things you enjoy doing ?
 key: argue
   decomp: * argue *
+    react: +1ang
     reasmb: How do you think this affects your the way you feel overall ?
     reasmb: What ways do you think you could reduce (2) ?
 key: suicide
@@ -605,9 +655,3 @@ key: suicide
   decomp: * suicide *
     reasmb: I am sorry to hear this. Where do you think this feeling comes from ?
     reasmb: What do you think contributes to this ?
-key: depressed 50
-  decomp: * depressed *
-    reasmb: I already know that you are depressed.
-key: anxious 50
-  decomp: * anxious *
-    reasmb: I already know that you are anxious. Can you explain more of what makes you feel this way ?

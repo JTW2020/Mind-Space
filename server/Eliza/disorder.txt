@@ -218,22 +218,40 @@ key: i 2
     reasmb: I am sorry to hear that. How would you describe how you feel, then ?
     reasmb: Can you think of what would cause this to change ?
     reasmb: How set in stone does this feel to you ? Why ?
+    decomp: * i am not @sad *
+    react: -1de
+    reasmb: What would you say you are, then ?
+    reasmb: How long do you expect to be this way ?
+    reasmb: Is there anything in particular that you think about when it comes to why ?
+  decomp: * i am never @sad *
+    react: -5de
+    reasmb: Are you certain ? Why or why not ?
+    reasmb: If you never are, then what would you say you are right now ?
+    reasmb: Has this always been the case ? Why or why not ?
+  decomp: * i am * @sad *
+    react: +1de
+    reasmb: I am sorry to hear that you are (3) . Would you like to talk about it ?
+    reasmb: How has being (3) affected the way you live ? Are you worried about any of this ?
+    reasmb: How long have you been (3) ? What does this suggest to you?
+    reasmb: Can you explain what made you (3) ? If not, trying your best may still take some of the weight off of you.
   decomp: * i am never @happy *
     react: +4di
+    react: +5de
     reasmb: Are you certain that you're never (2) ? Why or why not ?
     reasmb: Would you like to elaborate on why this is the case ?
     reasmb: Would you like to elaborate on what could possibly change this ?
   decomp: * i am * @happy *
+    react: -5de
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
     reasmb: Can you explan why you are (3) ? If not, does that matter to you ? 
- decomp: * i am * @fat *
+  decomp: * i am * @fat *
     react: +5di
     reasmb: Why do you feel (3) ?
     reasmb: Is (3) a bad thing to be ?
     reasmb: If you were not (3), would that solve your problems?
-decomp: * i am very * @fat *
+  decomp: * i am very * @fat *
     react: +7di
     reasmb: Do you think that being that way makes you a bad person ?
     reasmb: Does this make you feel pretty ?
@@ -493,4 +511,19 @@ key: not
     reasmb: What would being (2) mean in this case ?
     reasmb: Has being (2) been a concern before ? Why or why not ?
     reasmb: Why do you think that is ?
+   decomp: * can * we * talk * about * something * else *
+    reasmb: Of course, what would you like to discuss ?
+    reasmb: Yes, what's on your mind ?
+    reasmb: Absolutely, what would you like for us to talk about ?
+  decomp: * died *
+    react: +5de
+    reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
+    reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
+    reasmb: Would you like to tell me about (2) ? If not, why ?
+    reasmb: Oh dear, was it sudden ?
+   decomp: * never feel better *
+    react: +2de
+    reasmb: It can certainly feel like things will never change. Please, do your best to tell me about how things have changed for you before.
+    reasmb: That is what you feel now, and with this mindset you may be right. But your mind is changing all the time, isn't it ?
+    reasmb: What do you think would need to happen in order for you to feel better ?
    
