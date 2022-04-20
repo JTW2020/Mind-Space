@@ -27,6 +27,7 @@ pre: aint am not
 pre: yup yep
 pre: suicidal suicide
 pre: harming harms harm 
+pre: death dying died
 pre: cares care
 pre: we friends friend
 pre: panicking panics panic
@@ -43,6 +44,7 @@ post: i'm you are
 synon: belief feel think believe wish
 synon: family mother mom father dad sister sisters brother brothers wife children child uncle uncles aunt aunts cousin cousins niece nieces nephew nephews grandfather grandpa grandfathers grandpas grandmother grandma grandmothers grandmas
 synon: desire want need
+synon: death kill myself
 synon: sad unhappy depressed sick downn hopeless
 synon: happy elated glad joyful enjoying laughing excited
 synon: anxious worried concerned uneasy distressed nervous
@@ -193,6 +195,8 @@ key: was 2
     reasmb: If I was (2), how would that help or hinder my ability to help you ?
     reasmb: How would you feel if I had been (2) ? Why or why not ?
 key: i 2
+  decomp: * i @desire to @death *
+    reasmb: If you have a strong urge to end your own life, please call 800-273-8255 . We will get through this together. Can you elaborate more on what makes you feel this way ?
   decomp: * i @desire *
     reasmb: What would it mean to you if you got (3) ?
     reasmb: Why do you want (3) ? Be as specific as you want.
@@ -243,6 +247,13 @@ key: i 2
     reasmb: How long have you been (3) ? What does this suggest to you ?
     reasmb: Can you explain what made you (3) ? If not, can you describe what may be going on around you to make you feel this way ?
     reasmb: Are you doing anything that makes you feel happy or relieves your worries ? If so, what ?
+  decomp: * i * @panic *
+    reasmb: What do you think contributed to this feeling ?
+    reasmb: What ways do you think you could prevent (2) from making this happen ?
+    reasmb: Does this feeling make it hard for you to focus ?
+    reasmb: What happens to you physically when this happens ? Do you feel sick ?
+    reasmb: When and where does this usually happen ?
+    reasmb: Is there anything that relieves your panicked feeling ?
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
@@ -572,21 +583,14 @@ key: not
     reasmb: Why do you think that is ?
 key: harm
   decomp: * harm others *
-    reasmb: Why do you think (2) would help ?
+    reasmb: What may be another way that these feelings can be released ?
     reasmb: Do you believe others are in danger ? Why or why not ?
-    reasmb: Do you think there is a way you could prevent (2) ?
+    reasmb: Do you think there is a way you could prevent this ?
   decomp: *
     reasmb: Has something happened that made you think this ?
     reasmb: There are other ways this feeling can be released. What may be some other ways ? 
     reasmb: Do you believe the safety of you or others is in danger ?
 key: panic
-  decomp: * i panic *
-    reasmb: What do you think contributed to this feeling ?
-    reasmb: What ways do you think you could prevent (2) from making this happen ?
-    reasmb: Does this feeling make it hard for you to focus ?
-    reasmb: What happens to you physically when this happens ? Do you feel sick ?
-    reasmb: When and where does this usually happen ?
-    reasmb: Is there anything that relieves your panicked feeling ?
   decomp: *
     reasmb: What has made you think about this ?
     reasmb: What do you think you could do in this situation that would help you ?
