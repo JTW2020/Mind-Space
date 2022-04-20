@@ -434,8 +434,8 @@ key: my 2
     reasmb: Does that make you think of anything else that's in your life ?
     reasmb: How important is this to you ? Why ?
   decomp: * my * @anger *
-    reasmb: how do you think your (2) affect the people in your life ?
-    reasmb: how does your (2) affect yourself ?
+    reasmb: How do you think your (2) affect the people in your life ?
+    reasmb: How does your (2) affect yourself ?
     reasmb: Would you say your (2) is a major problem in your life ?
     reasmb: Do you think your (2) puts a strain on your relationships with some people ?
 key: can 3
