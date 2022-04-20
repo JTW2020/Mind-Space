@@ -24,9 +24,9 @@ function SignupPage() {
 
   return (
     <div className="flex justify-center text-white">
-      <div className="space-y-2.5 border-2 px-8 py-4 rounded-md">
+      <div className="space-y-2.5 border-2 border-purple-500 px-8 py-4 rounded-md">
         <h1 className="text-center font-semibold text-3xl">
-          Signup
+          Sign Up
         </h1>
         <form className="space-y-4" onSubmit={handleSignup}>
           <div className="space-y-1">
@@ -61,9 +61,9 @@ function SignupPage() {
           </div>
           <div className="flex justify-center">
             <input
-              className="bg-green-600 hover:bg-green-700 hover:cursor-pointer py-2 px-8 rounded-md"
+              className="bg-purple-500 hover:bg-blue-700 hover:cursor-pointer py-2 px-8 rounded-md"
               type="submit"
-              value="Signup"
+              value="Sign Up"
               onSubmit={handleSignup} />
           </div>
         </form>

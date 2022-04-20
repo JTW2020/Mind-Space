@@ -51,7 +51,7 @@ function Chatbox() {
           <input className="text-black rounded-sm w-full p-2" onChange={handleMsgInputChange} />
         </div>
       </form>
-      <button className="bg-purple-500 mt-4 rounded-sm py-1 px-4" onClick={handleSubmitMsg}>
+      <button className="bg-purple-500 hover:bg-blue-700 hover:cursor-pointer py-2 px-8 rounded-md" onClick={handleSubmitMsg}>
         Send to Eliza
       </button>
     </div>
