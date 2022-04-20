@@ -555,6 +555,7 @@ key : died 3
     reasmb: Do you think (1) passing away could a source of your anger ?
   decomp: * died *
     react: +5de
+    react: +1ang
     reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
     reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
     reasmb: Would you like to tell me about (2) ? If not, why ?
