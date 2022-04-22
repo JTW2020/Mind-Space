@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Chatbox from "./components/chatbox_components/Chatbox";
+import Chatbox from "./components/chatbox_components/Chatbox"
 
-function HomePage() {
-  return (
+const ChatboxPage = () => {
+  
+  return(
     <div className="HomePage text-white font-bold">
       <div className="flex flex-col items-center justify-center w-100">
         <div className="text-center">
@@ -14,9 +15,10 @@ function HomePage() {
           </h1>
           <p className="mt-2">Mind-Space. A modern take on human emotional interaction.</p>
         </div>
+        <Chatbox/>
       </div>
     </div>
   )
 }
 
-export default HomePage;
+export default ChatboxPage;

@@ -3,6 +3,7 @@ from flask import jsonify  # Potentially used for later purposes
 from flask import Flask, request, Response, render_template
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user
+from os import environ as env
 
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
@@ -23,8 +24,6 @@ init_db()
 CORS(app)
 
 # Instantiating Eliza here
-eliza = Eliza()
-eliza.load('./Eliza/inbetween.txt')
 
 ''' 
 Kind of like the login helper method 
@@ -57,6 +56,18 @@ def api():
 @app.route("/api/msgEliza", methods=['POST'])
 def msgToEliza():
     error = None
+
+    '''
+    Beforehand Eliza was instantiated at the top of the file, we now need to pull the
+    Eliza instance from the database to pass responses in to
+
+    will look something like this: 
+
+    - retrieve Eliza from db
+    - instantiate it
+    - pass methods to the object
+    - get and return responses 
+    '''
     if request.method == 'POST':
 
         # This method gets the json data from the request object
@@ -97,6 +108,9 @@ def create_user():
         db_session.add(user)
         db_session.commit()
 
+        eliza = Eliza()
+        eliza.load('./Eliza/inbetween.txt')
+
     return 'OK'
 
 
@@ -116,9 +130,11 @@ def auth_user():
         login_user(user, remember=True)
         return 'OK'
 
+
 @app.route("/api/testSessionInfo")
 def test_session_info():
     app.logger.info()
+
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):

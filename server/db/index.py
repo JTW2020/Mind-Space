@@ -19,4 +19,9 @@ Base.query = db_session.query_property()
 def init_db():
     # import models
     import db.user_model
+    import db.unique_eliza_model
+    import db.disorder_reassembly_rating_model
+    import db.depression_reassembly_rating_model
+    import db.anxiety_reassembly_rating_model
+    import db.anger_reassembly_rating_model
     Base.metadata.create_all(bind=engine)
