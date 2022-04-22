@@ -1,0 +1,801 @@
+commit 58550811b856fc5c23030047581d12e4f677b6ed
+Merge: a983ac52 c1ae19a4
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 19 21:25:37 2022 -0400
+
+    Merge remote-tracking branch 'origin/ContextSwitching' into Database_Connection
+
+commit c1ae19a48047dd7ccd8f7ec56de3944609e64e18
+Merge: 65b31f4b 0bb48426
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 21:02:33 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 65b31f4b15fcb50a66edbdd90ef1e5b5e168a61f
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 21:02:27 2022 -0400
+
+    Updated anxious.txt
+    
+    Added react statements for severity
+
+commit fd8054bdee7b2fad1e466679d433525ae968af4e
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 21:02:02 2022 -0400
+
+    Updated anger.txt
+    
+    Fixed minor lowercase issues
+
+commit 0bb484268497b6ee52931b4a344e9778c1d0b57e
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Tue Apr 19 20:55:00 2022 -0400
+
+    added more reacts
+
+commit ba75fba7f180ecb1f265fd56cc300a2bad1a69d4
+Merge: 886473f7 ebc48d3d
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Tue Apr 19 20:46:21 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 886473f75d23894727442be0d187690e70918bc3
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Tue Apr 19 20:46:12 2022 -0400
+
+    updating reacts to anger
+
+commit ebc48d3d2cffcfe5ec71f5b7dbd893a82b13d36d
+Merge: 330dba75 78248da4
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 20:33:10 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 330dba756188058cd1bb8b51c13282a090fe531a
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 20:32:58 2022 -0400
+
+    Updates to anxious.txt
+    
+    Added specific suicide hotline number as well
+
+commit 78248da4c2c5b33b76942c7c362d5267b89fd29f
+Merge: 8de775e8 83169274
+Author: NailahJ <nailahij@gmail.com>
+Date:   Tue Apr 19 20:18:12 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 8de775e84d46b748766357f970901c6074a85e94
+Author: NailahJ <nailahij@gmail.com>
+Date:   Tue Apr 19 20:18:04 2022 -0400
+
+    added react from depressed.txt
+
+commit 831692740281da538997c7b4985729930cc3947c
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Apr 19 20:10:36 2022 -0400
+
+    Create elizatest.py
+    
+    Created just to test Eliza on personal laptop based on changes being made
+
+commit a983ac52120c6e4126e9fde6253a052eefda0240
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 19 09:52:04 2022 -0400
+
+    table for Eliza storage
+
+commit f4d85daa5602f9d67a9efba28e6b25f447af089f
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 18 16:37:18 2022 -0400
+
+    button
+
+commit 7e2be2764cac9a313acc820b5d7ba411cddaa0ad
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 18 16:29:09 2022 -0400
+
+    Refactoring and adding more stuff to navbar
+
+commit 4ba387efdf4c65c3ed66493b3b0ad4640b4b0934
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 18 07:33:54 2022 -0400
+
+    adjusting the navbar
+
+commit 71cd462a612fd1f44f92b39280798d6d25362f7b
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Apr 17 19:25:36 2022 -0400
+
+    Updated the context files.
+    
+    Updated the context files.
+
+commit 99ded34019b9c7fc9d78ec0fe1c1c014819e65e5
+Merge: 60a7fbf0 42f41a1c
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Apr 17 19:04:38 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 60a7fbf067bfb720956746eed6aa693d52521c56
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Apr 17 19:04:36 2022 -0400
+
+    Added required methods to the Eliza program.
+    
+    Added required methods to the Eliza program.
+
+commit 42f41a1c67f0378686d6a730f20f6dbfba9b3577
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Sun Apr 17 13:34:27 2022 -0400
+
+    Update anger.txt
+    
+    most recent edition of anger commit
+
+commit f851e485337f2362993ea8f7a4c6e606670b478a
+Merge: a5720015 40f23f32
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Sun Apr 17 13:11:50 2022 -0400
+
+    Merge remote-tracking branch 'origin/ContextSwitching' into Database_Connection
+
+commit 40f23f32e4e18f154a7b16e7bd01ad372f50ee28
+Author: Joel Thompson <jt10280@georgiasouthern.edu>
+Date:   Sun Apr 17 08:47:32 2022 -0400
+
+    fixed small errors in commented_eliza.py and inbetween.txt
+
+commit 47fa56cfcf828676db89fc1695b8b72dad84a0cc
+Merge: 45f8741d 2a666199
+Author: Joel Thompson <jt10280@georgiasouthern.edu>
+Date:   Thu Apr 14 12:57:03 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 2a666199b42b3f6702585491eeb03d6ee44ee20e
+Author: NailahJ <nailahij@gmail.com>
+Date:   Thu Apr 14 11:39:09 2022 -0400
+
+    Update disorder.txt
+
+commit a57200158d491caf2cbad7cf88ab83a6b6631e56
+Merge: 9e6ee366 be22d5ea
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 12 13:31:06 2022 -0400
+
+    Merge branch 'Database_Connection' of https://github.com/JTW2020/Mind-Space into Database_Connection
+
+commit 9e6ee3663e7fa50b9648c530b15eb3003c9dedd2
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 12 13:31:03 2022 -0400
+
+    added a potential route for manual testing
+
+commit be22d5ea2e0bc113cc9eb8f78fb6383468aa1a4a
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 12 13:28:08 2022 -0400
+
+    was missing g++ dependency in the container?
+
+commit 585f218d099a0f25f5b87bdc30971aba3024acfa
+Merge: aec78fb7 5d2d96a8
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 11 19:24:42 2022 -0400
+
+    Merge remote-tracking branch 'origin/ContextSwitching' into Database_Connection
+
+commit aec78fb7f6ecd247be4956255ebba94167f80eb8
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 11 19:21:13 2022 -0400
+
+    added models for each mental illness
+
+commit 68cd88f923b0d7cc1e4ee5c318df960469627dbe
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 11 15:06:01 2022 -0400
+
+    login/signup page functional; user sessions a go
+
+commit 8640ad05a413727c54571c9c03b992742ec999ba
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 11 08:08:25 2022 -0400
+
+    Database is connected and user model made!
+
+commit 5d2d96a8351438fe0b04bcaff89c64ec49b7b2ba
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Sat Apr 9 16:22:54 2022 -0400
+
+    Update disorder.txt
+
+commit f52324c58f9bcf2d56700d1c6715963bd0edec85
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Sat Apr 9 16:22:27 2022 -0400
+
+    Update disorder.txt
+
+commit 22360419e67e7ee2bec691355a270038caddb7f9
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Sat Apr 9 16:10:38 2022 -0400
+
+    updates to disorder.txt
+
+commit b89e3d70375f035564bf00c28418c33eb0a7b469
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 15:46:43 2022 -0400
+
+    sqlalchemy engine is connected to psql
+
+commit a29ee7ea3e4c01c799bd1c87e274d991316a4261
+Merge: 16d6a1ef 2e7d193c
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:17:49 2022 -0400
+
+    trying to pull from server
+
+commit 16d6a1eff12972e44bf4d32c1e2005c52f8d07dd
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:15:20 2022 -0400
+
+    deleted cache on my branch
+
+commit 60824a4b72c28313bbb18e102285a146650a7483
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:13:40 2022 -0400
+
+    commit before merge
+
+commit 50c74ca40b7163a7c6884a76b30f06f68859f019
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:13:16 2022 -0400
+
+    ignores pycache directory
+
+commit e07211bbe5731280618c9d28da8a595828e7acf2
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:12:03 2022 -0400
+
+    commit before merge
+
+commit 2e7d193cc309c25e984e5bd3a82f98909304b4ca
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Fri Apr 8 11:07:52 2022 -0400
+
+    added skeletonized pages for frontend
+
+commit 0186062d079524f62bc62c2f6c9ba496b394c2e8
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 5 12:07:10 2022 -0400
+
+    Changed the gitignore
+
+commit 3e554dee7fa965284060a691e8dd0291a1fb89b3
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Apr 5 12:04:41 2022 -0400
+
+    Changed to mariadb vs mysql
+
+commit 00fc6a6d90d356f8c12a8201b9628ef7f06cd1cd
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 4 15:34:15 2022 -0400
+
+    adjusted dockerfile and docker-compose
+
+commit cc5ef4b12cf62805f4dbb18d5dd2ffbc8feeae51
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 4 15:16:05 2022 -0400
+
+    added some boilerplate for db
+
+commit 677831562dfb27b1dcd87ab7bdfe3eafaad402fe
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 4 12:16:49 2022 -0400
+
+    includes env and build files
+
+commit 2a4d2788b0bfa04cdb18eae4b83fb1e60540e897
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Apr 4 12:00:23 2022 -0400
+
+    adjusted docker compose for coming DB
+
+commit 7c40c02ad5b37dedcc1fec7efcf11fbc8149d67b
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Fri Apr 1 15:29:19 2022 -0400
+
+    Made some corrections to depressed.txt and added reacts
+    
+    Made some corrections to depressed.txt and added reacts
+
+commit a9610ff965a79a025839c391451fbf3943fe6648
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Fri Apr 1 10:20:06 2022 -0400
+
+    Added the capability to read and react to instructions to update the database to the Eliza program.
+    
+    Added the capability to read and react to instructions to update the database to the Eliza program.
+
+commit 7dbb48b0cbc0ebb6ed376d6d9fb8129e3792e0a7
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Fri Apr 1 09:20:29 2022 -0400
+
+    Created spreadsheet_maker.py and countReassemblies.py
+    
+    Created spreadsheet_maker.py and countReassemblies.py
+
+commit f917dcae811013343289c568f4add2210417d81c
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Wed Mar 30 21:50:51 2022 -0400
+
+    Update anxious.txt
+
+commit fde536b4edcb04c9ad2d062957d10ec32dd7fe28
+Merge: cbfcf91b 6392b972
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Wed Mar 30 20:30:16 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit cbfcf91b25675392e525414d2681afcb4f809afa
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Wed Mar 30 20:30:13 2022 -0400
+
+    Update anxious.txt
+    
+    Attempted to updated based on comments in Google Doc
+
+commit 6392b97241f9ed7e29eb67c1141982c2c677b640
+Merge: 9c93b22c fe6ed894
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Tue Mar 29 12:44:01 2022 -0400
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 9c93b22c533690d0331d14d409c71dbba5bcbef9
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Tue Mar 29 12:43:56 2022 -0400
+
+    minor edits to disorder.txt
+
+commit bdc4636340e0c30d2f62076f927d780738d761fe
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Mar 29 12:10:28 2022 -0400
+
+    small update to docker-compose
+
+commit 7f808cc26f88214f5699ca89dc10712a78b57eda
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Mar 29 12:05:13 2022 -0400
+
+    Added sqlalchemy and docker compose
+
+commit 88a0a2eff5b2834d052cf5d514c554d541d1d2f2
+Merge: 7f6380a9 c848ff85
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Mar 29 11:53:11 2022 -0400
+
+    Merge branch 'ContextSwitching' into start-of-the-frontend-design
+
+commit c848ff857f67bd47983825665893673ac936fd09
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Mar 29 11:51:38 2022 -0400
+
+    Changes were made?
+
+commit fe6ed8946010b85da8a20a6d53f8ae69c49c4dbb
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Wed Mar 23 15:03:16 2022 -0400
+
+    Fixed a minor typo.
+    
+    Fixed a minor typo.
+
+commit c2025ba1f1468f2c864d308be28eb9a9c2b5b031
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Tue Mar 22 15:28:59 2022 -0400
+
+    updates to disorder.txt
+
+commit 3c2f2ac9b9a31e155b79bca0ff8da77de35645ae
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Mar 22 10:39:43 2022 -0400
+
+    Update anxious.txt
+
+commit 40d2eea80a6036d934ed71d47f98cf17087df3d6
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Mon Mar 21 18:32:41 2022 -0400
+
+    Anger update
+    
+    pushing current anger.txt document
+
+commit 7f6380a999b2b664f7747033feb3862607cb3402
+Merge: af09a33d 3921e9ad
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Mar 7 21:39:57 2022 -0500
+
+    Merge remote-tracking branch 'origin/ContextSwitching' into start-of-the-frontend-design
+
+commit ed3edd8c4d94349703f76e89992d01e4179053a7
+Merge: eec217da 3921e9ad
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Mon Mar 7 19:18:47 2022 -0500
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit eec217da69d62e37446a84536974116ce1ee4779
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Mon Mar 7 19:18:40 2022 -0500
+
+    Update disorder.txt
+
+commit 3921e9ada90a65b250569ec5ee0f012f35fef262
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Mon Mar 7 18:28:58 2022 -0500
+
+    update anger.txt
+    
+    Added some line to anger.txt
+
+commit bee3df1eb9b0496437154bd0c4bc3a54ac582387
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Sun Mar 6 14:00:47 2022 -0500
+
+    Update self esteem key/decomp
+
+commit ea2058e4c42cf04f138180488aac7c782305e788
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Sun Mar 6 13:38:14 2022 -0500
+
+    Update commented_eliza.py
+
+commit 45f8741d815b98430ade0c3ea6470525f1b16b50
+Merge: 08a753b6 2ec83025
+Author: Joel Thompson <jt10280@georgiasouthern.edu>
+Date:   Fri Mar 4 09:09:05 2022 -0500
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit 2ec830252b0b48a0ed7cc987e9d9682fd4cfbf32
+Merge: fd0a7273 f862a804
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Thu Mar 3 20:17:59 2022 -0500
+
+    Merge branch 'ContextSwitching' of https://github.com/JTW2020/Mind-Space into ContextSwitching
+
+commit fd0a7273d7d04483e38f1a82c4717022d3b75699
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Thu Mar 3 20:17:55 2022 -0500
+
+    Update anxious.txt
+
+commit f862a8040f5806c07a88ddcafdd075372eb105db
+Author: aporter8901 <aporter8901@gmail.com>
+Date:   Thu Mar 3 15:40:34 2022 -0500
+
+    Updating anger.txt
+    
+    Still need to do running test cases but will not run on my machine and cannot figure out the problem.
+
+commit af09a33d94579854a41ac00a95a389c3eb8a149b
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Thu Mar 3 15:13:03 2022 -0500
+
+    got eliza messaging with user
+
+commit 5b0ab3ecebee6ef953e6867786da958218534d04
+Merge: 63e5cd85 ed2f3183
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Thu Mar 3 13:34:49 2022 -0500
+
+    Merge branch 'start-of-the-frontend-design' of https://github.com/JTW2020/Mind-Space into start-of-the-frontend-design
+
+commit 63e5cd85e84dc38453f7e0ddfeddfaf1608cead3
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Thu Mar 3 13:31:36 2022 -0500
+
+    merged
+
+commit 0ad4046ddf05e9669377751c6ea3d7822c478aeb
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Tue Mar 1 21:42:03 2022 -0500
+
+    Update anxious.txt
+
+commit 4b56c3f8405018fd0f1ede359cd9cf094bd52d85
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Tue Mar 1 11:09:15 2022 -0500
+
+    minor edits disorder.txt
+
+commit 08a753b619bcc317fe2193a1ad6669bdb6ab284b
+Author: Joel Thompson <jt10280@georgiasouthern.edu>
+Date:   Sun Feb 27 16:16:25 2022 -0500
+
+    Updated test_eliza.py to use new commented_eliza file.
+
+commit d6647e5b966c57f07810a9ab411491829a62c5e2
+Author: Joel Thompson <jt10280@georgiasouthern.edu>
+Date:   Sun Feb 27 16:12:00 2022 -0500
+
+    Updated test_eliza.py to account for the context switch.
+
+commit 458db8da52f23fceece05121ebffdc2aa51ed4ee
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Feb 27 16:11:50 2022 -0500
+
+    Added to depressed.txt
+    
+    Added to depressed.txt
+
+commit 6e3279873068e5cd9ae682e41619f527271d09c2
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Thu Feb 24 23:28:49 2022 -0500
+
+    Update anxious.txt
+    
+    Added more specific phrases. Found key: everyone 2 to have Really misspelled
+
+commit acca6ebc6aca1ef58cae64778efe214f5d2fa4b7
+Author: ke05674 <ke05674@georgiasouthern.edu>
+Date:   Thu Feb 24 17:29:56 2022 -0500
+
+    Create anxious.txt
+
+commit 70012e8efc2a6f6d62ca13f0a2f67c3d0ac708d3
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Wed Feb 23 23:42:24 2022 -0500
+
+    Changes to disorder.txt and connection to inbetween.txt
+
+commit 92ddf3836d08488a11a39ce9867e10b20341be9d
+Merge: 0d3fed0d 47d36ff2
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 22 12:03:33 2022 -0500
+
+    Merge branch 'start-of-the-frontend-design' of https://github.com/JTW2020/Mind-Space into start-of-the-frontend-design
+
+commit 6a9bda933b561215efedfdd9a0dbe8e0e401fb78
+Author: nailahi <97451444+nailahi@users.noreply.github.com>
+Date:   Tue Feb 22 12:01:58 2022 -0500
+
+    creation of disorder context
+
+commit 0d3fed0dab0b283c38953df54ed2780173ad9666
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 22 11:58:05 2022 -0500
+
+    removed dummy images
+
+commit e244d1269f2e8eb1f0e959c2949c8b30dabc6596
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Feb 20 17:08:03 2022 -0500
+
+    Slight Eliza and text file changes.
+    
+    Made miscellaneous changes to inbetween.txt and depression.txt
+    The program now determines a rule as matching no remaining words if the only parts left are *'s and/or ^'s.
+
+commit 37158f948042ed282024ff9bf6ba990a6841c40e
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Feb 20 14:49:15 2022 -0500
+
+    Added to depressed.txt and added Eliza features.
+    
+    Began building off of depressed.txt and added Eliza features which are detailed in the change log.
+
+commit ed2f318346438e66d2b088a9cf89d918ebf72b65
+Merge: f9684a2f 792ba3eb
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Feb 20 14:13:26 2022 -0500
+
+    Merge pull request #16 from JTW2020/ContextSwitching
+    
+    Context switching
+
+commit f9684a2f1a32925026324448c6fd93b199ad5823
+Merge: ded85988 47d36ff2
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sun Feb 20 10:06:08 2022 -0500
+
+    Merge pull request #11 from JTW2020/start-of-the-frontend-design
+    
+    Start of the frontend design
+
+commit 47d36ff24656d626d59118fdd4046b11fa1231d9
+Merge: 02dae96e 2d67460e
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Sat Feb 19 21:51:12 2022 -0500
+
+    Merge pull request #12 from JTW2020/implementing-docker
+    
+    we have dockerized the flask application
+
+commit 2d67460e61191190ad2e7bec440c86812e6ef9a5
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Sat Feb 19 21:49:32 2022 -0500
+
+    we have dockerized the flask application
+
+commit 02dae96ea06fb029291ba6cc995b636a459de6fc
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Sat Feb 19 14:10:11 2022 -0500
+
+    messages are successfully rerendering page
+
+commit accb756de0de154ca1ad54dc4c4f0cc4df18f5df
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Thu Feb 17 15:24:11 2022 -0500
+
+    comms and mock-up chatbox created
+
+commit cf59a04a247606d2ac243563aeccbf0646d25017
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Thu Feb 17 10:21:04 2022 -0500
+
+    Updated the readme w/ instructions for readme
+
+commit b70b18c6ae3eb7f05d2722cea0e66db91d0f6dcd
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Wed Feb 16 16:28:25 2022 -0500
+
+    can store messages from user and flask on front
+
+commit c4875f5a599bb925f0a9ee17cd0cbc0ffd8e7637
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Wed Feb 16 15:08:02 2022 -0500
+
+    pogging; send & receive data b/w front & back
+
+commit ddfe6f2ae47a74d54fee35eab7b8a49e9225ad28
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Wed Feb 16 08:52:28 2022 -0500
+
+    added axios to handleSubmit button
+
+commit 2c71cb8076d945874f4a72b592132c785dadda4e
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 15 23:29:40 2022 -0500
+
+    test output from endpoint
+
+commit e0f81425db62782fec7b89ed6346bde25f5733a0
+Author: Jonathan Nguyen <wthunder@Jonathans-MacBook-Pro.local>
+Date:   Tue Feb 15 23:15:00 2022 -0500
+
+    The frontend now has the ability to store state.
+
+commit 792ba3eb8fbde0b091b8f576492447b96888ef47
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sat Feb 12 16:07:35 2022 -0500
+
+    Modified depressed.txt to make it more appropriate.
+    
+    With the changes made to the depressed context it should serve as a good baseline for the other three contexts, with a few changes. From here additions and alterations should be made based on manual testing to further customize each context to their purpose.
+
+commit 21e68d364b18976653cc5a7aff61a8ed31bb339d
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Thu Feb 10 17:25:06 2022 -0500
+
+    Initial inbetween context created.
+    
+    I made the first iteration of the inbetween context, which Eliza will use when determining which topical context it should use. Eliza now loads up inbetween.txt first. It references some tentative context names that don't exist yet, but depression.txt does.
+
+commit 2a3f5360b69ed92048c28aea5d659aba51bd3188
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Wed Feb 9 12:36:31 2022 -0500
+
+    Eliza now handles question marks.
+    
+    If the user input is used in the output, the program will not duplicate question marks in its response.
+
+commit 89079690ea758f5acbe12dbe3c719edecc3f1f02
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Wed Feb 9 10:06:22 2022 -0500
+
+    Can now output debug information.
+    
+    Added a line which sets the logger to output debug messages to the console when it is not commented out.
+
+commit 5d99895741d203618fc08c9c81ce9e4969bf36a6
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 8 21:04:18 2022 -0500
+
+    has the dummy frontend
+
+commit 9a0ea554f7fc1213e43efe4e9ea51aa16af18f8d
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 8 09:51:57 2022 -0500
+
+    clientside is presentable as basic demo only
+
+commit 41dec26694ec0c130ec311023c5d54bc23718dde
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Tue Feb 8 00:16:45 2022 -0500
+
+    added text box and some more styling
+
+commit 98e49c22fb7c7ae9b0a595e63bf9f2569d7736a1
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Feb 7 15:44:25 2022 -0500
+
+    started on homepage styling
+
+commit 154ff9313e91b55d9f0e5535f454c3b6702b7583
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Feb 7 15:43:45 2022 -0500
+
+    added some styling to the home page
+
+commit ded85988e02b0d9bd0eb88a596dcba644ea64214
+Merge: 21aaee42 62aaf88e
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Mon Feb 7 07:43:41 2022 -0500
+
+    Merge pull request #4 from JTW2020/ContextSwitching
+    
+    Gave Eliza the ability to context switch.
+
+commit 62aaf88eeccbe127b0f5b77dc401f198da65dc08
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Sat Feb 5 15:02:18 2022 -0500
+
+    Gave Eliza the ability to context switch.
+    
+    Eliza now has the ability to switch contexts when prompted to by its current script. Details can be found in the Eliza change log.
+
+commit 21aaee42dc88865e2942d6c85438444633d9606a
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Tue Feb 1 12:07:47 2022 -0500
+
+    Update README.md
+    
+    Added a blurb to for direction to the correct directory for work on the server.
+
+commit 4d6d51804aaef9bfb9e8b563fad1dd13fc724c9f
+Merge: fa2146a8 ec0a9eb0
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Tue Feb 1 11:53:23 2022 -0500
+
+    Merge branch 'develop' of https://github.com/JTW2020/Mind-Space into develop
+
+commit fa2146a89ef13c98e6e343dcf0fbbc2db1ea6aba
+Author: cg07978 <54293611+cg07978@users.noreply.github.com>
+Date:   Tue Feb 1 11:52:57 2022 -0500
+
+    Created Eliza folder
+    
+    The Eliza folder has been created from within the server folder and it contains relevant files, such as the commented Eliza code, the text file it refers to, and a change log. Slight alterations have been made to doctor.txt with those changes logged.
+
+commit ec0a9eb0d64969ff66c91f60f6cfb064b295bb30
+Author: Jonathan Nguyen <jn04137@georgiasouthern.edu>
+Date:   Tue Feb 1 11:09:58 2022 -0500
+
+    Update README.md
+    
+    Added a section for activating python environment on a Windows Terminal
+
+commit c06027399c0e6712e84d779f0b128f1897fe0096
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Jan 31 10:55:49 2022 -0500
+
+    First iteration of ReadMe Changes
+
+commit 1821cb23c6e5dbc37a453db5c7226676c5955b47
+Author: Jonathan Nguyen <jnganguyen3@gmail.com>
+Date:   Mon Jan 31 10:40:52 2022 -0500
+
+    skeleton; no connections made yet
+
+commit 9ef1e781379f2ea1f89c294b5a763c75f87f6210
+Author: JTW2020 <65732740+JTW2020@users.noreply.github.com>
+Date:   Sat Jan 22 17:04:48 2022 -0500
+
+    Initial commit
