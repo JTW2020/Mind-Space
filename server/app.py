@@ -1,13 +1,16 @@
+import pickle
+from os import environ as env
+
 from flask_cors import CORS
 from flask import jsonify  # Potentially used for later purposes
 from flask import Flask, request, Response, render_template
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user
-from os import environ as env
 
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
 from db.user_model import User
+
 
 app = Flask(__name__)
 app.secret_key = 'partycat'
@@ -24,10 +27,9 @@ init_db()
 CORS(app)
 
 # Instantiating Eliza here
-
-''' 
-Kind of like the login helper method 
-'''
+"""
+Kind of like the login helper method
+"""
 
 
 @login_manager.user_loader
@@ -57,17 +59,17 @@ def api():
 def msgToEliza():
     error = None
 
-    '''
+    """
     Beforehand Eliza was instantiated at the top of the file, we now need to pull the
     Eliza instance from the database to pass responses in to
 
-    will look something like this: 
+    will look something like this:
 
     - retrieve Eliza from db
     - instantiate it
     - pass methods to the object
-    - get and return responses 
-    '''
+    - get and return responses
+    """
     if request.method == 'POST':
 
         # This method gets the json data from the request object
@@ -106,10 +108,11 @@ def create_user():
         '''
         user = User(username, hashed_pwd)
         db_session.add(user)
+        
+        eliza = pickle.dumps(Eliza())
+        user.users_eliza.append(eliza)
         db_session.commit()
 
-        eliza = Eliza()
-        eliza.load('./Eliza/inbetween.txt')
 
     return 'OK'
 

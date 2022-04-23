@@ -8,4 +8,4 @@ class Unique_Eliza(Base):
     id = Column(Integer, primary_key=True)
     eliza = Column(PickleType())
     user_id = Column(Integer, ForeignKey('users.id'))
-    user = relationship("User", back_populates="users_eliza")
+    users = relationship("User", back_populates="users_eliza")
