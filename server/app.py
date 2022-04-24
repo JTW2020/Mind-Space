@@ -1,11 +1,13 @@
 import pickle
 from os import environ as env
+import sys
 
 from flask_cors import CORS
-from flask import jsonify  # Potentially used for later purposes
+from flask import jsonify, session  # Potentially used for later purposes
 from flask import Flask, request, Response, render_template
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user
+from flask_session import Session
 
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
@@ -70,16 +72,18 @@ def msgToEliza():
     - pass methods to the object
     - get and return responses
     """
-    if request.method == 'POST':
+    print('This is the session id:' + str(session['id']), file=sys.stderr)
+    #if request.method == 'POST':
 
-        # This method gets the json data from the request object
-        # To access the stored values, access the list with the corresponding key
+    #    # This method gets the json data from the request object
+    #    # To access the stored values, access the list with the corresponding key
 
-        input_message = request.get_json()
-        user_msg = input_message['userMessage']
-        print(user_msg)
+    #    input_message = request.get_json()
+    #    user_msg = input_message['userMessage']
+    #    print(user_msg)
     return {
-        "message": eliza.respond(user_msg)
+        "message": 'hello'
+        # "message": eliza.respond(user_msg)
     }
 
 
@@ -117,6 +121,7 @@ def create_user():
     return 'OK'
 
 
+""" This method is used to login the user """
 @app.route("/api/userLogin", methods=['POST'])
 def auth_user():
     error = None
@@ -131,6 +136,7 @@ def auth_user():
             return Response(status=401)
 
         login_user(user, remember=True)
+        print('This is the user_id:' + str(user.id), file=sys.stderr)
         return 'OK'
 
 
