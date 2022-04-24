@@ -1,13 +1,18 @@
+import pickle
+from os import environ as env
+import sys
+
 from flask_cors import CORS
-from flask import jsonify  # Potentially used for later purposes
+from flask import jsonify, session  # Potentially used for later purposes
 from flask import Flask, request, Response, render_template
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user
-from os import environ as env
+from flask_session import Session
 
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
 from db.user_model import User
+from db.unique_eliza_model import Unique_Eliza
 
 app = Flask(__name__)
 app.secret_key = 'partycat'
@@ -24,10 +29,9 @@ init_db()
 CORS(app)
 
 # Instantiating Eliza here
-
-''' 
-Kind of like the login helper method 
-'''
+"""
+Kind of like the login helper method
+"""
 
 
 @login_manager.user_loader
@@ -57,27 +61,29 @@ def api():
 def msgToEliza():
     error = None
 
-    '''
+    """
     Beforehand Eliza was instantiated at the top of the file, we now need to pull the
     Eliza instance from the database to pass responses in to
 
-    will look something like this: 
+    will look something like this:
 
     - retrieve Eliza from db
     - instantiate it
     - pass methods to the object
-    - get and return responses 
-    '''
-    if request.method == 'POST':
+    - get and return responses
+    """
+    print('This is the session id:' + str(session['id']), file=sys.stderr)
+    #if request.method == 'POST':
 
-        # This method gets the json data from the request object
-        # To access the stored values, access the list with the corresponding key
+    #    # This method gets the json data from the request object
+    #    # To access the stored values, access the list with the corresponding key
 
-        input_message = request.get_json()
-        user_msg = input_message['userMessage']
-        print(user_msg)
+    #    input_message = request.get_json()
+    #    user_msg = input_message['userMessage']
+    #    print(user_msg)
     return {
-        "message": eliza.respond(user_msg)
+        "message": 'hello'
+        # "message": eliza.respond(user_msg)
     }
 
 
@@ -106,14 +112,16 @@ def create_user():
         '''
         user = User(username, hashed_pwd)
         db_session.add(user)
+        
+        eliza = pickle.dumps(Eliza())
+        user.users_eliza.append(Unique_Eliza(eliza))
         db_session.commit()
 
-        eliza = Eliza()
-        eliza.load('./Eliza/inbetween.txt')
 
     return 'OK'
 
 
+""" This method is used to login the user """
 @app.route("/api/userLogin", methods=['POST'])
 def auth_user():
     error = None
@@ -128,6 +136,7 @@ def auth_user():
             return Response(status=401)
 
         login_user(user, remember=True)
+        print('This is the user_id:' + str(user.id), file=sys.stderr)
         return 'OK'
 
 
