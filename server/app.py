@@ -10,7 +10,7 @@ from flask_login import LoginManager, login_user
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
 from db.user_model import User
-
+from db.unique_eliza_model import Unique_Eliza
 
 app = Flask(__name__)
 app.secret_key = 'partycat'
@@ -110,7 +110,7 @@ def create_user():
         db_session.add(user)
         
         eliza = pickle.dumps(Eliza())
-        user.users_eliza.append(eliza)
+        user.users_eliza.append(Unique_Eliza(eliza))
         db_session.commit()
 
 

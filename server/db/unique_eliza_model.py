@@ -9,3 +9,6 @@ class Unique_Eliza(Base):
     eliza = Column(PickleType())
     user_id = Column(Integer, ForeignKey('users.id'))
     users = relationship("User", back_populates="users_eliza")
+
+    def __init__(self, eliza=None):
+        self.eliza = eliza
