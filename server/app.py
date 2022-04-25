@@ -3,22 +3,26 @@ from os import environ as env
 import sys
 
 from flask_cors import CORS
-from flask import jsonify, session  # Potentially used for later purposes
-from flask import Flask, request, Response, render_template
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user
+from flask import Flask, request, Response, render_template, session, send_from_directory
 from flask_session import Session
+from flask_bcrypt import Bcrypt
 
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
 from db.user_model import User
 from db.unique_eliza_model import Unique_Eliza
 
-app = Flask(__name__)
-app.secret_key = 'partycat'
+app = Flask(__name__, static_folder="client/build/static", template_folder="client/build")
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_COOKIE_NAME'] = 'session_cookie'
+app.config['SESSION_COOKIE_HTTPONLY'] = False
+app.secret_key = 'partycat'
+app.config.from_object(__name__)
+Session(app)
+
+CORS(app)
+
 bcrypt = Bcrypt(app)
 
 # importing models
@@ -26,22 +30,15 @@ bcrypt = Bcrypt(app)
 app.logger.info('code runs before init_db')
 init_db()
 
-CORS(app)
 
 # Instantiating Eliza here
 """
 Kind of like the login helper method
 """
 
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
 @app.route("/")
 def index():
-    return render_template("../client/build/index.html")
+    return render_template("index.html")
 
 
 @app.route("/hello")
@@ -72,7 +69,8 @@ def msgToEliza():
     - pass methods to the object
     - get and return responses
     """
-    print('This is the session id:' + str(session['id']), file=sys.stderr)
+    sess_id = session.get('id')
+    print('This is the session id:' + str(sess_id), file=sys.stderr)
     #if request.method == 'POST':
 
     #    # This method gets the json data from the request object
@@ -134,9 +132,11 @@ def auth_user():
 
         if not user or not bcrypt.check_password_hash(user.password, password):
             return Response(status=401)
+        
+        session['id'] = user.id
 
-        login_user(user, remember=True)
-        print('This is the user_id:' + str(user.id), file=sys.stderr)
+        # user.id returns the user's id
+        print('This is the session_id:' + str(session.get('id')), file=sys.stderr)
         return 'OK'
 
 
