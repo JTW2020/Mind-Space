@@ -7,6 +7,8 @@ from flask import Flask, request, Response, render_template, session, send_from_
 from flask_session import Session
 from flask_bcrypt import Bcrypt
 
+from sqlalchemy import select
+
 from Eliza.commented_eliza import Eliza
 from db.index import db_session, init_db
 from db.user_model import User
@@ -69,8 +71,12 @@ def msgToEliza():
     - pass methods to the object
     - get and return responses
     """
-    sess_id = session.get('id')
-    print('This is the session id:' + str(sess_id), file=sys.stderr)
+
+    statement = select(User, Unique_Eliza) \
+        .filter_by(id=session.get('id'))
+    result = db_session.execute(statement).all()
+
+    print('This is the stored Eliza binary:' + str(result), file=sys.stderr)
     #if request.method == 'POST':
 
     #    # This method gets the json data from the request object
