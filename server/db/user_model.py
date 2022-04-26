@@ -11,6 +11,10 @@ class User(UserMixin, Base):
     username = Column(String(50), unique=True)
     password = Column(String(80), unique=False)
     name = Column(String(18), unique=False)
+    depression_score = Column(Integer, unique=False, default=0)
+    anxiety_score = Column(Integer, unique=False, default=0)
+    anger_score = Column(Integer, unique=False, default=0)
+    disorder_score = Column(Integer, unique=False, default=0)
     users_eliza = relationship('Unique_Eliza', back_populates='users')
 
     def __init__(self, username=None, password=None):
