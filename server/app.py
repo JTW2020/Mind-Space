@@ -75,25 +75,29 @@ def msgToEliza():
     - get and return responses
     """
 
-    statement = select(User, Unique_Eliza) \
-        .filter_by(id=session.get('id'))
-    result = db_session.execute(statement).fetchone()
+    if request.method == 'POST':
 
-    # result.Unique_Eliza.eliza will return the eliza binary from db
+        statement = select(User, Unique_Eliza) \
+            .join(User.users_eliza) \
+            .filter_by(id=session.get('id'))
+        result = db_session.execute(statement).fetchone()
+        print(result.User.username, file=sys.stderr)
 
-    print('This is the stored Eliza binary:' + str(result.Unique_Eliza.eliza), file=sys.stderr)
-    #if request.method == 'POST':
+        # result.Unique_Eliza.eliza will return the eliza binary from db
 
-    #    # This method gets the json data from the request object
-    #    # To access the stored values, access the list with the corresponding key
+        input_message = request.get_json()
+        usr_msg = input_message['userMessage']
 
-    #    input_message = request.get_json()
-    #    user_msg = input_message['userMessage']
-    #    print(user_msg)
-    return {
-        "message": 'hello'
-        # "message": eliza.respond(user_msg)
-    }
+        eliza = pickle.loads(result.Unique_Eliza.eliza)
+        eliza_msg = eliza.respond(usr_msg)
+
+        print(eliza_msg, file=sys.stderr)
+
+        
+        return {
+            "message": 'hello'
+            # "message": eliza.respond(user_msg)
+        }
 
 
 @app.route("/api/testEliza")
