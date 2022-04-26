@@ -86,6 +86,7 @@ key: remember 5
     reasmb: Can you refresh my memory ?
 key: if 3
   decomp: * if i was *
+    react +1anx
     reasmb: Would you say that you were (2) ?
     reasmb: Have you been (2) recently ? Why or why not ?
     reasmb: What would it mean to you if you were (2) ?
@@ -152,6 +153,7 @@ key: computer 50
     reasmb: What do you think about machines ? How can they best help you ?
 key: am
   decomp: * am i *
+    react: +1anx
     reasmb: Do you believe you are (2) ?
     reasmb: Do other people think you are (2) ? Remember, they could be right or wrong.
     reasmb: If you were (2) how would that affect what you choose to do ?
@@ -599,6 +601,7 @@ key : died 3
     reasmb: Have there been any recent developments in the way you feel ? Or is it the same as the last time you told me ?
   decomp: * died *
     react: +5de
+    react: +1ang
     reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
     reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
     reasmb: Would you like to tell me about (2) ? If not, why ?
