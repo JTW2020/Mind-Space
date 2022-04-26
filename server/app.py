@@ -38,6 +38,9 @@ init_db()
 Kind of like the login helper method
 """
 
+@app.route("/home")
+@app.route("/about")
+@app.route("/chat")
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -74,9 +77,11 @@ def msgToEliza():
 
     statement = select(User, Unique_Eliza) \
         .filter_by(id=session.get('id'))
-    result = db_session.execute(statement).all()
+    result = db_session.execute(statement).fetchone()
 
-    print('This is the stored Eliza binary:' + str(result), file=sys.stderr)
+    # result.Unique_Eliza.eliza will return the eliza binary from db
+
+    print('This is the stored Eliza binary:' + str(result.Unique_Eliza.eliza), file=sys.stderr)
     #if request.method == 'POST':
 
     #    # This method gets the json data from the request object
