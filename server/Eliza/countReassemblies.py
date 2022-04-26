@@ -21,3 +21,7 @@ def countReassemblies(context):
 #This is where the function is actually called, so it is the entry point.
 
 countReassemblies("depressed.txt")
+countReassemblies("disorder.txt")
+countReassemblies("inbetween.txt")
+countReassemblies("anger.txt")
+countReassemblies("anxiexty.txt")

@@ -10,9 +10,9 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import select
 
 from Eliza.commented_eliza import Eliza
-from db.index import db_session, init_db
 from db.user_model import User
 from db.unique_eliza_model import Unique_Eliza
+from db.index import db_session, init_db
 
 app = Flask(__name__, static_folder="client/build/static", template_folder="client/build")
 
@@ -29,7 +29,6 @@ bcrypt = Bcrypt(app)
 
 # importing models
 
-app.logger.info('code runs before init_db')
 init_db()
 
 
@@ -81,17 +80,22 @@ def msgToEliza():
             .join(User.users_eliza) \
             .filter_by(id=session.get('id'))
         result = db_session.execute(statement).fetchone()
-        print(result.User.username, file=sys.stderr)
+        print(result, file=sys.stderr)
+
+        statement2 = select(User).filter_by(id=session.get('id'))
+        result2 = db_session.execute(statement2)
+        print(result2, file=sys.stderr)
 
         # result.Unique_Eliza.eliza will return the eliza binary from db
 
-        input_message = request.get_json()
-        usr_msg = input_message['userMessage']
+        #input_message = request.get_json()
+        #usr_msg = input_message['userMessage']
 
-        eliza = pickle.loads(result.Unique_Eliza.eliza)
-        eliza_msg = eliza.respond(usr_msg)
+        #eliza = pickle.loads(result.Unique_Eliza.eliza)
+        #eliza.setInitial()
+        #eliza_msg = eliza.respond(usr_msg)
 
-        print(eliza_msg, file=sys.stderr)
+        #print(eliza_msg, file=sys.stderr)
 
         
         return {
