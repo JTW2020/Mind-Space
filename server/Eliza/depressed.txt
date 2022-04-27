@@ -54,6 +54,7 @@ key: xnone
     reasmb: How has that been affecting you ?
 key: sorry
   decomp: *
+    react: +1anx
     reasmb: No need for apologies, I'm here to help you.
     reasmb: No worries, it's up to you what you want to talk about.
     reasmb: It's alright, you don't have to be apologetic. I'm happy to help as much as I can.
@@ -147,6 +148,7 @@ key: computer 50
     reasmb: What do you think about machines ? How can they best help you ?
 key: am
   decomp: * am i *
+    react: +1anx
     reasmb: Do you believe you are (2) ?
     reasmb: Do other people think you are (2) ? Remember, they could be right or wrong.
     reasmb: If you were (2) how would that affect what you choose to do ?
@@ -157,6 +159,7 @@ key: am
     reasmb: Can you please elaborate ?
 key: are
   decomp: * are you *
+    react: +1anx
     reasmb: Why are you interested in whether I am (2) or not ?
     reasmb: What would you prefer I be and why ?
     reasmb: I am a program designed to help people. Please tell me about what you want help with.
@@ -228,6 +231,9 @@ key: i 2
     reasmb: Would you like to elaborate on what could possibly change this ?
   decomp: * i am * @happy *
     react: -5de
+    react: -3di
+    react: -1anx
+    react: -3ang
     reasmb: That's wonderful! What has made you (3) ?
     reasmb: Have I helped make you (3) ? Why or why not ?
     reasmb: How long have you been feeling (3) ?
@@ -312,6 +318,7 @@ key: i 2
     reasmb: Do you wish to be able to (2) ?
     reasmb: Does that trouble you ? Why or why not ?
   decomp: * do i feel *
+    react: +1anx
     reasmb: Tell me more about such feelings.
     reasmb: Do you often feel (2) ? How has that affected you ?
     reasmb: Does anyone want you to feel (2) ? Why ?
@@ -335,6 +342,7 @@ key: you
     reasmb: Do you sometimes wish you were (2) ? Why so ?
     reasmb: Assuming I am (2), how do you think that affects my ability to help you ?
   decomp: * you * me *
+    react: +2anx
     reasmb: Why do you think I (2) you ?
     reasmb: Do you like to think that I (2) you ?
     reasmb: Why do you think that is ?
@@ -343,6 +351,7 @@ key: you
     reasmb: If I do (2) you -- what would that mean ?
     reasmb: Does someone else believe I (2) you ? Why ?
   decomp: * you *
+    react: +1anx
     reasmb: Forgive me, I'm not very equipped to talk about myself. What about you made you interested ?
     reasmb: Oh, I (2) ? How does that notion make you feel ?
     reasmb: Is there anyone else that also (2) ?
@@ -502,6 +511,7 @@ key: why
     reasmb: goto what
 key: everyone 2
   decomp: * @everyone *
+    react: +1anx
     reasmb: Really, (2) ?
     reasmb: Are you sure that it's (2) ?
     reasmb: Would you want this to change ? How so ?
@@ -541,11 +551,14 @@ key: like 10
     reasmb: goto alike
 key : died 3
   decomp: $ * died *
+    react: +5de
+    react: +1ang
     reasmb: Would you want to speak about (1) that passed away right now ? If not, tell me what you would like to discuss instead.
     reasmb: Have you been thinking about the idea of death recently ? If so or if not, please explain your feelings.
     reasmb: Have there been any recent developments in the way you feel ? Or is it the same as the last time you told me ?
   decomp: * died *
     react: +5de
+    react: +1ang
     reasmb: I am so sorry to hear that. So have you been feeling this way only since then, or at all before ?
     reasmb: Are you comfortable talking about this directly ? Or would you just like for us to focus on helping you feel better ?
     reasmb: Would you like to tell me about (2) ? If not, why ?
