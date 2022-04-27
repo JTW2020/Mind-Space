@@ -124,7 +124,7 @@ def msgToEliza():
         session['eliza'] = pickled_eliza
         
         return {
-            "message": eliza_response[0]
+            "message": eliza_response
         }
 
 
@@ -176,50 +176,9 @@ def auth_user():
         if not user or not bcrypt.check_password_hash(user.password, password):
             return Response(status=401)
 
-
-        emotions = [user.depression_score, user.anxiety_score, user.anger_score, user.disorder_score]
-
-        index = 0
-        max = 0
-        maxIndex = -1
-        ratings = []
-        
-        for elem in emotions:
-            if elem > max:
-                max = elem
-                maxIndex = index
-
-            index += 1
-
-        if maxIndex == -1: # inbetween
-            statement = select(InBetweenReassemblyRatings)
-            result = db_session.execute(statement).all()
-            ratings = [row.InBetweenReassemblyRatings.rating for row in result] 
-        elif maxIndex == 0: # depression
-            statement = select(DepressionReassemblyRatings)
-            result = db_session.execute(statement).all()
-            ratings = [row.DepressionReassemblyRatings.rating for row in result]
-        elif maxIndex == 1: # anxious
-            statement = select(AnxietyReassemblyRatings)
-            result = db_session.execute(statement).all()
-            ratings = [row.AnxietyReassemblyRatings.rating for row in result]
-        elif maxIndex == 2: # anger
-            statement = select(AngerReassemblyRatings)
-            result = db_session.execute(statement).all()
-            ratings = [row.AngerReassemblyRatings.rating for row in result]
-        elif maxIndex == 3: # disorder
-            statement = select(DisorderReassemblyRatings)
-            result = db_session.execute(statement).all()
-            ratings = [row.DisorderReassemblyRatings.rating for row in result]
-
-
-        print(emotions, file=sys.stderr)
-        print(ratings, file=sys.stderr)
-        print(session.sid, file=sys.stderr)
-
         session['id'] = user.id
         eliza = Eliza()
-        eliza.setInitial(emotions, ratings)
+        eliza.load('inbetween.txt')
         pickled_eliza = pickle.dumps(eliza)
         session['eliza'] = pickled_eliza
 

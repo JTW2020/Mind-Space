@@ -51,7 +51,6 @@ The boolean value, save, is true if this decomposition should be saved to memory
 The boolean value, saveOne, is true if this decomposition's output should be saved to memory if and only if no decomposition rules that precede it within the same keyword created a response that was saved to memory while processing the current user input.
 The list, reasmbs, contains all of the reassembly rules associated with the given decomposition rule
 These rules are cycled through when the same decomposition rule is used multiple times, and the next_reasmb_index value fascilitates this
-This list called react will store the actions that should be taken on the database when this decomposition rule is matched
 '''
 
 
@@ -62,22 +61,6 @@ class Decomp:
         self.saveOne = saveOne
         self.reasmbs = reasmbs
         self.next_reasmb_index = 0
-        self.react = []
-
-
-'''
-The below class represents a reassembly rule.
-It contains parts, which is a list of the words and other symbols that comprise it.
-It also has an index that can be referred to later in order to update scores.
-It will hold a rating so that better-received reassembly rules will be tried first.
-'''
-
-
-class Reasmb:
-    def __init__(self, parts, index, rating):
-        self.parts = parts
-        self.index = index
-        self.rating = rating
 
 
 '''
@@ -90,9 +73,6 @@ posts is a dictionary that contains substitutions that are to be made after the 
 synons is a dictionary that contains synonyms for various words that Eliza may encounter
 keys is a dictionary that contains objects of the Key class
 memory is a list of phrases for Eliza to use in the event that it cannot match any words in the input to any keywords, this list should be added on to during execution so the program can refer to previous topics
-emotions is a list that contains the values that describe how the user is feeling
-ratings is a list that contains the ratings of the reassembly rules in the current context file, in order
-currentFile will hole the name of the current context
 '''
 
 
@@ -106,11 +86,6 @@ class Eliza:
         self.synons = {}
         self.keys = {}
         self.memory = []
-        self.emotions = []
-        self.ratings = []
-        self.currentFile = ""
-
-    # The load method loads in information for all of ELiza's attributes from a text file formatted like the provided file 'doctor.txt'.
 
     # The load method loads in information for all of ELiza's attributes from a text file formatted like the provided file 'doctor.txt'.
 
@@ -118,10 +93,6 @@ class Eliza:
         key = None
         decomp = None
         with open(path) as file:
-
-            # This index will be used to assign ratings to reassembly rules.
-
-            index = 0
 
             # The lines of the file are processed one-by-one, and blank lines (or ones consisting of only whitespace) are ignored.
 
@@ -178,11 +149,6 @@ class Eliza:
                 # The decomp is then instantiated and then added to the list of decomps belonging to the previously added key.
 
                 elif tag == 'decomp':
-                    # If there was a decomposition rule previously, then its list of reassembly rules will by sorted by rating, highest to lowest.
-                    if decomp is not None:
-                        decomp.reasmbs.sort(
-                            key=lambda x: x.rating, reverse=True)
-
                     parts = content.split(' ')
                     save = False
                     saveOne = False
@@ -196,29 +162,15 @@ class Eliza:
                     decomp = Decomp(parts, save, saveOne, [])
                     key.decomps.append(decomp)
 
-                # If the information is of type reasmb then the content is split into parts which are then added into a new Reasmb object that will be appended to the previously added decomp's reasmbs list.
-                # The reassembly's index and rating will be supplied as well, and the index will be incremented.
+                # If the information is of type resmb then the content is split into parts which are then appended to the previously added decomp's reasmbs list.
 
                 elif tag == 'reasmb':
                     parts = content.split(' ')
-                    decomp.reasmbs.append(
-                        Reasmb(parts, index, self.ratings[index]))
-                    index += 1
+                    decomp.reasmbs.append(parts)
 
-                # If the information is of type react then add its content to this decomposition rule's react list.
-
-                elif tag == 'react':
-                    decomp.react.append(content)
-
-            # Sort the reassembly rules of the last remaining decomposition rule.
-
-            decomp.reasmbs.sort(key=lambda x: x.rating, reverse=True)
-
-    # This method simply clears the Eliza script information (other than memory) and loads in another script, therefore completing a context switch.
+    # This method simply clears the Eliza script information and loads in another script, therefore completing a context switch.
 
     def context_switch(self, context):
-        self.currentFile = context
-
         self.initials = []
         self.finals = []
         self.quits = []
@@ -226,6 +178,7 @@ class Eliza:
         self.posts = {}
         self.synons = {}
         self.keys = {}
+        self.memory = []
 
         self.load(context)
 
@@ -386,7 +339,7 @@ class Eliza:
 
     # This method will attempt to match input words to one of the provided key's decomposition rules.
 
-    def _match_key(self, words, key, dbChanges):
+    def _match_key(self, words, key):
 
         # The boolean value saved will be used to keep track of any output from this key has been saved to memory yet.
 
@@ -407,33 +360,16 @@ class Eliza:
                 log.debug('Decomp did not match: %s', decomp.parts)
                 continue
 
-            # If a decomposition rule matches, retrieve the changes that need to be made to the database.
-
-            dbChanges2 = self.changeDatabase(decomp.react)
-
-            # Then add them to any potential changes that were made prior.
-
-            index = 0
-
-            while index < 4:
-                dbChanges[index] += dbChanges2[index]
-                index += 1
-
-            # If a decomposition rule matches change the database to account for that, then perform the post-substitutions on the results.
+            # If a decomposition rule matches, then perform the post-substitutions on the results.
 
             log.debug('Decomp matched: %s', decomp.parts)
             log.debug('Decomp results: %s', results)
             results = [self._sub(words, self.posts) for words in results]
             log.debug('Decomp results after posts: %s', results)
 
-            # From there, find out which reassembly rule is to be used, and retrieve its parts for use.
-            # Also retrieve its index.
+            # From there, find out which reassembly rule is to be used.
 
-            reassembly = self._next_reasmb(decomp)
-
-            reasmb = reassembly.parts
-            rindex = reassembly.index
-
+            reasmb = self._next_reasmb(decomp)
             log.debug('Using reassembly: %s', reasmb)
 
             # If the reassembly rule says to go to another key, use that key to process the input words instead.
@@ -444,7 +380,7 @@ class Eliza:
                 if not goto_key in self.keys:
                     raise ValueError("Invalid goto key {}".format(goto_key))
                 log.debug('Goto key: %s', goto_key)
-                return self._match_key(words, self.keys[goto_key], dbChanges)
+                return self._match_key(words, self.keys[goto_key])
 
             # If the reassembly rule says to switch contexts, the word after switch will be the file name without the extension.
             # Any following words will serve as the output, so they are saved and returned after the context switch is attempted.
@@ -456,11 +392,13 @@ class Eliza:
 
                 context = "{}.txt".format(reasmb[1])
 
-                if not path.exists(context):
+                if path.exists(context):
+                    self.context_switch(context)
+                else:
                     raise ValueError(
                         "Unknown context file: {}".format(context))
 
-                return [output, dbChanges, rindex]
+                return output
 
             # If the reassembly rule says to throw this key, meaning give up attempting to use it, the loop will stop and nothing will be returned.
             # This will make the program try any remaining keys.
@@ -476,21 +414,17 @@ class Eliza:
             # Ensure that the saved boolean is set to True if a save to memory has taken place.
 
             if decomp.save and (not decomp.saveOne or not saved):
-                self.memory.append([output, rindex])
+                self.memory.append(output)
                 log.debug('Saved to memory: %s', output)
                 saved = True
                 continue
 
-            # Otherwise, return the ouput and dbChanges, as long as the decomposition rule was not one that attempted to save its output but was denied due to its saveOne value.
+            # Otherwise, return the ouput, as long as the decomposition rule was not one that attempted to save its output but was denied due to its saveOne value.
 
             elif not decomp.saveOne:
-                return [output, dbChanges, rindex]
+                return output
 
-        # If no decomposition rules match the input words, return nothing for the output as well as the dbChanges.
-
-        return [None, dbChanges, None]
-
-    # This is the method that returns a response after processing some input text.
+        # If no decomposition rules match the input words, return nothing.
 
         return None
 
@@ -543,8 +477,6 @@ class Eliza:
         log.debug('Sorted keys: %s', [(k.word, k.weight) for k in keys])
 
         output = None
-        dbChanges = [0, 0, 0, 0]
-        rindex = None
 
         # Try to match the input words to each key, in priority order.
         # If a match is found, the loop immediately ends and the output is returned.
@@ -553,73 +485,22 @@ class Eliza:
         # The reassembly rule itself can be output because, in the case of no matches, and no entries in the memory list, the response will be completely independent from user input.
 
         for key in keys:
-            output, dbChanges, rindex = self._match_key(
-                words, key, [0, 0, 0, 0])
+            output = self._match_key(words, key)
             if output:
                 log.debug('Output from key: %s', output)
                 break
         if not output:
             if self.memory:
                 index = random.randrange(len(self.memory))
-                output, rindex = self.memory.pop(index)
+                output = self.memory.pop(index)
                 log.debug('Output from memory: %s', output)
             else:
-                reassembly = self._next_reasmb(self.keys['xnone'].decomps[0])
-                output = reassembly.parts
-                rindex = reassembly.index
+                output = self._next_reasmb(self.keys['xnone'].decomps[0])
                 log.debug('Output from xnone: %s', output)
 
-        requestedContext = None
+        # Return the contents of output separated by spaces.
 
-        '''
-        The code below is used to determine which context to switch to.
-        First, the maximum value is found, and its index recorded.
-        Then the array is passed over again. If the maximum value is seen twice, then there is a tie for max.
-        This will cause Eliza to go to inbetween.txt
-        Otherwise Eliza will load the file whose score was highest, and which indices go with which context is shown below.
-        '''
-
-        file = ""
-        index = 0
-        max = -9999999999999
-        maxIndex = -1
-
-        for elem in self.emotions:
-            if elem > max:
-                max = elem
-                maxIndex = index
-
-            index += 1
-
-        seen = False
-
-        for elem in self.emotions:
-            if elem == max:
-                if not seen:
-                    seen = True
-                else:
-                    maxIndex = -1
-                    break
-
-        if maxIndex == -1:
-            file = "inbetween.txt"
-        elif maxIndex == 0:
-            file = "depressed.txt"
-        elif maxIndex == 1:
-            file = "anxious.txt"
-        elif maxIndex == 2:
-            file = "anger.txt"
-        elif maxIndex == 3:
-            file = "disorder.txt"
-
-        if self.currentFile != file:
-            requestedContext = file
-
-        # Return the contents of output separated by spaces, as well as any dbChanges.
-
-        return [" ".join(output), requestedContext, rindex, dbChanges]
-
-    # This method returns a random initial greeting from Eliza's list of them.
+        return " ".join(output)
 
     # This method returns a random initial greeting from Eliza's list of them.
 
@@ -632,72 +513,6 @@ class Eliza:
 
     def final(self):
         return random.choice(self.finals)
-
-    # This method will execute a series of database operations when a decomposition rule is matched.
-
-    def changeDatabase(self, react):
-
-        # ret will eventually be the value returned, which will indicate the changes to the database and emotions list that need to occur.
-
-        ret = [0, 0, 0, 0]
-
-        # The below for loop is used to execute each command that is in react, doing nothing if react is empty.
-        for command in react:
-            # The parity, which should be + or - will be at the beginning of the string, and is recorded.
-            parity = command[0]
-            # This line of code eliminated the first character from the string.
-            # It is used several times to continuously eliminate the first character in the string as needed.
-            command = command[1:]
-            # After the parity is a number that should specify the amount that the user value should change.
-            # It will need to be at least one digit, and that first digit is recorded.
-            amount = command[0]
-            # If what was retrieved was not a digit, raise an error.
-            if not amount.isdigit():
-                raise ValueError(
-                    "A number was not supplied appropriately to react list: " + ' '.join(react))
-            command = command[1:]
-            # This loop will add any remaining digits to the amount string while eliminating them one-by-one from the command string.
-            # Once this loop is complete the remaining string should just represent the attribute to change.
-            while command[0].isdigit():
-                amount += command[0]
-                command = command[1:]
-            # The attribute index is recorded depending on the abbreviation, and an error is raised if no supported abbreviation is found.
-            attribute = ''
-            if command == 'de':
-                attribute = 0
-            elif command == 'di':
-                attribute = 3
-            elif command == 'ang':
-                attribute = 2
-            elif command == 'anx':
-                attribute = 1
-            else:
-                raise ValueError("The attribute " +
-                                 command + " is not supported")
-
-            # Depending on the parity, the amount will be added to or subtracted from the attribute.
-            # If the parity is not + or -, raise an error.
-            # Right now print statements are used for testing, but they will eventually be replaced will commands to the database.
-
-            # Depending on the parity, the amount will be added to or subtracted from the attribute.
-            # If the parity is not + or -, raise an error.
-
-            if parity == '+':
-                ret[attribute] += int(amount)
-            elif parity == '-':
-                ret[attribute] -= int(amount)
-            else:
-                raise ValueError("Parity " + parity + " is not supported")
-
-        # After the loop concludes, the emotions list will be updated, and ret will be returned to indicate the changes that must be made on the database.
-
-        index = 0
-
-        while index < 4:
-            self.emotions[index] += ret[index]
-            index += 1
-
-        return ret
 
     '''
     This is the method for running Eliza after all of its attributes have been loaded from a text file.
@@ -721,61 +536,6 @@ class Eliza:
 
     def test_output(self):
         return "Eliza has been imported and is accessible"
-    # This is the method that should be called when a new session with the ELiza object is beginning.
-    # It takes two arrays, one for the emotional states, another for the reaseembly rule ratings.
-
-    def setInitial(self, emotions, ratings):
-        # The class will store the two arrays passed to it.
-        self.emotions = emotions
-        self.ratings = ratings
-
-        '''
-        The code below is used to determine which context to switch to.
-        First, the maximum value is found, and its index recorded.
-        Then the array is passed over again. If the maximum value is seen twice, then there is a tie for max.
-        This will cause Eliza to go to inbetween.txt
-        Otherwise Eliza will load the file whose score was highest, and which indices go with which context is shown below.
-        '''
-
-        file = ""
-        index = 0
-        max = -9999999999999
-        maxIndex = -1
-
-        for elem in emotions:
-            if elem > max:
-                max = elem
-                maxIndex = index
-
-            index += 1
-
-        seen = False
-
-        for elem in emotions:
-            if elem == max:
-                if not seen:
-                    seen = True
-                else:
-                    maxIndex = -1
-                    break
-
-        if maxIndex == -1:
-            file = "inbetween.txt"
-        elif maxIndex == 0:
-            file = "depression.txt"
-        elif maxIndex == 1:
-            file = "anxious.txt"
-        elif maxIndex == 2:
-            file = "anger.txt"
-        elif maxIndex == 3:
-            file = "disorder.txt"
-
-        self.context_switch(file)
-
-    # The method below simply sets the ratings to match the list provided.
-
-    def setRatings(self, ratings):
-        self.ratings = ratings
 
 
 '''

@@ -51,10 +51,10 @@ pre: horrors horrified
 pre: terror terrified
 pre: terrors terrified
 
-pre: anger angry
-pre: angered angry
-pre: angrier angry
-pre: angriest angry
+pre: angry anger
+pre: angered anger
+pre: angrier anger
+pre: angriest anger
 pre: ire irate
 pre: aggression aggressive
 pre: aggressor aggressive
@@ -118,7 +118,6 @@ key: xnone -1
 
 key: depressed
   decomp: *
-    react: +5de
     reasmb: switchto depressed I see. Please, tell me about how you've been feeling down.
 key: sad
   decomp: *
@@ -144,7 +143,6 @@ key: upset
 
 key: anxious
   decomp: *
-    react: +5anx
     reasmb: switchto anxious I see. Tell me about how you've been feeling on edge, please.
 key: stressed
   decomp: *
@@ -174,61 +172,60 @@ key: terrified
   decomp: *
     reasmb: goto anxious
 
-key: angry
+key: anger
   decomp: *
-    react: +5ang
     reasmb: switchto anger Understood. Please tell me about how you've been having your temper challenged.
 key: irate
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: aggressive
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: furious
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: enraged
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: wrathful
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: mad
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: huffy
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: indignant
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: aggravated
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: annoyed
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: incensed
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: temper
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: fuse
   decomp: * short fuse *
-    reasmb: goto angry
+    reasmb: goto anger
 key: irritated
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: frustrated
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: irritable
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 key: infuriated
   decomp: *
-    reasmb: goto angry
+    reasmb: goto anger
 
 key: happy 0
   decomp: * not @happy *
@@ -254,9 +251,8 @@ key: glad 0
   decomp: *
      reasmb: goto happy
 
-key: disorder
+     key: disorder
   decomp: *
-    react: +5di
     reasmb: switchto disorder I see. Please, tell me about why you've been feeling this way.
 key: hungry
   decomp: *
