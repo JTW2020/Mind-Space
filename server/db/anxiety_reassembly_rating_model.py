@@ -10,15 +10,15 @@ class AnxietyReassemblyRatings(Base):
     reassembly_rule_index = Column(Integer, unique=True)
     rating = Column(Integer, unique=False)
 
-    def __init__(self, reassembly_rule_index=None, rating=None):
+    def __init__(self, reassembly_rule_index=None, rating=1):
         self.reassembly_rule_index = reassembly_rule_index
         self.rating = rating
 
     def __repr__(self):
         return f'<Reassembly rule: {self.reassembly_rule_index!r}>'
 
-if db_session.execute(select(AnxietyReassemblyRatings)).fetchone() == None:
-    for i in range(countReassembliesVal('Eliza/anxious.txt')):
-        db_session.add(AnxietyReassemblyRatings(reassembly_rule_index=i))
-
-db_session.commit()
+#if db_session.execute(select(AnxietyReassemblyRatings)).fetchone() == None:
+#    for i in range(countReassembliesVal('Eliza/anxious.txt')):
+#        db_session.add(AnxietyReassemblyRatings(reassembly_rule_index=i))
+#
+#db_session.commit()

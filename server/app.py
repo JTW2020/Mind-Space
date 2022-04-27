@@ -31,6 +31,11 @@ bcrypt = Bcrypt(app)
 
 init_db()
 
+from db.inbetween_reassembly_rating_model import InBetweenReassemblyRatings
+from db.anxiety_reassembly_rating_model import AnxietyReassemblyRatings
+from db.depression_reassembly_rating_model import DepressionReassemblyRatings
+from db.anger_reassembly_rating_model import AngerReassemblyRatings
+from db.disorder_reassembly_rating_model import DisorderReassemblyRatings
 
 # Instantiating Eliza here
 """
@@ -76,25 +81,25 @@ def msgToEliza():
 
     if request.method == 'POST':
 
-        statement = select(User, Unique_Eliza) \
-            .join(User.users_eliza) \
-            .filter_by(id=session.get('id'))
-        result = db_session.execute(statement).fetchone()
-        print(result.Unique_Eliza.eliza, file=sys.stderr)
+        #statement = select(User, Unique_Eliza) \
+        #    .join(User.users_eliza) \
+        #    .filter_by(id=session.get('id'))
+        #result = db_session.execute(statement).fetchone()
+        
+        # The following line prints the serialized Eliza
+        # print(result.Unique_Eliza.eliza, file=sys.stderr)
 
 
-        print(result.User, file=sys.stderr)
+        #print(result.User, file=sys.stderr)
 
-        depression_val = result.User.depression_score
-        anxiety_val = result.User.anxiety_score
-        anger_val = result.User.anger_score
-        disorder_val = result.User.disorder_score
+        #eliza = pickle.loads(result.Unique_Eliza.eliza)
 
-        emotions = [depression_val, anxiety_val, anger_val, disorder_val]
+        #statement = select(DisorderReassemblyRatings)
 
-        print(emotions, file=sys.stderr)
+        #ratings = db_session.execute(statement).all()
+        #ratings_list = [row.DisorderReassemblyRatings.rating for row in ratings]
 
-        eliza = pickle.loads(result.Unique_Eliza.eliza)
+        #print(ratings_list, file=sys.stderr)
         #eliza.setInitial()
         #eliza_msg = eliza.respond(usr_msg)
         # result.Unique_Eliza.eliza will return the eliza binary from db
@@ -160,7 +165,48 @@ def auth_user():
         if not user or not bcrypt.check_password_hash(user.password, password):
             return Response(status=401)
 
+
         session['id'] = user.id
+        emotions = [user.depression_score, user.anxiety_score, user.anger_score, user.disorder_score]
+
+        index = 0
+        max = 0
+        maxIndex = -1
+        ratings = []
+        
+        for elem in emotions:
+            if elem > max:
+                max = elem
+                maxIndex = index
+
+            index += 1
+
+        if maxIndex == -1: # inbetween
+            statement = select(InBetweenReassemblyRatings)
+            result = db_session.execute(statement).all()
+            ratings = [row.InBetweenReassemblyRatings.rating for row in result] 
+        elif maxIndex == 0: # depression
+            statement = select(DepressionReassemblyRatings)
+            result = db_session.execute(statement).all()
+            ratings = [row.DepressionReassemblyRatings.rating for row in result]
+        elif maxIndex == 1: # anxious
+            statement = select(AnxietyReassemblyRatings)
+            result = db_session.execute(statement).all()
+            ratings = [row.AnxietyReassemblyRatings.rating for row in result]
+        elif maxIndex == 2: # anger
+            statement = select(AngerReassemblyRatings)
+            result = db_session.execute(statement).all()
+            ratings = [row.AngerReassemblyRatings.rating for row in result]
+        elif maxIndex == 3: # disorder
+            statement = select(DisorderReassemblyRatings)
+            result = db_session.execute(statement).all()
+            ratings = [row.DisorderReassemblyRatings.rating for row in result]
+
+
+        print(emotions, file=sys.stderr)
+        print(ratings, file=sys.stderr)
+
+        session['eliza'] = Eliza().setInitial(emotions, ratings)
         # user.id returns the user's id
         print('This is the session_id:' + str(session.get('id')), file=sys.stderr)
         

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -26,4 +26,26 @@ def init_db():
     import db.depression_reassembly_rating_model
     import db.anxiety_reassembly_rating_model
     import db.anger_reassembly_rating_model
+    import db.inbetween_reassembly_rating_model
     Base.metadata.create_all(bind=engine)
+
+    # All lines afterwards will prefill ratings tables with just 1 rating
+
+    if db_session.execute(select(db.inbetween_reassembly_rating_model.InBetweenReassemblyRatings)).fetchone() == None:
+        for i in range(countReassembliesVal('Eliza/inbetween.txt')):
+            db_session.add(db.inbetween_reassembly_rating_model.InBetweenReassemblyRatings(reassembly_rule_index=i))
+    if db_session.execute(select(db.disorder_reassembly_rating_model.DisorderReassemblyRatings)).fetchone() == None:
+        for i in range(countReassembliesVal('Eliza/disorder.txt')):
+            db_session.add(db.disorder_reassembly_rating_model.DisorderReassemblyRatings(reassembly_rule_index=i))
+    
+    if db_session.execute(select(db.depression_reassembly_rating_model.DepressionReassemblyRatings)).fetchone() == None:
+        for i in range(countReassembliesVal('Eliza/depressed.txt')):
+            db_session.add(db.depression_reassembly_rating_model.DepressionReassemblyRatings(reassembly_rule_index=i))
+
+    if db_session.execute(select(db.anxiety_reassembly_rating_model.AnxietyReassemblyRatings)).fetchone() == None:
+        for i in range(countReassembliesVal('Eliza/anxious.txt')):
+            db_session.add(db.anxiety_reassembly_rating_model.AnxietyReassemblyRatings(reassembly_rule_index=i))
+    if db_session.execute(select(db.anger_reassembly_rating_model.AngerReassemblyRatings)).fetchone() == None:
+        for i in range(countReassembliesVal('Eliza/anger.txt')):
+            db_session.add(db.anger_reassembly_rating_model.AngerReassemblyRatings(reassembly_rule_index=i))
+    db_session.commit()

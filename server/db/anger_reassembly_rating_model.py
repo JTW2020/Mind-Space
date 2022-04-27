@@ -17,8 +17,8 @@ class AngerReassemblyRatings(Base):
     def __repr__(self):
         return f'<Reassembly rule: {self.reassembly_rule_index!r}>'
 
-if db_session.execute(select(AngerReassemblyRatings)).fetchone() == None:
-    for i in range(countReassembliesVal('Eliza/anger.txt')):
-        db_session.add(AngerReassemblyRatings(reassembly_rule_index=i))
-
-db_session.commit()
+#if db_session.execute(select(AngerReassemblyRatings)).fetchone() == None:
+#    for i in range(countReassembliesVal('Eliza/anger.txt')):
+#        db_session.add(AngerReassemblyRatings(reassembly_rule_index=i))
+#
+#db_session.commit()

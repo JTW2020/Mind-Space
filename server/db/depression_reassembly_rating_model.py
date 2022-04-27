@@ -17,8 +17,8 @@ class DepressionReassemblyRatings(Base):
     def __repr__(self):
         return f'<Reassembly rule: {self.reassembly_rule_index!r}>'
 
-if db_session.execute(select(DepressionReassemblyRatings)).fetchone() == None:
-    for i in range(countReassembliesVal('Eliza/depressed.txt')):
-        db_session.add(DepressionReassemblyRatings(reassembly_rule_index=i))
-
-db_session.commit()
+#if db_session.execute(select(DepressionReassemblyRatings)).fetchone() == None:
+#    for i in range(countReassembliesVal('Eliza/depressed.txt')):
+#        db_session.add(DepressionReassemblyRatings(reassembly_rule_index=i))
+#
+#db_session.commit()
