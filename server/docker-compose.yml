@@ -18,5 +18,11 @@ services:
       - "5000:5000"
     volumes:
       - .:/app
+    environment:
+      POSTGRES_USER: mindspaceuser
+      POSTGRES_DB: mindspacedb
+      POSTGRES_PASSWORD: mindspaceapp
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
     depends_on:
       - db

@@ -604,7 +604,7 @@ class Eliza:
         if maxIndex == -1:
             file = "inbetween.txt"
         elif maxIndex == 0:
-            file = "depression.txt"
+            file = "depressed.txt"
         elif maxIndex == 1:
             file = "anxious.txt"
         elif maxIndex == 2:
@@ -683,9 +683,9 @@ class Eliza:
             # If the parity is not + or -, raise an error.
 
             if parity == '+':
-                ret[attribute] += amount
+                ret[attribute] += int(amount)
             elif parity == '-':
-                ret[attribute] -= amount
+                ret[attribute] -= int(amount)
             else:
                 raise ValueError("Parity " + parity + " is not supported")
 

@@ -5,7 +5,9 @@ import TextBubble from './textbubbles';
 
 function Chatbox() {
   const [message, setMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState([
+    {user: "Eliza", message: "Hello. How do you do?"}
+  ]);
 
   function handleMsgInputChange(e) {
     e.preventDefault();
@@ -19,26 +21,27 @@ function Chatbox() {
   async function handleSubmitMsg(e) {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/msgEliza', {
+      const res = await axios.post('/api/msgEliza', {
         userMessage: message
       });
       setMessageList([
         ...messageList,
-        { user: "You", message: message },
+        { user: "Me", message: message },
         { user: "Eliza", message: res.data.message }
       ]);
       console.log(messageList);
+      setMessage("");
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div className="chatbox grid grid-cols-1 w-3/6">
+    <div className="chatbox grid grid-cols-1 w-2/6">
       <div className="p-2 mt-5 text-black h-60 bg-zinc-100 rounded-md overflow-auto">
         <a className="text-sm italic">Type something to talk to Eliza.</a>
         <br />
-        <div>
+        <div className="space-y-2">
           {messageList.map((message) => <TextBubble key={message.id} sender={message.user} message={message.message} />)}
         </div>
       </div>
@@ -50,6 +53,7 @@ function Chatbox() {
           <input
             className="text-black rounded-sm w-full p-2"
             onChange={e => { handleMsgInputChange(e) }}
+            value={message}
           />
         </div>
       </form>

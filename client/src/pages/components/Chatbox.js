@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Chatbox() {
   const [message, setMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState([
+    {user: "Eliza", message: 'How do you do. Please tell me your problem.'}
+  ]);
 
   function handleMsgInputChange(e) {
     e.preventDefault();
@@ -17,17 +19,17 @@ function Chatbox() {
   async function handleSubmitMsg(e) {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/msgEliza', {
+      const res = await axios.post('/api/msgEliza', {
         userMessage: message
       });
       console.log(res.data);
       setTimeout(function () {
         setMessageList([
           ...messageList,
-          { user: "client", message: message },
+          { user: "Me", message: message },
           { user: "Eliza", message: res.data.message }
         ]);
-      }, 1500)
+      }, 1000)
       console.log(messageList);
     } catch (err) {
       console.error(err);

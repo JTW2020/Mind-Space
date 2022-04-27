@@ -45,6 +45,8 @@ Kind of like the login helper method
 @app.route("/home")
 @app.route("/about")
 @app.route("/chat")
+@app.route("/login")
+@app.route("/signup")
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -104,18 +106,25 @@ def msgToEliza():
         #eliza_msg = eliza.respond(usr_msg)
         # result.Unique_Eliza.eliza will return the eliza binary from db
 
-        #input_message = request.get_json()
-        #usr_msg = input_message['userMessage']
+        input_message = request.get_json()
+        user_msg = input_message['userMessage']
 
 
         #print(eliza_msg, file=sys.stderr)
         print(session.get('id'), file=sys.stderr)
-        print(session.get('eliza'), file=sys.stderr)
+        
+        pickled_eliza = session.get('eliza')
+        eliza = pickle.loads(pickled_eliza)
+        eliza_response = eliza.respond(user_msg)
+        print(eliza_response, file=sys.stderr)
+        print(eliza)
+        print(session.sid, file=sys.stderr)
 
+        pickled_eliza = pickle.dumps(eliza)
+        session['eliza'] = pickled_eliza
         
         return {
-            "message": 'hello'
-            # "message": eliza.respond(user_msg)
+            "message": eliza_response[0]
         }
 
 
@@ -206,15 +215,16 @@ def auth_user():
 
         print(emotions, file=sys.stderr)
         print(ratings, file=sys.stderr)
+        print(session.sid, file=sys.stderr)
 
         session['id'] = user.id
         eliza = Eliza()
         eliza.setInitial(emotions, ratings)
-        #pickled_eliza = pickle.dumps(eliza)
-        session['eliza'] = eliza
+        pickled_eliza = pickle.dumps(eliza)
+        session['eliza'] = pickled_eliza
+
         # user.id returns the user's id
         print('This is the session_id:' + str(session.get('id')), file=sys.stderr)
-        print('This is the session_id:' + str(session.get('eliza')), file=sys.stderr)
         
         return 'OK'
 

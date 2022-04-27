@@ -4,7 +4,7 @@ function TextBubble(props) {
   return (
     <div className="textbubble">
       <div>
-        <div className="p-1 bg-purple-700 text-white rounded-lg w-7/12">
+        <div className="py-1 px-2 bg-purple-700 text-white rounded-lg w-fit">
           <a>{props.id}</a>
           <a>{props.sender}: </a>
           <a>{props.message}</a>

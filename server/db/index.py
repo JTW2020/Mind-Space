@@ -1,11 +1,15 @@
+import os
+import sys
+
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 from Eliza.countReassemblies import countReassembliesVal
+print(os.environ.get("POSTGRES_USER"),file=sys.stderr)
 
 engine = create_engine(
-    "postgresql://mindspaceuser:mindspaceapp@db:5432/mindspacedb"
+    f'postgresql://{os.environ.get("POSTGRES_USER")}:{os.environ.get("POSTGRES_PASSWORD")}@{os.environ.get("POSTGRES_HOST")}:{os.environ.get("POSTGRES_PORT")}/{os.environ.get("POSTGRES_DB")}'
 )
 
 db_session = scoped_session(sessionmaker(
