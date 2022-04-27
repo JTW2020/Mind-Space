@@ -80,20 +80,28 @@ def msgToEliza():
             .join(User.users_eliza) \
             .filter_by(id=session.get('id'))
         result = db_session.execute(statement).fetchone()
-        print(result, file=sys.stderr)
+        print(result.Unique_Eliza.eliza, file=sys.stderr)
 
-        statement2 = select(User).filter_by(id=session.get('id'))
-        result2 = db_session.execute(statement2)
-        print(result2, file=sys.stderr)
 
+        print(result.User, file=sys.stderr)
+
+        depression_val = result.User.depression_score
+        anxiety_val = result.User.anxiety_score
+        anger_val = result.User.anger_score
+        disorder_val = result.User.disorder_score
+
+        emotions = [depression_val, anxiety_val, anger_val, disorder_val]
+
+        print(emotions, file=sys.stderr)
+
+        eliza = pickle.loads(result.Unique_Eliza.eliza)
+        #eliza.setInitial()
+        #eliza_msg = eliza.respond(usr_msg)
         # result.Unique_Eliza.eliza will return the eliza binary from db
 
         #input_message = request.get_json()
         #usr_msg = input_message['userMessage']
 
-        #eliza = pickle.loads(result.Unique_Eliza.eliza)
-        #eliza.setInitial()
-        #eliza_msg = eliza.respond(usr_msg)
 
         #print(eliza_msg, file=sys.stderr)
 
@@ -151,11 +159,11 @@ def auth_user():
 
         if not user or not bcrypt.check_password_hash(user.password, password):
             return Response(status=401)
-        
-        session['id'] = user.id
 
+        session['id'] = user.id
         # user.id returns the user's id
         print('This is the session_id:' + str(session.get('id')), file=sys.stderr)
+        
         return 'OK'
 
 

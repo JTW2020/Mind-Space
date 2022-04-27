@@ -18,10 +18,20 @@ def countReassemblies(context):
     
     print(count)
 
+def countReassembliesVal(context):
+    count = 0
+    with open(context) as file:
+        for line in file:
+            if not line.strip():
+                continue
+
+            tag = line.split(':')[0].strip()
+
+            if tag == 'reasmb':
+                count += 1
+    
+    return count
+
 #This is where the function is actually called, so it is the entry point.
 
-countReassemblies("depressed.txt")
-countReassemblies("disorder.txt")
-countReassemblies("inbetween.txt")
-countReassemblies("anger.txt")
-countReassemblies("anxiexty.txt")
+#countReassemblies('disorder.txt')

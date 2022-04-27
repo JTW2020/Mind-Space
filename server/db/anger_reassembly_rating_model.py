@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String
-from db.index import Base
+from sqlalchemy import Column, Integer, String, select
+from db.index import Base, db_session
 
+from Eliza.countReassemblies import countReassembliesVal
 
 class AngerReassemblyRatings(Base):
 
@@ -15,3 +16,9 @@ class AngerReassemblyRatings(Base):
 
     def __repr__(self):
         return f'<Reassembly rule: {self.reassembly_rule_index!r}>'
+
+if db_session.execute(select(AngerReassemblyRatings)).fetchone() == None:
+    for i in range(countReassembliesVal('Eliza/anger.txt')):
+        db_session.add(AngerReassemblyRatings(reassembly_rule_index=i))
+
+db_session.commit()
