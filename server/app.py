@@ -109,6 +109,8 @@ def msgToEliza():
 
 
         #print(eliza_msg, file=sys.stderr)
+        print(session.get('id'), file=sys.stderr)
+        print(session.get('eliza'), file=sys.stderr)
 
         
         return {
@@ -166,7 +168,6 @@ def auth_user():
             return Response(status=401)
 
 
-        session['id'] = user.id
         emotions = [user.depression_score, user.anxiety_score, user.anger_score, user.disorder_score]
 
         index = 0
@@ -206,9 +207,14 @@ def auth_user():
         print(emotions, file=sys.stderr)
         print(ratings, file=sys.stderr)
 
-        session['eliza'] = Eliza().setInitial(emotions, ratings)
+        session['id'] = user.id
+        eliza = Eliza()
+        eliza.setInitial(emotions, ratings)
+        #pickled_eliza = pickle.dumps(eliza)
+        session['eliza'] = eliza
         # user.id returns the user's id
         print('This is the session_id:' + str(session.get('id')), file=sys.stderr)
+        print('This is the session_id:' + str(session.get('eliza')), file=sys.stderr)
         
         return 'OK'
 

@@ -1,0 +1,322 @@
+initial: How do you do.  Please tell me your problem.
+final: Goodbye.  Thank you for talking to me.
+quit: bye
+quit: goodbye
+quit: quit
+pre: dont don't
+pre: cant can't
+pre: wont won't
+pre: recollect remember
+pre: dreamt dreamed
+pre: dreams dream
+pre: maybe perhaps
+pre: how what
+pre: when what
+pre: certainly yes
+pre: machine computer
+pre: computers computer
+pre: were was
+pre: you're you are
+pre: i'm i am
+pre: same alike
+
+pre: depression depressed
+pre: depressing depressed
+pre: depress depressed
+pre: sadness sad
+pre: saddening sad
+pre: saddened sad
+pre: gloom gloomy
+pre: down downcast
+pre: melancholic melancholy
+pre: upsetting upset
+
+pre: anxiety anxious
+pre: stress stressed
+pre: stressing stressed
+pre: stressor stressed
+pre: stressors stressed
+pre: nerves nervous
+pre: nervousness nervous
+pre: unease uneasy
+pre: fear fearful
+pre: feared fearful
+pre: fearing fearful
+pre: fears fearful
+pre: scare scared
+pre: scary scared
+pre: edginess edgy
+pre: horror horrified
+pre: horrors horrified
+pre: terror terrified
+pre: terrors terrified
+
+pre: anger angry
+pre: angered angry
+pre: angrier angry
+pre: angriest angry
+pre: ire irate
+pre: aggression aggressive
+pre: aggressor aggressive
+pre: fury furious
+pre: furiousity furious
+pre: rage enraged
+pre: raging enraged
+pre: raged enraged
+pre: wrath wrathful
+pre: huffier huffy
+pre: huffiest huffy
+pre: indignation indignant
+pre: aggravation aggravated
+pre: aggravate aggravated
+pre: annoy annoyed
+pre: annoying annoyed
+pre: irritate irritated
+pre: irritates irritated
+pre: frustrates frustrated
+pre: frustrate frustrated
+pre: frustrating frustrated
+pre: irritated irritable
+pre: infuriating infuriated
+pre: infuriatingly infuriated
+
+pre: never not ever
+pre: enjoy enjoying
+pre: laugh laughing
+pre: excite excited
+
+pre: can't cannot
+pre: cant cannot
+pre: don't do not
+pre: dont do not
+pre: dunno do not know
+pre: won't will not
+pre: wont will not
+pre: I'm I am
+pre: Im I am
+pre: ain't am not
+pre: aint am not
+
+post: am are
+post: your my
+post: me you
+post: myself yourself
+post: yourself myself
+post: i you
+post: you I
+post: my your
+post: i'm you are
+
+synon: happy elated joyful enjoying laughing excited glad
+
+key: xnone -1
+  decomp: *
+    reasmb: I'm not sure I understand you fully.
+    reasmb: Please go on.
+    reasmb: Sorry, can you please explain the issue more generally ?
+    reasmb: If you had to describe something that ails you in one word, what would it be ?
+
+key: depressed
+  decomp: *
+    react: +5de
+    reasmb: switchto depressed I see. Please, tell me about how you've been feeling down.
+key: sad
+  decomp: *
+    reasmb: goto depressed
+key: gloomy
+  decomp: *
+    reasmb: goto depressed
+key: blue
+  decomp: *
+    reasmb: goto depressed
+key: downcast
+  decomp: *
+    reasmb: goto depressed
+key: melancholy
+  decomp: *
+    reasmb: goto depressed
+key: malaise
+  decomp: *
+    reasmb: goto depressed
+key: upset
+  decomp: *
+    reasmb: goto depressed
+
+key: anxious
+  decomp: *
+    react: +5anx
+    reasmb: switchto anxious I see. Tell me about how you've been feeling on edge, please.
+key: stressed
+  decomp: *
+    reasmb: goto anxious
+key: nervous
+  decomp: *
+    reasmb: goto anxious
+key: uneasy
+  decomp: *
+    reasmb: goto anxious
+key: fearful
+  decomp: *
+    reasmb: goto anxious
+key: scared
+  decomp: *
+    reasmb: goto anxious
+key: edge
+  decomp: *
+    reasmb: goto anxious
+key: edgy
+  decomp: *
+    reasmb: goto anxious
+key: horrified
+  decomp: *
+    reasmb: goto anxious
+key: terrified
+  decomp: *
+    reasmb: goto anxious
+
+key: angry
+  decomp: *
+    react: +5ang
+    reasmb: switchto anger Understood. Please tell me about how you've been having your temper challenged.
+key: irate
+  decomp: *
+    reasmb: goto angry
+key: aggressive
+  decomp: *
+    reasmb: goto angry
+key: furious
+  decomp: *
+    reasmb: goto angry
+key: enraged
+  decomp: *
+    reasmb: goto angry
+key: wrathful
+  decomp: *
+    reasmb: goto angry
+key: mad
+  decomp: *
+    reasmb: goto angry
+key: huffy
+  decomp: *
+    reasmb: goto angry
+key: indignant
+  decomp: *
+    reasmb: goto angry
+key: aggravated
+  decomp: *
+    reasmb: goto angry
+key: annoyed
+  decomp: *
+    reasmb: goto angry
+key: incensed
+  decomp: *
+    reasmb: goto angry
+key: temper
+  decomp: *
+    reasmb: goto angry
+key: fuse
+  decomp: * short fuse *
+    reasmb: goto angry
+key: irritated
+  decomp: *
+    reasmb: goto angry
+key: frustrated
+  decomp: *
+    reasmb: goto angry
+key: irritable
+  decomp: *
+    reasmb: goto angry
+key: infuriated
+  decomp: *
+    reasmb: goto angry
+
+key: happy 0
+  decomp: * not @happy *
+     reasmb: You're not ? What would you say you are, then ?
+  decomp: * not ever @happy *
+     reasmb: What are you instead ?
+key: elated 0 
+  decomp: *
+     reasmb: goto happy
+key: joyful 0 
+  decomp: *
+     reasmb: goto happy
+key: enjoying 0 
+  decomp: *
+     reasmb: goto happy
+key: laughing 0 
+  decomp: *
+     reasmb: goto happy
+key: excited 0 
+  decomp: *
+     reasmb: goto happy
+key: glad 0 
+  decomp: *
+     reasmb: goto happy
+
+key: disorder
+  decomp: *
+    react: +5di
+    reasmb: switchto disorder I see. Please, tell me about why you've been feeling this way.
+key: hungry
+  decomp: *
+    reasmb: goto disorder
+key: fasting
+  decomp: *
+    reasmb: goto disorder
+key: binge
+  decomp: *
+    reasmb: goto disorder
+key: fat 4
+  decomp: *
+    reasmb: goto disorder
+key: weight
+  decomp: *
+    reasmb: goto disorder
+
+
+key: cannot 0
+  decomp: * cannot *
+    reasmb: Why can't you (3) ?
+    reasmb: I see. Do feel free to mention any other ailments you may have, even if they seem minor to you.
+    reasmb: Perhaps you should try to speak with me another time or consult the home page.
+key: will 0
+  decomp: * will not *
+    reasmb: If you have concerns about how I operate, consult the home page.
+    reasmb: If you wish to continue this conversation, please let me know how you've been feeling.
+key: am 0
+  decomp: * am not *
+    reasmb: How does that thought make you feel ?
+    reasmb: Why not ?
+    reasmb: Can you describe it in terms of general emotions ?
+    reasmb: If you believe this will be a problem for my ability to speak with you, please consult the home page.
+  decomp: *
+    reasmb: In general, how does that make you feel ?
+    reasmb: Try being a bit more general than that, we'll get specific in due time.
+    reasmb: Please consult the home page if you are wondering if this could impede my ability to speak with you.
+key: xunsure -1
+  decomp: *
+    reasmb: Please think of words that generally describe how you've been feeling.
+    reasmb: If you are feeling hesitant, feel free to come back later at a better time.
+    reasmb: You may want to consult outside resources for your concern.
+key: know 0
+  decomp: * do not know *
+    reasmb: goto xunsure
+  decomp: * know not *
+    reasmb: goto xunsure
+key: unsure 0
+  decomp: *
+    reasmb: goto xunsure
+key: confused 0
+  decomp: *
+    reasmb: goto xunsure
+key: uncertain 0
+  decomp: *
+    reasmb: goto xunsure
+
+
+
+
+
+
+	
