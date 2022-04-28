@@ -64,3 +64,10 @@ def test_ElizaForeign():
     assert el.respond("Sprichst du Deutsch ?") == "I speak only English."
     assert el.respond("parli italiano ?") == "I speak only English."
     assert el.respond("Est-ce que tu parles francais?") == "I speak only English."
+
+def test_punctuation_decomp():
+    el = commented_eliza.Eliza()
+    el.load("depressed.txt")
+    assert el.respond("I am who I am.") == "I see. Can you tell me about the thoughts that are troubling you ?"
+    assert el.respond("oh, my.") == 'What makes you say, "oh my" ?'
+    assert el.respond("can i?") == "What do you think would allow you to do that ?"
