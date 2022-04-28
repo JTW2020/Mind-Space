@@ -24,7 +24,7 @@ function App() {
             <Route path="/chat" component={ChatboxPage}/>
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/"><HomePage /></Route>
+            <Route path="/" component={LoginPage}/>
           </Switch>
         </Layout>
       </div>

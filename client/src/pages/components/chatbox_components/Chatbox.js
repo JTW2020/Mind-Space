@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import TextBubble from './textbubbles';
@@ -13,6 +13,16 @@ function Chatbox() {
     e.preventDefault();
     setMessage(e.target.value);
   }
+
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({behavior:"smooth"})
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messageList])
 
   /*
     This is the handler method that sends 
@@ -36,14 +46,17 @@ function Chatbox() {
     }
   }
 
+
   return (
     <div className="chatbox grid grid-cols-1 w-2/6">
-      <div className="p-2 mt-5 text-black h-60 bg-zinc-100 rounded-md overflow-auto">
-        <a className="text-sm italic">Type something to talk to Eliza.</a>
-        <br />
-        <div className="space-y-2">
-          {messageList.map((message) => <TextBubble key={message.id} sender={message.user} message={message.message} />)}
+      <div className="p-2 mt-5 text-black h-96 bg-zinc-100 rounded-md overflow-y-scroll">
+        <div className="flex flex-col h-full py-1">
+          <a className="text-sm italic">Type something to talk to Eliza.</a>
+          <div className="space-y-2">
+            {messageList.map((message) => <TextBubble key={message.id} sender={message.user} message={message.message} />)}
+          </div>
         </div>
+        <div ref={messagesEndRef}/>
       </div>
       <form
         className="flex mt-6 items-center justify-center align-middle"

@@ -10,19 +10,19 @@ import { Link } from 'react-router-dom';
 function Navbar() {
 
   const navigation = [
-    { name: 'Home', href: 'home', id:1 },
+    // { name: 'Home', href: 'home', id:1 },
     { name: 'Chat', href: 'chat', id:2 },
-    { name: 'About', href: 'about', id:3 }
+    // { name: 'About', href: 'about', id:3 }
   ]
 
   return (
-    <nav className="flex justify-between w-full items-center py-4 px-6 text-white">
+    <nav className="flex space-x-4 w-full items-center py-4 px-6 text-white align-middle">
       <div className="text-2xl font-extrabold hover:cursor-pointer">
         <Link to="/">
           Mind-Space
         </Link>
       </div>
-      <div className="flex space-x-4 text-white font-semibold px-4">
+      <div className="flex space-x-10 text-white font-semibold px-4">
         {navigation.map((item) => (
           <Link
             key={item.id}
@@ -33,6 +33,8 @@ function Navbar() {
           </Link>
         ))}
       </div>
+      {
+        /*
       <div className="flex space-x-4">
         <div className="hover:cursor-pointer w-fit">
             <Link className='bg-gray-600 py-2 px-10 text-center rounded-lg hover:bg-gray-800' to='/signup'>Sign Up</Link>
@@ -41,6 +43,9 @@ function Navbar() {
             <Link className="bg-purple-600 py-2 px-10 text-center rounded-lg hover:bg-purple-700" to="/login">Login</Link>
         </div>
       </div>
+          * */
+
+      }
     </nav>
   )
 }

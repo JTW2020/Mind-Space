@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import axios from 'axios';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,6 +17,7 @@ function LoginPage() {
         { username: username, password: password }
       )
       console.log(res.status)
+      history.push("/chat")
     } catch (err) {
       console.error(err);
     }
