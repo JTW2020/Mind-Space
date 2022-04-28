@@ -27,7 +27,7 @@ pre: aint am not
 pre: yup yep
 pre: suicidal suicide
 pre: harming harms harm 
-pre: death dying died
+pre: death dying died die
 pre: cares care
 pre: we friends friend
 pre: panicking panics panic
