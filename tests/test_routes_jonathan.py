@@ -39,14 +39,14 @@ def test_initialMsgEliza_endpoint():
 #
 
 
-def test_messageEliza_endpoint():
-    session.trust_env = False
-    endpoint = '/api/msgEliza'
-    s = session.post('http://localhost:5000'+endpoint,{
-         "user": "you",
-        "message": "Hello Eliza!"
-    })
-    assert s.status_code == 200
+# def test_messageEliza_endpoint():
+#     session.trust_env = False
+#     endpoint = '/api/msgEliza'
+#     s = session.post('http://localhost:5000'+endpoint,{
+#          "user": "you",
+#         "message": "Hello Eliza!"
+#     })
+#     assert s.status_code == 200
 # def eliza_testEliza_route():
 #    # app = Flask(__name__)
 #    client = app.test_client()

@@ -23,7 +23,7 @@ def test_ContextSwitchAnxious(): #tests if eliza successfully switched contexts 
 def test_AnxiousContext(): # tests if eliza is sucessfully referencing the anxious context
     el = commented_eliza.Eliza()
     el.load("anxious.txt")
-    assert el.respond("I am anxious") == "I already know that you are anxious. Can you explain more of what makes you feel this way ?"
+    assert el.respond("I am anxious") == "I know that you are anxious. Is anything contributing to why you feel (2)?"
 #test 5
 def test_ContextSwitchDisorder(): #tests if eliza successfully switched contexts from inbetween.txt to disorder.txt via string matching.
     el = commented_eliza.Eliza()
